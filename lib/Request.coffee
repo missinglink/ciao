@@ -18,6 +18,15 @@ class Request
       res.on 'error', (e) => @listeners.map (listener) -> listener e, req, res, null
       res.on 'close', (e) => @listeners.map (listener) -> listener e, req, res, null
 
+    if req.body?
+
+      if 'string' is typeof req.body 
+        request.write "#{req.body}\n"
+
+      else if 'object' is typeof req.body
+        foo = JSON.stringify req.body
+        request.write "#{foo}\n"
+
     request.end()
 
   listener: (callback) => @listeners.push callback

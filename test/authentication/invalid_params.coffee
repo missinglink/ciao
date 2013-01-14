@@ -3,7 +3,12 @@
 host: 'stage.bizzby.me'
 path: '/auth/token'
 method: 'POST'
-headers: 'Accept': 'application/json'
+headers:
+  'Accept': 'application/json'
+  'Content-Type': 'application/json'
+body: 
+  service: 'facebook'
+  token: '43423'
 
 # Bad Request
 response.statusCode.should.equal 400
