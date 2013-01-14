@@ -16,11 +16,11 @@ class Documentor
     doc = '# ' + @title + "\n\n"
     doc += "*Generated: " + ( new Date() ) + "*\n"
     doc += "## Request" + "\n"
-    doc += "```\n"
+    doc += "```javascript\n"
     doc += JSON.stringify(req,null,2) + "\n"
     doc += "```\n\n"
     doc += "## Response" + "\n"
-    doc += "```\n"
+    doc += "```javascript\n"
 
     if res.headers['content-type']? and res.headers['content-type'] is 'application/json'
       body = JSON.stringify(JSON.parse(body),null,2)
