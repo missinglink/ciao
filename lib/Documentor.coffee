@@ -22,8 +22,6 @@ class Documentor
     doc += "## Response" + "\n"
     doc += "```javascript\n"
     doc += 'Status: ' + res.statusCode + "\n"
-    doc += "```\n"
-    doc += "```javascript\n"
     doc += JSON.stringify(res.headers,null,2) + "\n"
     doc += "```\n"
     doc += "```javascript\n"
