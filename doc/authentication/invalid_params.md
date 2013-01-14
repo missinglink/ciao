@@ -1,8 +1,8 @@
 # Token Auth - Invalid Params
 
-*Generated: Mon Jan 14 2013 17:16:05 GMT+0000 (GMT)*
+*Generated: Mon Jan 14 2013 17:18:24 GMT+0000 (GMT)*
 ## Request
-```
+```javascript
 {
   "host": "stage.bizzby.me",
   "path": "/auth/token",
@@ -14,7 +14,7 @@
 ```
 
 ## Response
-```
+```javascript
 {
   "meta": {},
   "body": {

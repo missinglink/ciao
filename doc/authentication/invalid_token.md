@@ -1,8 +1,8 @@
 # Token Auth - Invalid Token
 
-*Generated: Mon Jan 14 2013 17:16:06 GMT+0000 (GMT)*
+*Generated: Mon Jan 14 2013 17:18:25 GMT+0000 (GMT)*
 ## Request
-```
+```javascript
 {
   "host": "stage.bizzby.me",
   "path": "/auth/token",
@@ -19,7 +19,7 @@
 ```
 
 ## Response
-```
+```javascript
 {
   "meta": {},
   "body": {

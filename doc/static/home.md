@@ -1,8 +1,8 @@
 # Home Page is Up & Running
 
-*Generated: Mon Jan 14 2013 17:16:05 GMT+0000 (GMT)*
+*Generated: Mon Jan 14 2013 17:18:24 GMT+0000 (GMT)*
 ## Request
-```
+```javascript
 {
   "host": "stage.bizzby.me",
   "path": "/",
@@ -11,7 +11,7 @@
 ```
 
 ## Response
-```
+```javascript
 <!DOCTYPE html>
 <html lang="en-gb">
   <head>
