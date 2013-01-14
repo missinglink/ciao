@@ -10,7 +10,7 @@ body:
   service: 'facebook'
   token: '43423'
 
-# Bad Request
+# Status: 401 Unauthorized
 response.statusCode.should.equal 401
 
 # Error message is provided

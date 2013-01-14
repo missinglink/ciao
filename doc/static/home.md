@@ -1,6 +1,6 @@
 # Home Page is Up & Running
 
-*Generated: Mon Jan 14 2013 18:35:17 GMT+0000 (GMT)*
+*Generated: Mon Jan 14 2013 18:36:54 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -19,9 +19,9 @@ Status: 200
   "content-length": "2178",
   "etag": "\"1801899012\"",
   "set-cookie": [
-    "connect.sid=s%3AvXIL6%2BgBLLEWa4zuxqqqu0HX.1qxL1hqRzJ1a1NnRvficZkcYXHlGM1vDZN8JbOW7K5Q; Path=/"
+    "connect.sid=s%3ANhI0pHnDLDgkMC9bjCk1EqpD.hLZWW73GqYc5Sfk6DLGfk6R3jOp5SCELshNz1ok42S4; Path=/"
   ],
-  "date": "Mon, 14 Jan 2013 18:35:42 GMT",
+  "date": "Mon, 14 Jan 2013 18:37:18 GMT",
   "connection": "keep-alive"
 }
 ```
@@ -118,13 +118,13 @@ Status: 200
 response.statusCode.should.equal 200
 ```
 
-## ✓ Should contain the company name
-```javascript
-response.body.should.include 'Bizzby'
-```
-
 ## ✓ Should set a cookie
 ```javascript
 response.should.have.header 'Set-Cookie'
+```
+
+## ✓ Should contain the company name
+```javascript
+response.body.should.include 'Bizzby'
 ```
 

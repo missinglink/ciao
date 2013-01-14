@@ -6,7 +6,7 @@ method: 'POST'
 headers:
   'Accept': 'application/json'
 
-# Bad Request
+# Status: 400 Bad Request
 response.statusCode.should.equal 400
 
 # Should set a cookie

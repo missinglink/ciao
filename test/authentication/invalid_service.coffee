@@ -10,7 +10,7 @@ body:
   service: 'invalid_service'
   token: '43423'
 
-# Bad Request
+# Status: 400 Bad Request
 response.statusCode.should.equal 400
 
 # Error message is provided
