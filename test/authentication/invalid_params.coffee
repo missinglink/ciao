@@ -1,5 +1,5 @@
 
-# Token Auth
+# Token Auth - Invalid Params
 host: 'stage.bizzby.me'
 path: '/auth/token'
 method: 'POST'

@@ -1,4 +1,4 @@
-# Token Auth
+# Token Auth - Invalid Params
 
 ## Request
 ```
