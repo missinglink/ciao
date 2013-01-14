@@ -24,13 +24,14 @@ class Documentor
     doc += 'Status: ' + res.statusCode + "\n"
     doc += JSON.stringify(res.headers,null,2) + "\n"
     doc += "```\n"
-    doc += "```javascript\n"
+
+    contentType = 'html'
 
     if res.headers?['content-type']? and res.headers['content-type'] is 'application/json'
+      contentType = 'javascript'
       body = JSON.stringify(JSON.parse(body),null,2)
 
-    doc += body + "\n"
-    doc += "```\n\n"
+    doc += "```#{contentType}\n" + body + "\n```\n\n"
 
     doc += "## Tests" + "\n\n"
 

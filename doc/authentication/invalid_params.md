@@ -1,6 +1,6 @@
 # Token Auth - Invalid Params
 
-*Generated: Mon Jan 14 2013 18:38:35 GMT+0000 (GMT)*
+*Generated: Mon Jan 14 2013 18:51:10 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -21,9 +21,9 @@ Status: 400
   "content-type": "application/json",
   "content-length": "81",
   "set-cookie": [
-    "connect.sid=s%3ATi4bktNyBiNqTCbDVH54XTaV.9hVQwhECyJ8Ge1kYa2TDPfUYODbMB9Jehq1OqRlleOg; Path=/"
+    "connect.sid=s%3Ay%2Bs1m4SNjFgWQkPJi%2FRsnM%2Br.a8EvNckBxwaiDQxEzWtpEqIS4zWFR5yQZdiUHu%2Bb%2FEo; Path=/"
   ],
-  "date": "Mon, 14 Jan 2013 18:38:59 GMT",
+  "date": "Mon, 14 Jan 2013 18:51:34 GMT",
   "connection": "keep-alive"
 }
 ```
@@ -38,14 +38,14 @@ Status: 400
 
 ## Tests
 
-## ✓ Status: 400 Bad Request
-```javascript
-response.statusCode.should.equal 400
-```
-
 ## ✓ Should set a cookie
 ```javascript
 response.should.have.header 'Set-Cookie'
+```
+
+## ✓ Status: 400 Bad Request
+```javascript
+response.statusCode.should.equal 400
 ```
 
 ## ✓ Error message is provided
