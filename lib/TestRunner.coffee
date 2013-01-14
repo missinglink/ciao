@@ -7,7 +7,7 @@ class TestRunner
 
     @groups = groups
 
-  complete: (error, response, body) =>
+  complete: (error, request, response, body) =>
 
     throw new Error error if error
 
