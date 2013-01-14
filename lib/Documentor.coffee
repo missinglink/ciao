@@ -43,15 +43,16 @@ class Documentor
 
   documentTest: (code,stdout,stderr,data) =>
 
-    doc = '# ' + data.test.title + "\n"
-
     if code is 0
 
-      doc += "```✓ #{data.test.source}```"
+      doc = '# ✓ ' + data.test.title + "\n"
+      doc += "```#{data.test.source}```" + "\n"
 
     else
-      doc += "```✘ #{data.test.source}```"
-      doc += stdout
+
+      doc = '# ✘ ' + data.test.title + "\n"
+      doc += "```#{data.test.source}```" + "\n"
+      doc += stdout + "\n"
 
     doc += "\n"
 
