@@ -14,6 +14,7 @@ class Documentor
   documentTransaction: (error,req,res,body) =>
 
     doc = '# ' + @title + "\n\n"
+    doc += "Generated: " + ( new Date() ) + "\n"
     doc += "## Request" + "\n"
     doc += "```\n"
     doc += JSON.stringify(req,null,2) + "\n"
