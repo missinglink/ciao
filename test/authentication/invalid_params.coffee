@@ -13,4 +13,5 @@ response.statusCode.should.equal 400
 response.should.have.header 'Set-Cookie'
 
 # Error message is provided
-JSON.parse( response.body ).body.error.should.eql "You must provide both 'service' and 'token' params"
+json = JSON.parse( response.body )
+json.body.error.should.eql "You must provide both 'service' and 'token' params"

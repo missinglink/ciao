@@ -14,4 +14,5 @@ body:
 response.statusCode.should.equal 400
 
 # Error message is provided
-JSON.parse( response.body ).body.error.should.eql "The 'service' you specified is not supported"
+json = JSON.parse( response.body )
+json.body.error.should.eql "The 'service' you specified is not supported"

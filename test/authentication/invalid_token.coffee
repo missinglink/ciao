@@ -14,4 +14,5 @@ body:
 response.statusCode.should.equal 401
 
 # Error message is provided
-JSON.parse( response.body ).body.error.should.eql "Your facebook account must share the email address"
+json = JSON.parse( response.body )
+json.body.error.should.eql "Your facebook account must share the email address"
