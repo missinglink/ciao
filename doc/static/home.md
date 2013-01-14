@@ -1,12 +1,27 @@
 # Home Page is Up & Running
 
-*Generated: Mon Jan 14 2013 17:18:24 GMT+0000 (GMT)*
+*Generated: Mon Jan 14 2013 17:24:38 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
   "host": "stage.bizzby.me",
   "path": "/",
   "method": "GET"
+}
+```
+
+## Response Headers
+```javascript
+{
+  "x-powered-by": "Express",
+  "content-type": "text/html; charset=utf-8",
+  "content-length": "2178",
+  "etag": "\"1801899012\"",
+  "set-cookie": [
+    "connect.sid=s%3ADcLsqerNi2uI8dEW7Gc7tEI5.j6wD%2BC%2FHZwCgkEo2hVqVy8d0bBgzo6e2IvV0i%2BDWf8o; Path=/"
+  ],
+  "date": "Mon, 14 Jan 2013 17:25:05 GMT",
+  "connection": "keep-alive"
 }
 ```
 

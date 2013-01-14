@@ -1,6 +1,6 @@
 # Token Auth - Invalid Params
 
-*Generated: Mon Jan 14 2013 17:18:24 GMT+0000 (GMT)*
+*Generated: Mon Jan 14 2013 17:24:38 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -10,6 +10,20 @@
   "headers": {
     "Accept": "application/json"
   }
+}
+```
+
+## Response Headers
+```javascript
+{
+  "x-powered-by": "Express",
+  "content-type": "application/json",
+  "content-length": "81",
+  "set-cookie": [
+    "connect.sid=s%3AQw2G2XPaVj70ae%2B1XGdFejjI.012RdJMZz9SKCx2XRDEjvC%2BkYTcEbHqOu8QtakgaFic; Path=/"
+  ],
+  "date": "Mon, 14 Jan 2013 17:25:05 GMT",
+  "connection": "keep-alive"
 }
 ```
 
