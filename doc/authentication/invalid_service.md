@@ -1,6 +1,6 @@
 # Token Auth - Invalid Service
 
-*Generated: Mon Jan 14 2013 18:30:25 GMT+0000 (GMT)*
+*Generated: Mon Jan 14 2013 18:31:13 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -20,7 +20,7 @@
 
 ## Response
 ```javascript
-400
+Status: 400
 ```
 ```javascript
 {
@@ -28,9 +28,9 @@
   "content-type": "application/json",
   "content-length": "75",
   "set-cookie": [
-    "connect.sid=s%3ABsYK4G5%2FGhPIwUTZky2H3Kzv.uT3h4g3l%2BOnuHGryUyDw7pl%2FUp8HKq1qTe0WSuHcwgg; Path=/"
+    "connect.sid=s%3Ajwv3soc%2FDncs9iZvreGuiTw3.B4wbcrlpoU%2B2NcflMZGETZ3xq9jo98DhTOQtXUPup8o; Path=/"
   ],
-  "date": "Mon, 14 Jan 2013 18:30:50 GMT",
+  "date": "Mon, 14 Jan 2013 18:31:38 GMT",
   "connection": "keep-alive"
 }
 ```
