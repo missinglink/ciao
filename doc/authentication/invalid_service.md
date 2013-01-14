@@ -1,4 +1,4 @@
-# Token Auth - Invalid Token
+# Token Auth - Invalid Service
 
 ## Request
 ```
@@ -11,7 +11,7 @@
     "Content-Type": "application/json"
   },
   "body": {
-    "service": "facebook",
+    "service": "invalid_service",
     "token": "43423"
   }
 }
@@ -22,7 +22,7 @@
 {
   "meta": {},
   "body": {
-    "error": "Your facebook account must share the email address"
+    "error": "The 'service' you specified is not supported"
   }
 }
 ```
