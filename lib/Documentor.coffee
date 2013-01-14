@@ -23,7 +23,6 @@ class Documentor
     doc += "```javascript\n"
     doc += JSON.stringify(res.headers,null,2) + "\n"
     doc += "```\n"
-    doc += "## Response" + "\n"
     doc += "```javascript\n"
 
     if res.headers['content-type']? and res.headers['content-type'] is 'application/json'

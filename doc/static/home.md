@@ -1,6 +1,6 @@
 # Home Page is Up & Running
 
-*Generated: Mon Jan 14 2013 17:30:05 GMT+0000 (GMT)*
+*Generated: Mon Jan 14 2013 17:30:30 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -18,13 +18,12 @@
   "content-length": "2178",
   "etag": "\"1801899012\"",
   "set-cookie": [
-    "connect.sid=s%3AS%2FCQcyeoybLBjFBAj5rQ8b5V.9OnvQUqXfvtqRkGHTsQJgzUgjzlZ89AHLRQZzcegW%2FE; Path=/"
+    "connect.sid=s%3AndOmgGMzxwhpVKKVpDKBQZPc.pTOaIku5OfsTmaZ2Ul3xzNMnVeuQT6u8QhtDY64qJsE; Path=/"
   ],
-  "date": "Mon, 14 Jan 2013 17:30:31 GMT",
+  "date": "Mon, 14 Jan 2013 17:30:57 GMT",
   "connection": "keep-alive"
 }
 ```
-## Response
 ```javascript
 <!DOCTYPE html>
 <html lang="en-gb">
