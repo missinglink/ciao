@@ -9,3 +9,6 @@ response.statusCode.should.equal 200
 
 # Should set a cookie
 response.should.have.header 'Set-Cookie'
+
+# Should contain the company name
+response.body.should.include 'Bizzby'

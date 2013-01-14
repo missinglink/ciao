@@ -7,12 +7,7 @@
   "path": "/auth/token",
   "method": "POST",
   "headers": {
-    "Accept": "application/json",
-    "Content-Type": "application/json"
-  },
-  "body": {
-    "service": "facebook",
-    "token": "43423"
+    "Accept": "application/json"
   }
 }
 ```
@@ -22,7 +17,7 @@
 {
   "meta": {},
   "body": {
-    "error": "Your facebook account must share the email address"
+    "error": "You must provide both 'service' and 'token' params"
   }
 }
 ```
