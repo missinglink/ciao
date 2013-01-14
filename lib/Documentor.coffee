@@ -45,13 +45,13 @@ class Documentor
 
     if code is 0
 
-      doc = '# ✓ ' + data.test.title + "\n"
-      doc += "```#{data.test.source}```" + "\n"
+      doc = '## ✓ ' + data.test.title + "\n"
+      doc += "```\n#{data.test.source}\n```" + "\n"
 
     else
 
-      doc = '# ✘ ' + data.test.title + "\n"
-      doc += "```#{data.test.source}```" + "\n"
+      doc = '## ✘ ' + data.test.title + "\n"
+      doc += "```\n#{data.test.source}\n```" + "\n"
       doc += stdout + "\n"
 
     doc += "\n"
