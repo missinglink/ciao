@@ -1,11 +1,11 @@
 Process = require './Process'
-Reporter = require './Reporter'
 
 class TestRunner
 
   constructor: (groups) ->
 
     @groups = groups
+    @listeners = []
 
   complete: (error, request, response, body) =>
 
@@ -24,15 +24,18 @@ class TestRunner
       script += "process.exit 0" + "\n"
       script += "\n"
 
-      # console.log script
-
+      # Spawn child process
       env = process.env
       env['NODE_PATH'] = process.cwd() + "/node_modules"
 
       child = new Process 'coffee', [ '-s', '-r', 'should' ], { env: env }, { test: test }
-      child.on 'exit', Reporter
+
+      child.on 'exit', (code, stdout, stderr, data) =>
+        @listeners.map (listener) => listener code, stdout, stderr, data
+
       child.emit 'write', script
 
+  listener: (callback) => @listeners.push callback
 
   @indentSource: (source,char=' ',indentation=2) ->
 

@@ -25,11 +25,13 @@ class Documentor
     doc += "```\n"
     doc += "```javascript\n"
 
-    if res.headers['content-type']? and res.headers['content-type'] is 'application/json'
+    if res.headers?['content-type']? and res.headers['content-type'] is 'application/json'
       body = JSON.stringify(JSON.parse(body),null,2)
 
     doc += body + "\n"
     doc += "```\n\n"
+
+    doc += "## Tests" + "\n\n"
 
     @destination.on 'error', (error) ->
       console.log error.message
@@ -38,5 +40,20 @@ class Documentor
 
     # console.log req
     # console.log body
+
+  documentTest: (code,stdout,stderr,data) =>
+
+    doc = ''
+
+    if code is 0
+      doc += "```✓ #{data.test.title}```"
+
+    else
+      doc += "```✘ #{data.test.title}```"
+      doc += stdout
+
+    doc += "\n"
+
+    @destination.write doc
 
 module.exports = Documentor
