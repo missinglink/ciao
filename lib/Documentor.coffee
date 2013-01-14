@@ -19,10 +19,10 @@ class Documentor
     doc += "```javascript\n"
     doc += JSON.stringify(req,null,2) + "\n"
     doc += "```\n\n"
-    doc += "## Response Headers" + "\n"
+    doc += "## Response" + "\n"
     doc += "```javascript\n"
     doc += JSON.stringify(res.headers,null,2) + "\n"
-    doc += "```\n\n"
+    doc += "```\n"
     doc += "## Response" + "\n"
     doc += "```javascript\n"
 
