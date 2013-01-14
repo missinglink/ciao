@@ -43,15 +43,17 @@ class Documentor
 
   documentTest: (code,stdout,stderr,data) =>
 
+    trimSource = data.test.source.replace /^\s+|\s+$/g, ''
+
     if code is 0
 
       doc = '## ✓ ' + data.test.title + "\n"
-      doc += "```\n#{data.test.source}\n```" + "\n"
+      doc += "```\n#{trimSource}\n```" + "\n"
 
     else
 
       doc = '## ✘ ' + data.test.title + "\n"
-      doc += "```\n#{data.test.source}\n```" + "\n"
+      doc += "```\n#{trimSource}\n```" + "\n"
       doc += stdout + "\n"
 
     doc += "\n"

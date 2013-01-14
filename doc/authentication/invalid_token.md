@@ -1,6 +1,6 @@
 # Token Auth - Invalid Token
 
-*Generated: Mon Jan 14 2013 18:21:38 GMT+0000 (GMT)*
+*Generated: Mon Jan 14 2013 18:23:28 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -25,9 +25,9 @@
   "content-type": "application/json",
   "content-length": "81",
   "set-cookie": [
-    "connect.sid=s%3ACaftYQU1OOStoOqm%2FOxUS6%2Fi.46j8XiwCoBtZ5btRLm%2BjOY2YE97SWeRpXlH3Y7yqWkg; Path=/"
+    "connect.sid=s%3AoRdtvrFtKfAQxfwPxSiYrB1e.9FCg9%2Fk1qjwdJ1Je8ntKAb%2BwSJyIIBb1LLpiTNIHJmc; Path=/"
   ],
-  "date": "Mon, 14 Jan 2013 18:22:03 GMT",
+  "date": "Mon, 14 Jan 2013 18:23:53 GMT",
   "connection": "keep-alive"
 }
 ```
@@ -42,16 +42,13 @@
 
 ## Tests
 
-## ✓ Error message is provided
-```
-JSON.parse( response.body ).body.error.should.eql "Your facebook account must share the email address"
-
-```
-
 ## ✓ Bad Request
 ```
 response.statusCode.should.equal 401
+```
 
-
+## ✓ Error message is provided
+```
+JSON.parse( response.body ).body.error.should.eql "Your facebook account must share the email address"
 ```
 

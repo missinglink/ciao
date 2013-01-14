@@ -1,6 +1,6 @@
 # Token Auth - Invalid Params
 
-*Generated: Mon Jan 14 2013 18:21:37 GMT+0000 (GMT)*
+*Generated: Mon Jan 14 2013 18:23:27 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -20,9 +20,9 @@
   "content-type": "application/json",
   "content-length": "81",
   "set-cookie": [
-    "connect.sid=s%3ALPLKecGgQz0KcDsXR8Qx8jK9.kfmq8v1tZgDtSpp5XUHQhyH3qqa5%2BbS3iXiZa07VqBA; Path=/"
+    "connect.sid=s%3AM02INr1a%2FR1IQLN3%2FH0B02tj.4PeeMoQlESpYXdXXQukWopmjNrNEPrGfjNuC8Eqc6VY; Path=/"
   ],
-  "date": "Mon, 14 Jan 2013 18:22:02 GMT",
+  "date": "Mon, 14 Jan 2013 18:23:52 GMT",
   "connection": "keep-alive"
 }
 ```
@@ -37,23 +37,18 @@
 
 ## Tests
 
-## ✓ Bad Request
-```
-response.statusCode.should.equal 400
-
-
-```
-
 ## ✓ Should set a cookie
 ```
 response.should.have.header 'Set-Cookie'
+```
 
-
+## ✓ Bad Request
+```
+response.statusCode.should.equal 400
 ```
 
 ## ✓ Error message is provided
 ```
 JSON.parse( response.body ).body.error.should.eql "You must provide both 'service' and 'token' params"
-
 ```
 
