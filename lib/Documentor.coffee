@@ -43,12 +43,12 @@ class Documentor
 
     if code is 0
 
-      doc = '# ✓ ' + data.test.title + "\n"
+      doc = '### ✓ ' + data.test.title + "\n"
       doc += "```javascript\n#{trimSource}\n```" + "\n"
 
     else
 
-      doc = '# ✘ ' + data.test.title + "\n"
+      doc = '### ✘ ' + data.test.title + "\n"
       doc += "```javascript\n#{trimSource}\n```" + "\n"
       doc += stdout + "\n"
 

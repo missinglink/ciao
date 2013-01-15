@@ -1,6 +1,6 @@
 # Token Auth - Invalid Service
 
-*Generated: Tue Jan 15 2013 10:50:57 GMT+0000 (GMT)*
+*Generated: Tue Jan 15 2013 10:52:18 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -26,9 +26,9 @@ Status: 400
   "content-type": "application/json",
   "content-length": "75",
   "set-cookie": [
-    "connect.sid=s%3Aj87zUUqhTloFpoDIhWVWDZ3c.PGrO1oDrQGRdDPnCC0kRrgeA5%2FEw2muVl4NPudwq4u4; Path=/"
+    "connect.sid=s%3AeqsBp2e7OahuFlt28GPyN0VT.7lm04gsCoYNUNWp1mwR2cWwPtvs%2FbC%2FicGy1XFGpafA; Path=/"
   ],
-  "date": "Tue, 15 Jan 2013 10:51:23 GMT",
+  "date": "Tue, 15 Jan 2013 10:52:44 GMT",
   "connection": "keep-alive"
 }
 ```
@@ -43,12 +43,12 @@ Status: 400
 
 ## Tests
 
-# ✓ Status: 400 Bad Request
+### ✓ Status: 400 Bad Request
 ```javascript
 response.statusCode.should.equal 400
 ```
 
-# ✓ Error message is provided
+### ✓ Error message is provided
 ```javascript
 json = JSON.parse( response.body )
 json.body.error.should.eql "The 'service' you specified is not supported"
