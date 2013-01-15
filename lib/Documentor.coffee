@@ -32,16 +32,10 @@ class Documentor
       body = JSON.stringify(JSON.parse(body),null,2)
 
     doc += "```#{contentType}\n" + body + "\n```\n\n"
-
     doc += "## Tests" + "\n\n"
 
-    @destination.on 'error', (error) ->
-      console.log error.message
-
+    @destination.on 'error', (error) -> console.log error.message
     @destination.write doc
-
-    # console.log req
-    # console.log body
 
   documentTest: (code,stdout,stderr,data) =>
 
@@ -49,12 +43,12 @@ class Documentor
 
     if code is 0
 
-      doc = '## ✓ ' + data.test.title + "\n"
+      doc = '# ✓ ' + data.test.title + "\n"
       doc += "```javascript\n#{trimSource}\n```" + "\n"
 
     else
 
-      doc = '## ✘ ' + data.test.title + "\n"
+      doc = '# ✘ ' + data.test.title + "\n"
       doc += "```javascript\n#{trimSource}\n```" + "\n"
       doc += stdout + "\n"
 
