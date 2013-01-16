@@ -1,6 +1,6 @@
 # Token Auth - Invalid Service
 
-*Generated: Tue Jan 15 2013 10:52:18 GMT+0000 (GMT)*
+*Generated: Wed Jan 16 2013 12:45:23 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -26,9 +26,9 @@ Status: 400
   "content-type": "application/json",
   "content-length": "75",
   "set-cookie": [
-    "connect.sid=s%3AeqsBp2e7OahuFlt28GPyN0VT.7lm04gsCoYNUNWp1mwR2cWwPtvs%2FbC%2FicGy1XFGpafA; Path=/"
+    "connect.sid=s%3AKiHYJM5IsDTrWYhKUSJ7FMQ3.S4gHvrmSZeqvu6sfnO%2FJrpjPxC1cNnWPcbbbYDV77IY; Path=/"
   ],
-  "date": "Tue, 15 Jan 2013 10:52:44 GMT",
+  "date": "Wed, 16 Jan 2013 12:45:51 GMT",
   "connection": "keep-alive"
 }
 ```
@@ -43,10 +43,12 @@ Status: 400
 
 ## Tests
 
-### ✓ Status: 400 Bad Request
+### ✘ Status: 400 Bad Request
 ```javascript
-response.statusCode.should.equal 400
+response.statusCode.should.equal 401
 ```
+expected 400 to equal 401
+
 
 ### ✓ Error message is provided
 ```javascript

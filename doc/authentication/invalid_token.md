@@ -1,6 +1,6 @@
 # Token Auth - Invalid Token
 
-*Generated: Tue Jan 15 2013 10:52:19 GMT+0000 (GMT)*
+*Generated: Wed Jan 16 2013 12:45:24 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -26,9 +26,9 @@ Status: 401
   "content-type": "application/json",
   "content-length": "81",
   "set-cookie": [
-    "connect.sid=s%3AvX0yXPC9WETYUvJ5fjdR2Z7A.o%2FEH%2BAyzhozrD1kN6Qm6SWqZ13jjdXE3hp%2B9AyCH%2FP4; Path=/"
+    "connect.sid=s%3AnNxIpXEEyk9axVWRCQUG6Vk%2F.iAJk7XRHVXdlHirmv8hD2cruwlhNhOvICtUUw0O86g0; Path=/"
   ],
-  "date": "Tue, 15 Jan 2013 10:52:45 GMT",
+  "date": "Wed, 16 Jan 2013 12:45:52 GMT",
   "connection": "keep-alive"
 }
 ```

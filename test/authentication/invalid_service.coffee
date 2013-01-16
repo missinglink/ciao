@@ -11,7 +11,7 @@ body:
   token: '43423'
 
 # Status: 400 Bad Request
-response.statusCode.should.equal 400
+response.statusCode.should.equal 401
 
 # Error message is provided
 json = JSON.parse( response.body )
