@@ -38,7 +38,10 @@ class Ciao
           unless req?.path and req?.method then throw new Error 'Ciao: Invalid request section, you must specify at least path & method'
           unless groups[2] then throw new Error 'Ciao: No test sections found'
 
-          documentation = new Documentor groups[1].title, filename.replace settings.testDir, settings.docDir
+          docFile = filename.replace settings.testDir, settings.docDir
+          docFile = docFile.replace '.coffee', '.md'
+
+          documentation = new Documentor groups[1].title, docFile
 
           runner = new TestRunner groups[2...]
           runner.listener Reporter
