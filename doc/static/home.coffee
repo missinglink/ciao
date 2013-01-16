@@ -1,6 +1,6 @@
 # Home Page is Up & Running
 
-*Generated: Wed Jan 16 2013 12:47:04 GMT+0000 (GMT)*
+*Generated: Wed Jan 16 2013 14:53:01 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -19,9 +19,9 @@ Status: 200
   "content-length": "2178",
   "etag": "\"1801899012\"",
   "set-cookie": [
-    "connect.sid=s%3AJGPvCeI6JSSHA1gUv8pLYjQl.re2ATtbN%2FMG7MRSoK0QNm4A7ZMsGbDLZwwt9aHEcyT0; Path=/"
+    "connect.sid=s%3AXiITzhoBdzxDq88WQihkx6Uq.72RTreJPNrjUD4jQa9NH%2B35pEuhlRZ8entGVue%2FXQA8; Path=/"
   ],
-  "date": "Wed, 16 Jan 2013 12:47:32 GMT",
+  "date": "Wed, 16 Jan 2013 14:53:26 GMT",
   "connection": "keep-alive"
 }
 ```
@@ -113,14 +113,14 @@ Status: 200
 
 ## Tests
 
-### ✓ Should set a cookie
-```javascript
-response.should.have.header 'Set-Cookie'
-```
-
 ### ✓ Bad Request
 ```javascript
 response.statusCode.should.equal 200
+```
+
+### ✓ Should set a cookie
+```javascript
+response.should.have.header 'Set-Cookie'
 ```
 
 ### ✓ Should contain the company name
