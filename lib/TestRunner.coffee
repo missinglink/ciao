@@ -14,7 +14,7 @@ class TestRunner
     for test in @groups
 
       script = "should = require 'should'" + "\n"
-      script += "title = '" + test.title + "'\n" #"mocha = require 'mocha'" + "\n"
+      script += "title = '" + test.title.split("'").join("\\'") + "'\n" #"mocha = require 'mocha'" + "\n"
       script += "`response = { 'body': " + JSON.stringify(body) + ", 'statusCode': " + JSON.stringify(response.statusCode) + ", 'headers': " + JSON.stringify(response.headers) + " }`" + "\n"
       script += "\n"
       script += "try" + "\n"
