@@ -13,7 +13,8 @@ class TestRunner
 
     for test in @groups
 
-      script = "title = '" + test.title + "'\n" #"mocha = require 'mocha'" + "\n"
+      script = "should = require 'should'" + "\n"
+      script += "title = '" + test.title + "'\n" #"mocha = require 'mocha'" + "\n"
       script += "`response = { 'body': " + JSON.stringify(body) + ", 'statusCode': " + JSON.stringify(response.statusCode) + ", 'headers': " + JSON.stringify(response.headers) + " }`" + "\n"
       script += "\n"
       script += "try" + "\n"
@@ -28,7 +29,7 @@ class TestRunner
       env = process.env
       env['NODE_PATH'] = process.cwd() + "/node_modules"
 
-      child = new Process 'coffee', [ '-s', '-r', 'should' ], { env: env }, { test: test }
+      child = new Process 'coffee', [ '-s' ], { env: env }, { test: test }
 
       child.on 'exit', (code, stdout, stderr, data) =>
         @listeners.map (listener) => listener code, stdout, stderr, data
