@@ -3,6 +3,8 @@
 host: 'stage.bizzby.me'
 path: '/'
 method: 'GET'
+headers:
+  'Cookie': cookies.foo
 
 # Bad Request
 response.statusCode.should.equal 200
