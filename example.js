@@ -3,7 +3,8 @@ Ciao = require('./index.js');
 
 settings = {
   testDir: './test',
-  docDir: './doc'
+  docDir: './doc',
+  config: { cookies: { foo: 'bar' } }
 }
 
 new Ciao( settings );
