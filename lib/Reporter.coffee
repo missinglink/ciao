@@ -9,5 +9,3 @@ module.exports = (code,stdout,stderr,data) =>
   else
     console.log "\x1b[1;31m✘ #{data.test.title}\x1b[0m"
     console.log stdout
-
-  console.log "\n"
