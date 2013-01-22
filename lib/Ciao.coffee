@@ -15,7 +15,7 @@ class Ciao
 
     unless settings?.testDir? then throw new Error 'Ciao: Invalid test directory'
     unless settings?.docDir? then throw new Error 'Ciao: Invalid documentation directory'
-    settings.cookies = {} unless 'object' is typeof settings.cookies
+    settings.config = {} unless 'object' is typeof settings.config
 
     # Get list of files recursively
     files = []
@@ -35,7 +35,7 @@ class Ciao
 
           unless groups[1] then throw new Error 'Ciao: Could not find request section, did you add a title comment?'
 
-          script = "cookies = " + JSON.stringify(settings.cookies) + "\n"
+          script = "config = " + JSON.stringify(settings.config) + "\n"
           script += groups[1].source
 
           req = CoffeeScript.eval script
