@@ -7,8 +7,7 @@ class Documentor
   constructor: (title,destination) ->
 
     @title = title
-    mkdirp path.dirname( destination ), (err) ->
-      if err? then console.log 'Failed to create documentation at: ' + destination
+    mkdirp.sync path.dirname destination
     @destination = fs.createWriteStream destination
 
   documentTransaction: (error,req,res,body) =>
