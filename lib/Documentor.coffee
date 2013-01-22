@@ -1,5 +1,5 @@
 fs = require 'fs'
-fse = require 'fs-extra'
+mkdirp = require 'mkdirp'
 path = require 'path'
 
 class Documentor
@@ -7,7 +7,7 @@ class Documentor
   constructor: (title,destination) ->
 
     @title = title
-    fse.mkdirs path.dirname( destination ), (err) ->
+    mkdirp path.dirname( destination ), (err) ->
       if err? then console.log 'Failed to create documentation at: ' + destination
     @destination = fs.createWriteStream destination
 
