@@ -12,6 +12,9 @@ class Documentor
 
   documentTransaction: (error,req,res,body) =>
 
+    # @TODO: Figure out a better way of removing cyclic references in req
+    req.agent = undefined
+
     doc = '# ' + @title + "\n\n"
     doc += "*Generated: " + ( new Date() ) + "*\n"
     doc += "## Request" + "\n"
@@ -26,9 +29,13 @@ class Documentor
 
     contentType = 'html'
 
-    if res.headers?['content-type']? and res.headers['content-type'] is 'application/json'
-      contentType = 'javascript'
-      body = JSON.stringify(JSON.parse(body),null,2)
+    if res.headers?['content-type']?
+
+      parseContentType = res.headers['content-type'].split ';'
+      if parseContentType[0] and parseContentType[0] is 'application/json'
+
+        contentType = 'javascript'
+        body = JSON.stringify(JSON.parse(body),null,2)
 
     doc += "```#{contentType}\n" + body + "\n```\n\n"
     doc += "## Tests" + "\n\n"
