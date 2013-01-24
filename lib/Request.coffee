@@ -1,5 +1,6 @@
 
 http = require 'http'
+https = require 'https'
 
 class Request
 
@@ -10,7 +11,10 @@ class Request
 
   transfer: (req) =>
 
-    request = http.request req, (res) =>
+    protocol = http
+    if req.port is 443 then protocol = https
+
+    request = protocol.request req, (res) =>
 
       res.setEncoding 'utf8'
       res.on 'data', (chunk) => @data += chunk
