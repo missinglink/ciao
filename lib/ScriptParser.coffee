@@ -1,33 +1,31 @@
-fs = require 'fs'
 
 class ScriptParser
 
-  constructor: (@filename) ->
+  constructor: (@script='') ->
 
-    @lines = fs.readFileSync(@filename).toString('utf8').split('\n')
+    section = title: '', source: ''
 
-  parseGroups: =>
+    @sections =
+      junk: [ section ]
+      auth: []
+      request: []
+      assert: []
 
-    groups = []
-    group = 
-      title: 'head'
-      source: ''
+    for line in @lines = @script.toString('utf8').split('\n')
 
-    @lines.map (line) =>
+      if title = line.match /^## (.*)$/
+        @sections.junk.push section = title: title[1], source: ''
 
-      comment = line.match /^# (.*)$/
+      else if title = line.match /^#\! (.*)$/
+        @sections.auth.push section = title: title[1], source: ''
 
-      if comment?[1]
+      else if title = line.match /^#> (.*)$/
+        @sections.request.push section = title: title[1], source: ''
 
-        groups.push group
-        group =
-          file: @filename
-          title: comment[1]
-          source: ''
+      else if title = line.match /^#\? (.*)$/
+        @sections.assert.push section = title: title[1], source: ''
 
-      else group.source += ( line + "\n" )
-
-    groups.push group
-    return groups
+      else if line.replace /\s/, ''
+        section.source += ( if section.source then '\n' + line else line )
 
 module.exports = ScriptParser

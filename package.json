@@ -8,7 +8,18 @@
   "dependencies": {
     "walk": "~2.2.1",
     "coffee-script": "~1.4.0",
-    "mkdirp": "0.3.x"
+    "mkdirp": "0.3.x",
+    "underscore": "~1.4.3",
+    "deepmerge": "~0.2.5"
+  },
+  "devDependencies": {
+    "mocha": "1.7.x",
+    "assert": "0.4.x",
+    "should": "1.2.x"
+  },
+  "scripts": {
+    "test": "export NODE_PATH=`pwd` && node node_modules/mocha/bin/mocha --recursive --reporter spec --compilers coffee:coffee-script test",
+    "ciao": "export NODE_PATH=`pwd` && rm -rf doc && mkdir doc && coffee example.coffee"
   },
   "engines": {
     "node": "0.8.x",

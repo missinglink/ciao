@@ -9,6 +9,8 @@ ScriptParser = require './ScriptParser'
 Documentor = require './Documentor'
 Reporter = require './Reporter'
 
+deepmerge = require 'deepmerge'
+
 class Ciao
 
   constructor: (settings) ->
@@ -30,25 +32,33 @@ class Ciao
 
         if fs.statSync filename
 
-          script = new ScriptParser filename
-          groups = script.parseGroups()
+          parser = new ScriptParser fs.readFileSync filename
 
-          unless groups[1] then throw new Error 'Ciao: Could not find request section, did you add a title comment?'
+          if parser.sections.request.length < 1 
+            throw new Error 'FATAL: You must define a request section'
 
-          script = "config = " + JSON.stringify(settings.config) + "\n"
-          script += groups[1].source
+          if parser.sections.request.length > 1
+            console.error 'WARNING: You may only have one request section per script'
 
-          req = CoffeeScript.eval script
+          req = settings.defaults or {}
 
-          unless req?.path and req?.method then throw new Error 'Ciao: Invalid request section, you must specify at least path & method'
-          unless groups[2] then throw new Error 'Ciao: No test sections found'
+          for section in [ 'auth', 'request' ]
+            for config in parser.sections[section]
+              script = "config = " + JSON.stringify(settings.config) + "\n" + config.source
+              req = deepmerge req, CoffeeScript.eval script
+
+          unless req?.host then throw new Error 'FATAL: Invalid request section, you must specify a host'
+          unless req?.method then throw new Error 'FATAL: Invalid request section, you must specify a a method'
+          unless req?.path then throw new Error 'FATAL: Invalid request section, you must specify a path'
+
+          unless parser.sections.assert[0] then throw new Error 'FATAL: No test sections found'
 
           docFile = filename.replace settings.testDir, settings.docDir
           docFile = docFile.replace '.coffee', '.md'
 
-          documentation = new Documentor groups[1].title, docFile
+          documentation = new Documentor parser.sections.request[0].title, docFile
 
-          runner = new TestRunner groups[2...]
+          runner = new TestRunner parser.sections.assert
           runner.listener Reporter
           runner.listener documentation.documentTest
 

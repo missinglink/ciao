@@ -1,4 +1,5 @@
 Process = require './Process'
+coffee = 'node_modules/coffee-script/bin/coffee'
 
 class TestRunner
 
@@ -7,34 +8,39 @@ class TestRunner
     @groups = groups
     @listeners = []
 
+    # Set environmental variables
+    @env = process.env
+    @env['NODE_PATH'] = process.cwd() + '/node_modules'
+
   complete: (error, request, response, body) =>
 
     throw new Error error if error
 
+    res =
+      body: body
+      statusCode: response.statusCode
+      headers: response.headers
+
     for test in @groups
 
-      script = "should = require 'should'" + "\n"
-      script += "title = '" + test.title.split("'").join("\\'") + "'\n" #"mocha = require 'mocha'" + "\n"
-      script += "`response = { 'body': " + JSON.stringify(body) + ", 'statusCode': " + JSON.stringify(response.statusCode) + ", 'headers': " + JSON.stringify(response.headers) + " }`" + "\n"
-      script += "\n"
-      script += "try" + "\n"
-      script += TestRunner.indentSource( test.source, ' ', 2 ) + "\n"
-      script += "catch e" + "\n"
-      script += "  console.log e.message" + "\n"
-      script += "  process.exit 1" + "\n"
-      script += "process.exit 0" + "\n"
-      script += "\n"
+      script = []
+      script.push "should = require 'should'"
+      script.push "title = '" + test.title.split("'").join("\\'") + "'"
+      script.push "response = " + JSON.stringify res
+      script.push "try"
+      script.push TestRunner.indentSource( test.source, ' ', 2 )
+      script.push "catch e"
+      script.push "  console.log e.message"
+      script.push "  process.exit 1"
+      script.push "process.exit 0"
 
       # Spawn child process
-      env = process.env
-      env['NODE_PATH'] = process.cwd() + "/node_modules"
-
-      child = new Process 'coffee', [ '-s' ], { env: env }, { test: test }
+      child = new Process coffee, [ '-s' ], { env: @env }, { test: test }
 
       child.on 'exit', (code, stdout, stderr, data) =>
         @listeners.map (listener) => listener code, stdout, stderr, data
 
-      child.emit 'write', script
+      child.emit 'write', script.join '\n'
 
   listener: (callback) => @listeners.push callback
 
@@ -42,6 +48,5 @@ class TestRunner
 
     indent = Array(indentation).join(' ')
     return indent + ( source + "\n" ).split("\n").join("\n#{indent}")
-
 
 module.exports = TestRunner
