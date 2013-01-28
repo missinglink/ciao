@@ -36,7 +36,7 @@ Ciao currently supports 3 interpreter directives:
 
 Each directive is followed by a single space and a directive title
 
-eg. `#> Contact page is available` defines a request with the title 'Contact page is available'
+eg. `#> Contact page is available` defines a `request` block with the title `Contact page is available`.
 
 The title is used for reporting & documentation, so the better your titles, the easier life will be for you.
 
