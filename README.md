@@ -108,3 +108,31 @@ Each test case has access to two properties `title` & `response`.
 `response.headers` contains an array of headers that were returned.
 
 In all 3 cases, these properties are exactly the same as what you would get if you used `http.request`.
+
+## API Documentation
+
+Ciao generated documentation of each `request`, it's `response` and all `assertion` blocks that were tested against the `response`.
+
+The documentation is available in the directory specified in the ciao config (as discussed above).
+
+## How it works
+
+Under-the-hood ciao fires off all requests asyncronously using `http.request`. When a `response` comes back from the target server then all `assertion` blocks are fired asyncronously in a seperate child process. This isolates the main thread from malicious assertion code and ensures the fastest execution of tests.
+
+## Contributing
+
+### Running Unit Tests
+
+The unit test suite is run using `mocha`
+
+```bash
+npm test
+```
+
+### Running Ciao test scripts
+
+This will execute all tests in the `scripts` directory and generate documentation in the `doc` directory.
+
+```bash
+npm run ciao
+```
