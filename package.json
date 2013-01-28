@@ -10,7 +10,8 @@
     "coffee-script": "~1.4.0",
     "mkdirp": "0.3.x",
     "underscore": "~1.4.3",
-    "deepmerge": "~0.2.5"
+    "deepmerge": "~0.2.5",
+    "should": "~1.2.1"
   },
   "devDependencies": {
     "mocha": "1.7.x",
