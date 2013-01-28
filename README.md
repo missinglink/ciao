@@ -42,7 +42,9 @@ The title is used for reporting & documentation, so the better your titles, the 
 
 ## Installing ciao
 
-`npm install ciao --save`
+```bash
+npm install ciao --save
+```
 
 ## Setting up your project
 
@@ -71,7 +73,7 @@ You can also configure default options to pass to every request in the `defaults
 
 The `config` section is useful for storing session tokens or any sort of data you would like available to `before` or `request` blocks.
 
-## Tests
+## Assertions
 
 You can add assertions to your scripts by including `assertion` blocks.
 
