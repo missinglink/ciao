@@ -111,13 +111,17 @@ In all 3 cases, these properties are exactly the same as what you would get if y
 
 ## API Documentation
 
-Ciao generated documentation of each `request`, it's `response` and all `assertion` blocks that were tested against the `response`.
+Ciao generates documentation for each `request`, it's `response` and all `assertion` blocks.
 
-The documentation is available in the directory specified in the ciao config (as discussed above).
+The documentation is in `markdown` format and is available in the directory specified in the ciao config (as discussed above).
 
 ## How it works
 
-Under-the-hood ciao fires off all requests asyncronously using `http.request`. When a `response` comes back from the target server then all `assertion` blocks are fired asyncronously in a seperate child process. This isolates the main thread from malicious assertion code and ensures the fastest execution of tests.
+Under-the-hood Ciao fires off all requests asyncronously using `http.request`.
+
+When a `response` comes back from the target server then all `assertion` blocks are fired asyncronously in a seperate child process.
+
+This isolates the main thread from malicious assertion code and ensures the fastest execution of tests.
 
 ## Contributing
 
@@ -131,7 +135,7 @@ npm test
 
 ### Running Ciao test scripts
 
-This will execute all tests in the `scripts` directory and generate documentation in the `doc` directory.
+This will execute all tests in the `./scripts` directory and write documentation in the `./doc` directory.
 
 ```bash
 npm run ciao
