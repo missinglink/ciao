@@ -1,6 +1,6 @@
 # Register new user
 
-*Generated: Sun Jan 27 2013 21:52:22 GMT+0000 (GMT)*
+*Generated: Mon Jan 28 2013 00:36:29 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -27,7 +27,7 @@ Status: 404
 {
   "content-type": "text/html; charset=UTF-8",
   "x-content-type-options": "nosniff",
-  "date": "Sun, 27 Jan 2013 21:52:13 GMT",
+  "date": "Mon, 28 Jan 2013 00:36:28 GMT",
   "server": "sffe",
   "content-length": "934",
   "x-xss-protection": "1; mode=block"
@@ -55,13 +55,13 @@ Status: 404
 response.statusCode.should.equal 404
 ```
 
-### ✓ Response.body should contain '!!1'
-```javascript
-response.body.should.include '!!1'
-```
-
 ### ✓ Should return a content-type header
 ```javascript
 response.headers.should.have.property 'content-type', 'text/html; charset=UTF-8'
+```
+
+### ✓ Response.body should contain '!!1'
+```javascript
+response.body.should.include '!!1'
 ```
 
