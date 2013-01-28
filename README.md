@@ -8,7 +8,7 @@ Ciao scripts are written in coffee-script, however it's important to note that t
 
 ### Sample script:
 
-```
+```coffee-script
 #! Requried Headers
 headers: 'User-Agent': 'Ciao/Client 1.0'
 
