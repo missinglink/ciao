@@ -26,13 +26,19 @@ response.body.should.include 'Google'
 
 ## Interpreter directives
 
-Ciao currently supports 3 interpreter directives:
+Ciao uses a special syntax to declare the start and end of code blocks.
 
-`#!` defines a `before` block, this is merged in to every `request` block
+The parser will include all code following the directive within that block.
 
-`#>` defines a `request` block, this is the main http(s) query definition block
+Currently 4 interpreter directives are supported:
 
-`#?` defines an `assertion` block, this defines a test case which the `result` should conform to
+`#!` defines a `before` block, this is merged in to every `request` block.
+
+`#>` defines a `request` block, this is the main http(s) query definition block.
+
+`#?` defines an `assertion` block, this defines a test case which the `result` should conform to.
+
+`##` defines a `junk` block, all code in this block will be ignored by the parser.
 
 Each directive is followed by a single space and a directive title
 
