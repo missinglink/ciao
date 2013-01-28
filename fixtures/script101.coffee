@@ -1,8 +1,8 @@
 
-##! Requried Headers
+#! Requried Headers
 headers: 'User-Agent': 'Ciao/Client 1.0'
 
-##! Log in
+#! Log in
 headers: 'Cookie': config['tester@test.com']
 
 #> Register new user
