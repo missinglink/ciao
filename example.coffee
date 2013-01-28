@@ -1,5 +1,4 @@
 
-_ = require 'underscore'
 path = require 'path'
 ciao = require './index.js'
 
