@@ -26,6 +26,7 @@ class ScriptParser
         @sections.assert.push section = title: title[1], source: ''
 
       else if line.replace /\s/, ''
-        section.source += ( if section.source then '\n' + line else line )
+        section.source += '\n' if section.source
+        section.source += line
 
 module.exports = ScriptParser
