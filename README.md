@@ -48,9 +48,19 @@ The title is used for reporting & documentation, so the better your titles, the 
 
 ## Installing ciao
 
+Ciao is still in beta, if you are lucky enough to have git access, you're best to use:
+
+```bash
+git clone git@github.com:missinglink/ciao.git node_modules/ciao
+```
+
+For the latest stable release (cough), you can install via `npm`:
+
 ```bash
 npm install ciao --save
 ```
+
+Note: documentation (such as this README) should only refer to `bleeding edge` and not `stable`.
 
 ## Setting up your project
 
