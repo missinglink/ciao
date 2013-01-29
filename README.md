@@ -197,6 +197,10 @@ This will execute all tests in the `./scripts` directory and write documentation
 npm run ciao
 ```
 
+### Code review
+
+If you would like a code review or to open a feature discussion, please fork and pull request against upstream master.
+
 ## Project goals
 
 ### Short term
