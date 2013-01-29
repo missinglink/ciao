@@ -123,7 +123,7 @@ The documentation is in `markdown` format and is available in the directory spec
 
 Under-the-hood Ciao fires off all requests asyncronously using `http.request`.
 
-When a `response` comes back from the target server then all `assertion` blocks are fired asyncronously in a seperate child process.
+After a `response` comes back from the target server; all `assertion` blocks are fired asyncronously in a seperate child process.
 
 This isolates the main thread from malicious assertion code and ensures the fastest execution of tests.
 
