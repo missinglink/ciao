@@ -151,6 +151,9 @@ Ciao generates documentation for each `request`, the resulting `response` and al
 
 The documentation is in `markdown` format and is available in the directory specified in the ciao config (as discussed above).
 
+An example generated documentation file can be found here:
+https://github.com/missinglink/ciao/blob/master/example.md
+
 ## How it works
 
 Under-the-hood Ciao fires off all requests asyncronously using `http.request`.
