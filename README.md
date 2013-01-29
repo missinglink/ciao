@@ -26,9 +26,6 @@ response.body.should.include 'Google'
 When you execute a script, documentation is produced. eg:
 https://github.com/missinglink/ciao/blob/master/doc/static/README.example.md
 
-When you execute a script, documentation is produced. eg:
-https://github.com/missinglink/ciao/blob/master/doc/static/README.example.md
-
 ## Interpreter directives
 
 Ciao uses a special syntax to declare the start and end of code blocks.
