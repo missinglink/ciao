@@ -152,3 +152,10 @@ This will execute all tests in the `./scripts` directory and write documentation
 ```bash
 npm run ciao
 ```
+
+## Known bugs
+
+It's early stages yet; there are a bunch of issues reported here:
+https://github.com/missinglink/ciao/issues
+
+Please report everything as it comes up, now matter how small.
