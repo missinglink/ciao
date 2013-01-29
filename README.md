@@ -158,4 +158,4 @@ npm run ciao
 It's early stages yet; there are a bunch of issues reported here:
 https://github.com/missinglink/ciao/issues
 
-Please report everything as it comes up, now matter how small.
+Please report everything as it comes up, no matter how small.
