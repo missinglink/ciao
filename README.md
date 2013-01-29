@@ -115,7 +115,7 @@ In all 3 cases, these properties are exactly the same as what you would get if y
 
 ## API Documentation
 
-Ciao generates documentation for each `request`, it's `response` and all `assertion` blocks.
+Ciao generates documentation for each `request`, the resulting `response` and all `assertion` blocks.
 
 The documentation is in `markdown` format and is available in the directory specified in the ciao config (as discussed above).
 
