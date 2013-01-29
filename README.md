@@ -62,6 +62,8 @@ DO NOT DO THIS! (yet) or you will get old code.
 npm install ciao
 ```
 
+Note: documentation (such as this README) should only refer to `bleeding edge` and not `stable`.
+
 ## Quick start
 
 Clone the project, enter the project directory and run:
@@ -70,8 +72,6 @@ Clone the project, enter the project directory and run:
 npm install
 npm run ciao
 ```
-
-Note: documentation (such as this README) should only refer to `bleeding edge` and not `stable`.
 
 ## Setting up your project
 
