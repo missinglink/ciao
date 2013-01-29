@@ -23,7 +23,7 @@ response.statusCode.should.equal 200
 #? Response.body should contain company name
 response.body.should.include 'Google'
 ```
-When you execute a script, documentation is produced. eg:
+When you run a script, documentation is produced. eg:
 https://github.com/missinglink/ciao/blob/master/example.md
 
 ## Interpreter directives
