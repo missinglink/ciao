@@ -59,7 +59,7 @@ Ciao is still in beta, if you are lucky enough to have git access, you're best t
 git clone git@github.com:missinglink/ciao.git node_modules/ciao
 ```
 
-For the latest stable release (cough), you can install via `npm`:
+DO NOT DO THIS!: For the latest stable release (cough), you can install via `npm`:
 
 ```bash
 npm install ciao --save
