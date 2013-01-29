@@ -129,6 +129,13 @@ This isolates the main thread from malicious assertion code and ensures the fast
 
 `http.request` reference: http://nodejs.org/api/http.html#http_http_request_options_callback
 
+## Known bugs
+
+It's early stages yet; there are a bunch of issues reported here:
+https://github.com/missinglink/ciao/issues
+
+Please report everything as it comes up, no matter how small.
+
 ## Contributing
 
 ### I have push access, what can I push?
@@ -153,13 +160,6 @@ This will execute all tests in the `./scripts` directory and write documentation
 npm run ciao
 ```
 
-## Known bugs
-
-It's early stages yet; there are a bunch of issues reported here:
-https://github.com/missinglink/ciao/issues
-
-Please report everything as it comes up, no matter how small.
-
 ## Project goals
 
 ### Short term
@@ -170,7 +170,7 @@ Please report everything as it comes up, no matter how small.
 
 ### Mid term
 
-* Command line utility (binary)
+* Command line utility
 * Improved reporters
 * Improved documentors
 * Web interface
