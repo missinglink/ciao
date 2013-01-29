@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+
+coffee = require( 'coffee-script' );
+CiaoScript = require( '../lib/CiaoScript' );
+TestRunner = require( '../lib/TestRunner' );
+Reporter = require( '../lib/Reporter' );
+Request = require( '../lib/Request' );
+Settings = require( '../lib/Settings' );
+
+var program = require('commander');
+
+program
+  .version('0.0.1')
+  .usage('[options] <file ...>')
+  .option('-r, --recursive', 'include subdirectories')
+  .parse(process.argv);
+
+settings = new Settings();
+
+var script = new CiaoScript( program.args[0], settings );
+
+var runner = new TestRunner( script.parser.sections.assert );
+runner.listener( Reporter );
+
+var request = new Request();
+request.listener( runner.complete );
+
+request.transfer( script.request );

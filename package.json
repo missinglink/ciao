@@ -11,14 +11,18 @@
     "mkdirp": "0.3.x",
     "underscore": "~1.4.3",
     "deepmerge": "~0.2.5",
-    "should": "~1.2.1"
+    "should": "~1.2.1",
+    "commander": "*"
+  },
+  "bin": {
+    "ciao": "./bin/ciao"
   },
   "scripts": {
     "test": "export NODE_PATH=`pwd` && node node_modules/mocha/bin/mocha --recursive --reporter spec --compilers coffee:coffee-script test",
     "ciao": "export NODE_PATH=`pwd` && rm -rf doc && mkdir doc && coffee example.coffee"
   },
   "devDependencies": {    
-    "mocha": "*"  
+    "mocha": "*"
   },
   "engines": {
     "node": "0.8.x",

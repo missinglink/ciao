@@ -5,15 +5,15 @@ CoffeeScript = require 'coffee-script'
 
 Request = require './Request'
 TestRunner = require './TestRunner'
-ScriptParser = require './ScriptParser'
+
 Documentor = require './Documentor'
 Reporter = require './Reporter'
-
-deepmerge = require 'deepmerge'
+CiaoScript = require './CiaoScript'
+Settings = require './Settings'
 
 class Ciao
 
-  constructor: (settings) ->
+  constructor: (settings=new Settings) ->
 
     unless settings?.testDir? then throw new Error 'Ciao: Invalid test directory'
     unless settings?.docDir? then throw new Error 'Ciao: Invalid documentation directory'
@@ -30,44 +30,19 @@ class Ciao
 
       for filename in files
 
-        if fs.statSync filename
+        script = new CiaoScript filename, settings
 
-          parser = new ScriptParser fs.readFileSync filename
+        docFile = ( filename.replace settings.testDir, settings.docDir ).replace '.coffee', '.md'
+        documentation = new Documentor script.parser.sections.request[0].title, docFile
 
-          if parser.sections.request.length < 1 
-            throw new Error 'FATAL: You must define a request section'
+        runner = new TestRunner script.parser.sections.assert
+        runner.listener Reporter
+        runner.listener documentation.documentTest
 
-          if parser.sections.request.length > 1
-            console.error 'WARNING: You may only have one request section per script'
+        request = new Request()
+        request.listener runner.complete
+        request.listener documentation.documentTransaction
 
-          req = settings.defaults or {}
-
-          for section in [ 'auth', 'request' ]
-            for config in parser.sections[section]
-              script = "config = " + JSON.stringify(settings.config) + "\n" + config.source
-              req = deepmerge req, CoffeeScript.eval script
-
-          unless req?.host then throw new Error 'FATAL: Invalid request section, you must specify a host'
-          unless req?.method then throw new Error 'FATAL: Invalid request section, you must specify a a method'
-          unless req?.path then throw new Error 'FATAL: Invalid request section, you must specify a path'
-
-          unless parser.sections.assert[0] then throw new Error 'FATAL: No test sections found'
-
-          docFile = filename.replace settings.testDir, settings.docDir
-          docFile = docFile.replace '.coffee', '.md'
-
-          documentation = new Documentor parser.sections.request[0].title, docFile
-
-          runner = new TestRunner parser.sections.assert
-          runner.listener Reporter
-          runner.listener documentation.documentTest
-
-          request = new Request()
-          request.listener runner.complete
-          request.listener documentation.documentTransaction
-
-          request.transfer req
-
-        else throw new Error 'Failed to stat file'
+        request.transfer script.request
 
 module.exports = Ciao

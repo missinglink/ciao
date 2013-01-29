@@ -1,0 +1,9 @@
+{
+  "defaults": {
+    "host": "www.google.co.uk",
+    "port": 80,
+    "headers": {
+      "User-Agent": "Ciao/Client 1.0"
+    }
+  }
+}

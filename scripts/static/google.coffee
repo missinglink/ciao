@@ -7,7 +7,7 @@ headers: 'Cookie': config['tester@test.com']
 
 #> Register new user
 path: '/'
-method: 'GET'
+method: 'POST'
 headers:
   'Accept': 'application/json'
   'Content-Type': 'application/json'
@@ -19,8 +19,8 @@ body:
 path: '/foo'
 method: 'POST'
 
-#? Status: 404
-response.statusCode.should.equal 404
+#? Status: 405
+response.statusCode.should.equal 405
 
 #? Response.body should contain '!!1'
 response.body.should.include '!!1'
