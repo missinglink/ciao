@@ -106,6 +106,8 @@ The Ciao request format is the same as that of the `node.js` native http client 
 
 The `body` property is sent as the request body. If the body is an object then Ciao uses JSON.stringify to convert it to a string before sending it.
 
+All `request` blocks have access to an object named `config` which contains all the static configuration properties defined in the ciao config. (as discussed above)
+
 `http.request` reference: http://nodejs.org/api/http.html#http_http_request_options_callback
 
 ### Examples
@@ -129,7 +131,7 @@ You can add assertions to your scripts by including `assertion` blocks.
 
 Currently assertion blocks only provide the functionality of the `should` js framework, but I am looking at adding more assertion libraries in the future.
 
-Each test case has access to two properties `title` & `response`.
+Each test case has access to two objects named `title` & `response`.
 
 `title` is simply the title specified in the interpreter directive (as discussed above)
 
