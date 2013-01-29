@@ -24,6 +24,9 @@ response.statusCode.should.equal 200
 response.body.should.include 'Google'
 ```
 
+When you execute a script, documentation is produced. eg:
+https://github.com/missinglink/ciao/blob/master/doc/static/README.example.md
+
 ## Interpreter directives
 
 Ciao uses a special syntax to declare the start and end of code blocks.
@@ -109,6 +112,8 @@ Each test case has access to two properties `title` & `response`.
 
 In all 3 cases, these properties are exactly the same as what you would get if you used `http.request`.
 
+`should.js` reference: https://github.com/visionmedia/should.js/
+
 ## API Documentation
 
 Ciao generates documentation for each `request`, it's `response` and all `assertion` blocks.
@@ -122,6 +127,8 @@ Under-the-hood Ciao fires off all requests asyncronously using `http.request`.
 When a `response` comes back from the target server then all `assertion` blocks are fired asyncronously in a seperate child process.
 
 This isolates the main thread from malicious assertion code and ensures the fastest execution of tests.
+
+`http.request` reference: http://nodejs.org/api/http.html#http_http_request_options_callback
 
 ## Contributing
 
