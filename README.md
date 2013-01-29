@@ -100,6 +100,27 @@ You can also configure default options to pass to every request in the `defaults
 
 The `config` section is useful for storing session tokens or any sort of data you would like available to `before` or `request` blocks.
 
+## Requests
+
+Request are specified in the request format of the `node.js` native http client `http.request`.
+
+`http.request` reference: http://nodejs.org/api/http.html#http_http_request_options_callback
+
+### Examples
+
+Posting data to a JSON web service
+
+```coffee-script
+path: '/blog/article'
+method: 'POST'
+headers:
+  'Accept': 'application/json'
+  'Content-Type': 'application/json'
+body: 
+  title: 'My amazing blog post'
+  body: '@todo'
+```
+
 ## Assertions
 
 You can add assertions to your scripts by including `assertion` blocks.
