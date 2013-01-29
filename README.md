@@ -73,6 +73,15 @@ npm install
 npm run ciao
 ```
 
+## Running the command line interface
+
+For now you will need to manually add `bin/` to your path before executing `ciao`
+
+```bash
+PATH=bin/:$PATH
+ciao scripts/static/README.example.coffee
+```
+
 ## Setting up your project
 
 There are many ways to configure ciao, but the bare basics are:
