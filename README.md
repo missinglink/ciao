@@ -134,6 +134,12 @@ This isolates the main thread from malicious assertion code and ensures the fast
 
 ## Contributing
 
+### I have push access, what can I push?
+
+Since we're in beta, you can push anything as long as you successfully run the commands below before pushing.
+
+Pretty please; provide unit tests and script fixtures in the `test` and `fixtures` directories.
+
 ### Running Unit Tests
 
 The unit test suite is run using `mocha`
