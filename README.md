@@ -159,3 +159,23 @@ It's early stages yet; there are a bunch of issues reported here:
 https://github.com/missinglink/ciao/issues
 
 Please report everything as it comes up, no matter how small.
+
+## Project goals
+
+### Short term
+
+* Stability
+* Cool Functionality
+* Ease of use
+
+### Mid term
+
+* Command line utility (binary)
+* Improved reporters
+* Improved documentors
+* Web interface
+
+### Long term
+
+* Scheduled builds
+* Hosted CI solution
