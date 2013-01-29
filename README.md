@@ -96,7 +96,7 @@ runner = new ciao({
 
 This will set up ciao to read scripts from `./scripts` and write documentation to `./doc`
 
-You can also configure default options to pass to every request in the `defaults` section and provide your tests with a global `config` section.
+The `defaults` section is merged in to every request that is made, it's useful for specifying global request properties such as `host` and `port`.
 
 The `config` section is useful for storing session tokens or any sort of data you would like available to `before` or `request` blocks.
 
