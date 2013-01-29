@@ -48,7 +48,16 @@ eg. `#> Contact page is available` defines a `request` block with the title `Con
 
 The title is used for reporting & documentation, so the better your titles, the easier life will be for you.
 
-## Installing ciao
+## Quick start
+
+Clone the project, enter the project directory and run:
+
+```bash
+npm install
+npm run ciao
+```
+
+## Installing Ciao
 
 Ciao is still in beta, if you are lucky enough to have git access, you're best to use:
 
