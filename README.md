@@ -24,7 +24,7 @@ response.statusCode.should.equal 200
 response.body.should.include 'Google'
 ```
 When you execute a script, documentation is produced. eg:
-https://github.com/missinglink/ciao/blob/master/doc/static/README.example.md
+https://github.com/missinglink/ciao/blob/master/example.md
 
 ## Interpreter directives
 
