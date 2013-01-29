@@ -102,7 +102,7 @@ The `config` section is useful for storing session tokens or any sort of data yo
 
 ## Requests
 
-Request are specified in the request format of the `node.js` native http client `http.request`.
+The Ciao request format is the same as that of the `node.js` native http client `http.request`.
 
 The `body` property is sent as the request body. If the body is an object then Ciao uses JSON.stringify to convert it to a string before sending it.
 
