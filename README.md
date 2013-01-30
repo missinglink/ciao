@@ -50,17 +50,18 @@ The title is used for reporting & documentation, so the better your titles, the 
 
 ## Installing Ciao
 
-Ciao is still in beta, if you are lucky enough to have git access, you're best to use:
+Ciao is still in beta, if you are lucky enough to have git access, you're best to `bleeding edge`:
 
 ```bash
 git clone git@github.com:missinglink/ciao.git ciao
 cd ciao
+PATH=bin/:$PATH
 ```
 
-DO NOT DO THIS! (yet) or you will get old code.
+If you want to install the most stable `ciao` binary globally on your system via `npm` then use
 
 ```bash
-npm install ciao
+npm install -g ciao
 ```
 
 Note: documentation (such as this README) should only refer to `bleeding edge` and not `stable`.
@@ -76,19 +77,21 @@ npm run ciao
 
 ## Running the command line interface
 
-For now you will need to manually add `bin/` to your path before executing `ciao`
+Note: Unless you installed ciao globally, you will need to manually add `bin/` to your path before executing `ciao` on the command line
 
 ```bash
 PATH=bin/:$PATH
+```
+
+```bash
 ciao scripts/static/README.example.coffee
 ```
 
 ![Ciao](https://github.com/missinglink/ciao/raw/master/img/ciao.png "Ciao")
 
-You can also use ciao on directories
+You can also use ciao on directories to recursively run all scripts.
 
 ```bash
-PATH=bin/:$PATH
 ciao scripts
 ```
 
