@@ -10,6 +10,7 @@ class Settings
     @defaults =
       protocol: 'http:'
       host: "www.example.com"
+      method: 'GET'
       port: 80
       path: '/'
 
