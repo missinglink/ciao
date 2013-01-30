@@ -11,7 +11,7 @@ method: 'GET'
 response.statusCode.should.equal 301
 
 #? Response should redirect to http://uk.yahoo.com/foo
-response.headers.should.have.property 'location', 'http://uk.yahoo.com/'
+response.should.have.header 'location', 'http://uk.yahoo.com/'
 
 #? Should return a server name
-response.headers.should.have.property 'server', 'YTS/1.20.10'
+response.should.have.header 'server', 'YTS/1.20.10'

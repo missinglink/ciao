@@ -23,4 +23,4 @@ response.statusCode.should.equal 405
 response.body.should.include '!!1'
 
 #? Should return a content-type header
-response.headers.should.have.property 'content-type', 'text/html; charset=UTF-8'
+response.should.have.header 'content-type', 'text/html; charset=UTF-8'

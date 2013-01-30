@@ -12,19 +12,28 @@ Ciao scripts are written in coffee-script, however it's important to note that t
 #! Requried Headers
 headers: 'User-Agent': 'Ciao/Client 1.0'
 
-#> Check the home page is up!
-host: 'www.google.co.uk'
-path: '/'
-method: 'GET'
+#> Github API call for node.js README
+port: 443
+protocol: 'https:'
+host: 'api.github.com'
+path: '/repos/joyent/node/readme'
 
-#? Status: 200 OK
+#? Readme is available on Github
 response.statusCode.should.equal 200
+response.should.have.header 'server', 'GitHub.com'
 
-#? Response.body should contain company name
-response.body.should.include 'Google'
+#? Should be data
+json = JSON.parse( response.body )
+json.sha.should.match /^[a-z0-9]{40}/
+json.should.include
+  type: 'file'
+  path: 'README.md'
+  url: 'https://api.github.com/repos/joyent/node/contents/README.md'
+  html_url: 'https://github.com/joyent/node/blob/master/README.md'
+  git_url: 'https://api.github.com/repos/joyent/node/git/blobs/' + json.sha
 ```
 When you run a script, documentation is produced. eg:
-https://github.com/missinglink/ciao/blob/master/example.md
+https://github.com/missinglink/ciao/blob/master/doc/scripts/static/github-api.md
 
 ## Interpreter directives
 
