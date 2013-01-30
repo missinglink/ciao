@@ -17,6 +17,36 @@ describe 'Request', ->
       request.transfer.should.be.instanceof Function
       request.listener.should.be.instanceof Function
 
+  describe 'transfer', ->
+
+    events = {}
+    client = {}
+    client.res =
+      setEncoding: ( enc ) -> enc.should.equal 'utf8'
+      on: ( key, cb ) -> events[key] = cb
+
+    client.write = ( body ) -> body.should.eql '{\"bingo\":\"bango\"}\n'
+    client.end = () -> null
+    client.request = ( req, cb ) ->
+      cb client.res
+      return client
+
+    listener = ( error, req, res, data ) ->
+      should.not.exist error
+      req.should.eql { host: 'www.bingo.com', body: { bingo: 'bango' }, agent: false }
+      res.should.equal client.res
+      data.should.equal 'bingobango'
+
+    it 'functional test', ->
+
+      request = new Request()
+      request.listener listener
+      request.transfer { host: 'www.bingo.com', body: bingo: 'bango' }, client
+
+      events['data']( 'bingo' )
+      events['data']( 'bango' )
+      events['end']()
+
   describe 'request', ->
 
     it 'should have a better test for this', ->

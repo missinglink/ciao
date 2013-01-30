@@ -9,17 +9,16 @@ class Request
     @data = ''
     @listeners = []
 
-  transfer: (req) =>
+  transfer: (req,client=http) =>
 
-    protocol = http
-    if req.port is 443 then protocol = https
+    if req.port is 443 then client = https
     req.agent = false # Disable agent to avoid socket errors
 
-    @request protocol, req
+    @request client, req
 
-  request: (protocol, req) ->
+  request: (client, req) ->
 
-    request = protocol.request req, (res) =>
+    request = client.request req, (res) =>
 
       res.setEncoding 'utf8'
       res.on 'data', (chunk) => @data += chunk

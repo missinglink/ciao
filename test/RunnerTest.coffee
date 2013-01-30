@@ -47,13 +47,12 @@ describe 'Runner', ->
 
       counter = 0
       listener = (code, stdout, stderr, data) ->
-        data.test.should.eql groupData[counter]
+        stdout.should.eql ''
+        [ 0, 1 ].should.include code
         data.request.should.equal request
-        code.should.eql counter
-        if counter is 0 then stdout.should.eql ''
-        if counter is 1
-          stderr.should.eql "expected 'Bingo Bango Bongo!' to equal 'Bango-Bongo-Bingo!'\n"
-          done()
+        [ 'bingo', 'bango' ].should.include data.test.title
+        [ "expected 'Bingo Bango Bongo!' to equal 'Bango-Bongo-Bingo!'\n", '' ].should.include stderr
+        done() if counter is 1 
         counter++
 
       runner = new Runner groupData
@@ -68,3 +67,4 @@ describe 'Runner', ->
     it 'should indent correctly', ->
 
       actual.should.eql "--hello\n--world\n--  how\n--  are\n--  you"
+0
