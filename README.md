@@ -62,12 +62,6 @@ Note: documentation (such as this README) may cover features not yet available v
 
 ## Running the command line interface
 
-Note: Unless you installed ciao globally, you will need to manually add `bin/` to your path before executing `ciao` on the command line
-
-```bash
-PATH=bin/:$PATH
-```
-
 ```
 peter@edgy:/var/www/ciao$ ciao --help
 
