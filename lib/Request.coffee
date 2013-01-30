@@ -11,7 +11,7 @@ class Request
 
   transfer: (req,client=http) =>
 
-    if req.port is 443 then client = https
+    if req.port is 443 or req.protocol is 'https:' then client = https
     req.agent = false # Disable agent to avoid socket errors
 
     @request client, req
