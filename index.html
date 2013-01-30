@@ -1,0 +1,371 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Ciao by missinglink</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Ciao</h1>
+        <p class="header">Ciao is a simple command line utility for testing http(s) requests and generating API documentation</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/missinglink/ciao/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/missinglink/ciao/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/missinglink/ciao">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/missinglink">missinglink</a></p>
+
+
+      </header>
+      <section>
+        <h1>Ciao</h1>
+
+<p>Ciao is a simple command line utility for testing http(s) requests and generating API documentation.</p>
+
+<h2>Scripts:</h2>
+
+<p>Ciao scripts are written in coffee-script, however it's important to note that they are interpreted, not executed.</p>
+
+<h3>Basic script:</h3>
+
+<div class="highlight"><pre><span class="c1">#&gt; Check Google is still running</span>
+<span class="nv">host: </span><span class="s">'www.google.co.uk'</span>
+
+<span class="c1">#? Should have company name</span>
+<span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">include</span> <span class="s">'Google'</span>
+</pre></div>
+
+<h3>Advanced script:</h3>
+
+<div class="highlight"><pre><span class="c1">#! Requried Headers</span>
+<span class="nv">headers: </span><span class="s">'User-Agent'</span><span class="o">:</span> <span class="s">'Ciao/Client 1.0'</span>
+
+<span class="c1">#&gt; Github API call for node.js README</span>
+<span class="nv">port: </span><span class="mi">443</span>
+<span class="nv">protocol: </span><span class="s">'https:'</span>
+<span class="nv">host: </span><span class="s">'api.github.com'</span>
+<span class="nv">path: </span><span class="s">'/repos/joyent/node/readme'</span>
+<span class="nv">headers: </span><span class="s">'Accept'</span><span class="o">:</span> <span class="s">'application/json'</span>
+
+<span class="c1">#? Readme is available on Github</span>
+<span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">equal</span> <span class="mi">200</span>
+<span class="nx">response</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">header</span> <span class="s">'server'</span><span class="p">,</span> <span class="s">'GitHub.com'</span>
+
+<span class="c1">#? Should be what we are looking for...</span>
+<span class="nx">json</span><span class="p">.</span><span class="nx">sha</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">match</span> <span class="sr">/^[a-z0-9]{40}/</span>
+<span class="nx">json</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">include</span>
+  <span class="nv">type: </span><span class="s">'file'</span>
+  <span class="nv">path: </span><span class="s">'README.md'</span>
+  <span class="nv">url: </span><span class="s">'https://api.github.com/repos/joyent/node/contents/README.md'</span>
+  <span class="nv">html_url: </span><span class="s">'https://github.com/joyent/node/blob/master/README.md'</span>
+  <span class="nv">git_url: </span><span class="s">'https://api.github.com/repos/joyent/node/git/blobs/'</span> <span class="o">+</span> <span class="nx">json</span><span class="p">.</span><span class="nx">sha</span>
+</pre></div>
+
+<p>When you run a script, documentation is produced. eg:
+<a href="https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md">https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md</a></p>
+
+<h2>Interpreter directives</h2>
+
+<p>Ciao uses a special syntax to declare the start and end of code blocks.</p>
+
+<p>The parser will include all code following the directive within that block.</p>
+
+<p>Currently 4 interpreter directives are supported:</p>
+
+<ul>
+<li>
+<code>#! before</code> block, this is merged in to every <code>request</code> block.</li>
+<li>
+<code>#&gt; request</code> block, this is the main http(s) query definition block.</li>
+<li>
+<code>#? assertion</code> block, this defines a test case which the <code>result</code> should conform to.</li>
+<li>
+<code>## junk</code> block, all code in this block will be ignored by the parser.</li>
+</ul><p>Each directive is followed by a single space and a directive title</p>
+
+<p>eg. <code>#&gt; Contact page is available</code> defines a <code>#&gt; request</code> block with the title <code>Contact page is available</code>.</p>
+
+<p>The title is used for reporting &amp; documentation, so the better your titles, the easier life will be for you.</p>
+
+<h2>Installing Ciao</h2>
+
+<p>To install the most stable <code>ciao</code> binary globally on your system via <code>npm</code> you can simply:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span><span class="o">[</span>sudo<span class="o">]</span> npm install -g ciao
+<span class="nv">$ </span>ciao --help
+</pre></div>
+
+<ul>
+<li>Note: documentation (such as this README) may cover features not yet available via <code>npm</code>.</li>
+<li>Note: you will need <code>node</code> and <code>npm</code> installed first: <a href="http://nodejs.org/download/">http://nodejs.org/download/</a>
+</li>
+</ul><h2>Running Scripts</h2>
+
+<pre><code>peter@edgy:/var/www/ciao$ ciao --help
+
+  Usage: ciao [options] &lt;file ...&gt;
+
+  Options:
+
+    -h, --help                 output usage information
+    -V, --version              output the version number
+    -c, --conf [dir]           an additional config file to load after ciao.json
+    -s, --silent               disable reporters
+    -d, --documentation [dir]  generate documentation in output dir
+</code></pre>
+
+<h3>Running a single script</h3>
+
+<div class="highlight"><pre><span class="nv">$ </span>ciao scripts/examples/basic.coffee 
+
+ GET http://www.google.co.uk/ scripts/examples/basic.coffee 
+ ✓ Status: 200 OK
+
+ GET http://www.google.co.uk/ scripts/examples/basic.coffee 
+ ✓ Response.body should contain company name
+</pre></div>
+
+<h3>Running all scripts in a directory</h3>
+
+<p>You can also use ciao on directories to recursively run all scripts.</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>ciao scripts/
+</pre></div>
+
+<h2>API Documentation</h2>
+
+<p>Ciao generates documentation for each <code>#&gt; request</code>, the resulting <code>response</code> and all <code>#? assertion</code> blocks.</p>
+
+<p>The documentation is in <code>markdown</code> format and is available in the directory specified using the <code>-d</code> option when executing <code>ciao</code></p>
+
+<p>eg. To generate documentation in <code>./doc</code> for all scripts in <code>./scripts</code>:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>ciao -d doc scripts
+</pre></div>
+
+<p>An example generated documentation file can be found here:
+<a href="https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md">https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md</a></p>
+
+<h2>Requests</h2>
+
+<p>The ciao request format is the same as that of the <code>node.js</code> native http client <code>http.request</code>.</p>
+
+<p>All <code>#&gt; request</code> blocks have access to an object named <code>config</code> which contains all the static configuration properties defined in the ciao config. (as discussed below)</p>
+
+<h3>Request properties</h3>
+
+<ul>
+<li>
+<code>host</code> A domain name or IP address of the server to issue the request to. Defaults to '<a href="http://www.example.com">www.example.com</a>'.</li>
+<li>
+<code>hostname</code> To support url.parse() hostname is preferred over host</li>
+<li>
+<code>port</code> Port of remote server. Defaults to 80.</li>
+<li>
+<code>method</code> A string specifying the HTTP request method. Defaults to 'GET'.</li>
+<li>
+<code>path</code> Request path. Defaults to '/'. Should include query string if any. E.G. '/index.html?page=12'</li>
+<li>
+<code>headers</code> An object containing request headers.</li>
+<li>
+<code>auth</code> Basic authentication i.e. 'user:password' to compute an Authorization header.</li>
+<li>
+<code>body</code> If body is an object then <code>JSON.stringify</code> will be run on it before sending.</li>
+</ul><p>Full <code>http.request</code> reference: <a href="http://nodejs.org/api/http.html#http_http_request_options_callback">http://nodejs.org/api/http.html#http_http_request_options_callback</a></p>
+
+<h3>Examples</h3>
+
+<div class="highlight"><pre><span class="c1">#&gt; Post data to a JSON web service</span>
+<span class="nv">path: </span><span class="s">'/blog/article'</span>
+<span class="nv">method: </span><span class="s">'POST'</span>
+<span class="nv">headers:</span>
+  <span class="s">'Accept'</span><span class="o">:</span> <span class="s">'application/json'</span>
+  <span class="s">'Content-Type'</span><span class="o">:</span> <span class="s">'application/json'</span>
+<span class="nv">body: </span>
+  <span class="nv">title: </span><span class="s">'My amazing blog post'</span>
+  <span class="nv">body: </span><span class="s">'@todo'</span>
+</pre></div>
+
+<div class="highlight"><pre><span class="c1">#&gt; Get package details from the npm registry</span>
+<span class="nv">host: </span><span class="s">'registry.npmjs.org'</span>
+<span class="nv">path: </span><span class="s">'/ciao/latest'</span>
+<span class="nv">headers: </span><span class="s">'Accept'</span><span class="o">:</span> <span class="s">'application/json'</span>
+
+<span class="c1">#? Should have preferGlobal set to true</span>
+<span class="nx">json</span><span class="p">.</span><span class="nx">preferGlobal</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span>
+</pre></div>
+
+<h2>Assertions</h2>
+
+<p>You can add assertions to your scripts by including <code>#? assertion</code> blocks.</p>
+
+<p>Currently <code>#? assertion</code> blocks only provide the functionality of the <code>should</code> js framework, but I am looking at adding more assertion libraries in the future.</p>
+
+<p>Each test case has access to three objects named <code>title</code>, <code>response</code> &amp; <code>json</code>.</p>
+
+<ul>
+<li>
+<code>title</code> is simply the title specified in the interpreter directive (as discussed above)</li>
+<li>
+<code>response</code> contains 3 properties returned by <code>http.request</code>
+
+<ul>
+<li>
+<code>body</code> contains the body of the http(s) response.</li>
+<li>
+<code>statusCode</code> contains the status code of the http(s) response.</li>
+<li>
+<code>headers</code> contains an array of headers that were returned.</li>
+</ul>
+</li>
+<li>
+<code>json</code> the result of parsing the response.body with <code>JSON.parse</code> (empty for invalid json).</li>
+</ul><h3>Examples</h3>
+
+<div class="highlight"><pre><span class="c1">#? Test the response code</span>
+<span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">equal</span> <span class="mi">200</span>
+
+<span class="c1">#? Test a header is set</span>
+<span class="nx">response</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">header</span> <span class="s">'server'</span>
+
+<span class="c1">#? Test a header value</span>
+<span class="nx">response</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">header</span> <span class="s">'server'</span><span class="p">,</span> <span class="s">'apache'</span>
+
+<span class="c1">#? Test body contains string</span>
+<span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">include</span> <span class="s">'Bingo Bango Bongo!'</span>
+
+<span class="c1">#? Test body contains regex</span>
+<span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">match</span> <span class="sr">/^[a-z0-9]{40}/</span>
+
+<span class="c1">#? Test json object contains properties</span>
+<span class="nx">json</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">include</span> <span class="p">{</span>
+  <span class="nv">id: </span><span class="s">"10000000000000000000"</span><span class="p">,</span>
+  <span class="nv">name: </span><span class="s">"Bingo Bango Bongo!"</span>
+<span class="p">}</span>
+
+<span class="c1">#? Check for a redirect</span>
+<span class="nx">response</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">header</span> <span class="s">'location'</span><span class="p">,</span> <span class="s">'http://www.example.com/'</span>
+</pre></div>
+
+<p><code>should.js</code> reference: <a href="https://github.com/visionmedia/should.js/">https://github.com/visionmedia/should.js/</a></p>
+
+<h2>Configuration</h2>
+
+<p>Ciao looks for a global configuration file called <code>ciao.json</code> in your current working directory.</p>
+
+<p>Example <code>ciao.json</code></p>
+
+<div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">"defaults"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"host"</span><span class="o">:</span> <span class="s2">"www.google.co.uk"</span><span class="p">,</span>
+    <span class="s2">"port"</span><span class="o">:</span> <span class="mi">80</span><span class="p">,</span>
+    <span class="s2">"headers"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">"User-Agent"</span><span class="o">:</span> <span class="s2">"Ciao/Client 1.0"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">"config"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"bingo"</span><span class="o">:</span> <span class="s2">"bango"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>The <code>defaults</code> section is merged in to every request that is made, it's useful for specifying global request properties such as <code>host</code> and <code>port</code>.</p>
+
+<p>The <code>config</code> section is useful for storing session tokens or any sort of data you would like available to <code>#! before</code> or <code>#&gt; request</code> blocks.</p>
+
+<h2>How it works</h2>
+
+<p>Under-the-hood Ciao fires off all requests asyncronously using <code>http.request</code>.</p>
+
+<p>After a <code>response</code> comes back from the target server; all <code>#? assertion</code> blocks are fired asyncronously in a seperate child process.</p>
+
+<p>This isolates the main thread from malicious assertion code and ensures the fastest execution of tests.</p>
+
+<p><code>http.request</code> reference: <a href="http://nodejs.org/api/http.html#http_http_request_options_callback">http://nodejs.org/api/http.html#http_http_request_options_callback</a></p>
+
+<h2>Known bugs</h2>
+
+<p>It's early stages yet; there are a bunch of issues reported here:
+<a href="https://github.com/missinglink/ciao/issues">https://github.com/missinglink/ciao/issues</a></p>
+
+<p>Please report everything as it comes up, no matter how small.</p>
+
+<h2>Contributing</h2>
+
+<p>Ciao is still in beta, if you are lucky enough to have git access, you're best to use <code>bleeding edge</code>:</p>
+
+<h3>Quick start</h3>
+
+<div class="highlight"><pre><span class="nv">$ </span>git clone git@github.com:missinglink/ciao.git ciao
+<span class="nv">$ </span><span class="nb">cd </span>ciao
+<span class="nv">$ </span>npm install
+<span class="nv">$ </span>npm <span class="nb">test</span>
+<span class="nv">$ </span>./bin/ciao scripts/examples
+</pre></div>
+
+<h3>I have push access, what can I push?</h3>
+
+<p>Since we're in beta, you can push anything as long as you successfully run the commands below before pushing.</p>
+
+<p>Pretty please; provide unit tests and script fixtures in the <code>test</code> and <code>fixtures</code> directories.</p>
+
+<h3>Running Unit Tests</h3>
+
+<p>The unit test suite is run using <code>mocha</code></p>
+
+<div class="highlight"><pre><span class="nv">$ </span>npm <span class="nb">test</span>
+</pre></div>
+
+<h3>Running Ciao test scripts</h3>
+
+<p>This will execute all tests in the <code>./scripts</code> directory and write documentation in the <code>./doc</code> directory.</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>npm run ciao
+</pre></div>
+
+<h3>Code review</h3>
+
+<p>If you would like a code review or to open a feature discussion, please fork and pull request against upstream master.</p>
+
+<h2>Project goals</h2>
+
+<h3>Short term</h3>
+
+<ul>
+<li>Stability</li>
+<li>Cool Functionality</li>
+<li>Ease of use</li>
+</ul><h3>Mid term</h3>
+
+<ul>
+<li>Command line utility</li>
+<li>Improved reporters</li>
+<li>Improved documentors</li>
+<li>Web interface</li>
+</ul><h3>Long term</h3>
+
+<ul>
+<li>Scheduled builds</li>
+<li>Hosted CI solution</li>
+</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
