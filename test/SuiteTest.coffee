@@ -4,25 +4,33 @@ fs = require 'fs'
 
 describe 'Suite', ->
 
-  it 'should pass a functional test', (done) ->
+  describe 'functional tests', ->
 
-    suite = new Suite (path,sweet) ->
-      sweet.should.equal suite
-      path.should.eql 'ciao.json'
-      suite.files.should.eql [ 'ciao.json' ]
-      done()
-    suite.walk 'ciao.json'
+    it 'should load ciao.json', (done) ->
 
-  describe 'should recurse directories', ->
+      suite = new Suite (path,sweet) ->
+        sweet.should.equal suite
+        path.should.eql 'ciao.json'
+        suite.files.should.eql [ 'ciao.json' ]
+        done()
+      suite.walk 'ciao.json'
+
+    it 'should scan the img directory', (done) ->
+
+      counter = 0
+      suite = new Suite (path,sweet) ->
+        [ 'img/cans.jpg', 'img/ciao.png' ].should.include path
+        counter++
+        done() if counter > 1
+      suite.walk 'img'
+
+  describe 'should recurse subdirectories', ->
 
     it 'walks', (done) ->
 
       counter = 0
-      callback = (path,sweet) ->
-        sweet.should.equal suite
+      suite = new Suite (path,sweet) ->
         should.exist path
         counter++
         done() if counter > 5
-
-      suite = new Suite callback
       suite.walk 'scripts'
