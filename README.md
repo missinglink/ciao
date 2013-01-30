@@ -71,7 +71,8 @@ peter@edgy:/var/www/ciao$ ciao --help
 
     -h, --help                 output usage information
     -V, --version              output the version number
-    -s, --silent               disable reporter
+    -c, --conf [dir]           an additional config file to load after ciao.json
+    -s, --silent               disable reporters
     -d, --documentation [dir]  generate documentation in output dir
 ```
 
