@@ -6,7 +6,17 @@ Ciao is a simple command line utility for testing HTTP(s) requests and generatin
 
 Ciao scripts are written in coffee-script, however it's important to note that they are interpreted, not executed.
 
-### Sample script:
+### Basic script
+
+```coffee-script
+#> Check Google is still running
+host: 'www.google.co.uk'
+
+#? Should have company.name
+response.body.should.include 'Google'
+```
+
+### Advanced script:
 
 ```coffee-script
 #! Requried Headers
