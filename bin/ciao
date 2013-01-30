@@ -14,19 +14,27 @@ var program = require('commander');
 program
   .version('0.0.17')
   .usage('[options] <file ...>')
+  .option('-c, --conf [dir]', 'an additional config file to load after ciao.json')
   .option('-s, --silent', 'disable reporters')
   .option('-d, --documentation [dir]', 'generate documentation in output dir')
   .parse(process.argv);
 
+basesettings = new Settings();
+if( program.conf ){ basesettings.loadFromFile( program.conf ); }
+
 var suite = new Suite( function( filename, suite )
 {
-  CiaoScript.load( filename, new Settings(), function( settings, parser )
+  settings = new Settings();
+  settings.merge( basesettings );
+  
+  CiaoScript.load( filename, settings, function( settings, parser )
   {
     var runner = new Runner( parser.sections.assert );
     
     // Set Reporter
     if( !program.silent ){
       runner.listener( Reporter.standard );
+      // runner.listener( Reporter.request );
       // runner.listener( Reporter.debug );
     }
 
