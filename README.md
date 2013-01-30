@@ -95,12 +95,12 @@ peter@edgy:/var/www/ciao$ ciao --help
 ### Running a single script
 
 ```bash
-$ ciao scripts/examples/README.example.coffee 
+$ ciao scripts/examples/basic.coffee 
 
- GET http://www.google.co.uk/ scripts/examples/README.example.coffee 
+ GET http://www.google.co.uk/ scripts/examples/basic.coffee 
  ✓ Status: 200 OK
 
- GET http://www.google.co.uk/ scripts/examples/README.example.coffee 
+ GET http://www.google.co.uk/ scripts/examples/basic.coffee 
  ✓ Response.body should contain company name
 ```
 
