@@ -60,7 +60,7 @@ Currently 4 interpreter directives are supported:
 
 Each directive is followed by a single space and a directive title
 
-eg. `#> Contact page is available` defines a `request` block with the title `Contact page is available`.
+eg. `#> Contact page is available` defines a `#> request` block with the title `Contact page is available`.
 
 The title is used for reporting & documentation, so the better your titles, the easier life will be for you.
 
@@ -115,7 +115,7 @@ $ ciao scripts/
 
 ## API Documentation
 
-Ciao generates documentation for each `request`, the resulting `response` and all `assertion` blocks.
+Ciao generates documentation for each `?> request`, the resulting `response` and all `#? assertion` blocks.
 
 The documentation is in `markdown` format and is available in the directory specified using the `-d` option when executing `ciao`
 
@@ -131,7 +131,7 @@ https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.
 
 The ciao request format is the same as that of the `node.js` native http client `http.request`.
 
-All `#>``request` blocks have access to an object named `config` which contains all the static configuration properties defined in the ciao config. (as discussed below)
+All `#> request` blocks have access to an object named `config` which contains all the static configuration properties defined in the ciao config. (as discussed below)
 
 ### Request properties
 
@@ -172,9 +172,9 @@ json.preferGlobal.should.be.true
 
 ## Assertions
 
-You can add assertions to your scripts by including `#?``assertion` blocks.
+You can add assertions to your scripts by including `#? assertion` blocks.
 
-Currently assertion blocks only provide the functionality of the `should` js framework, but I am looking at adding more assertion libraries in the future.
+Currently `#? assertion` blocks only provide the functionality of the `should` js framework, but I am looking at adding more assertion libraries in the future.
 
 Each test case has access to three objects named `title`, `response` & `json`.
 
@@ -238,13 +238,13 @@ Example `ciao.json`
 
 The `defaults` section is merged in to every request that is made, it's useful for specifying global request properties such as `host` and `port`.
 
-The `config` section is useful for storing session tokens or any sort of data you would like available to `before` or `request` blocks.
+The `config` section is useful for storing session tokens or any sort of data you would like available to `#! before` or `#> request` blocks.
 
 ## How it works
 
 Under-the-hood Ciao fires off all requests asyncronously using `http.request`.
 
-After a `response` comes back from the target server; all `assertion` blocks are fired asyncronously in a seperate child process.
+After a `response` comes back from the target server; all `#? assertion` blocks are fired asyncronously in a seperate child process.
 
 This isolates the main thread from malicious assertion code and ensures the fastest execution of tests.
 
