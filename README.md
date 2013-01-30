@@ -74,6 +74,7 @@ $ ciao --help
 ```
 
 Note: documentation (such as this README) may cover features not yet available via `npm`.
+Note: you will need `node` and `npm` installed first: http://nodejs.org/download/
 
 
 ## Running Scripts
@@ -225,7 +226,7 @@ The documentation is in `markdown` format and is available in the directory spec
 
 eg. To generate documentation in `./doc` for all scripts in `./scripts`:
 ```bash
-$$ ciao -d doc scripts
+$ ciao -d doc scripts
 ```
 
 An example generated documentation file can be found here:
