@@ -1,4 +1,4 @@
-# Ciao - Functional testing made easy
+# Ciao - Test and document http(s) endpoints using a simple scripting language
 
 Ciao is a simple command line utility for testing HTTP(s) requests and generating API documentation.
 
