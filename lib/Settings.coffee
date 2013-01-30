@@ -7,8 +7,6 @@ class Settings
   constructor: (settings={}, @filename='ciao.json') ->
 
     @config = {}
-    @testDir = './scripts'
-    @docDir = './doc'
     @defaults =
       host: "localhost"
       port: 3000
@@ -26,7 +24,5 @@ class Settings
 
     if settings.defaults then @defaults = deepmerge @defaults, settings.defaults
     if settings.config then @config = deepmerge @config, settings.config
-    if settings.testDir then @testDir = deepmerge @testDir, settings.testDir
-    if settings.docDir then @docDir = deepmerge @docDir, settings.docDir
 
 module.exports = Settings

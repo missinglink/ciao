@@ -78,6 +78,19 @@ Note: Unless you installed ciao globally, you will need to manually add `bin/` t
 PATH=bin/:$PATH
 ```
 
+```
+peter@edgy:/var/www/ciao$ ciao --help
+
+  Usage: ciao [options] <file ...>
+
+  Options:
+
+    -h, --help                 output usage information
+    -V, --version              output the version number
+    -s, --silent               disable reporter
+    -d, --documentation [dir]  generate documentation in output dir
+```
+
 ```bash
 ciao scripts/static/README.example.coffee
 ```
@@ -98,20 +111,18 @@ Example `ciao.json`
 
 ```javascript
 {
-  "settings": {
-    "docDir": "./doc"
-  },
   "defaults": {
     "host": "www.google.co.uk",
     "port": 80,
     "headers": {
       "User-Agent": "Ciao/Client 1.0"
     }
+  },
+  "config": {
+    "bingo": "bango"
   }
 }
 ```
-
-The `docDir` property will set up ciao to write documentation to `./doc`
 
 The `defaults` section is merged in to every request that is made, it's useful for specifying global request properties such as `host` and `port`.
 

@@ -19,7 +19,7 @@
   },
   "scripts": {
     "test": "export NODE_PATH=`pwd` && node node_modules/mocha/bin/mocha --recursive --reporter spec --compilers coffee:coffee-script test",
-    "ciao": "export NODE_PATH=`pwd` && rm -rf doc && mkdir doc && ./bin/ciao scripts"
+    "ciao": "export NODE_PATH=`pwd` && rm -rf doc && mkdir doc && ./bin/ciao -d docs scripts"
   },
   "devDependencies": {    
     "mocha": "*"
