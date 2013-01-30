@@ -6,7 +6,7 @@ async = require 'async'
 
 class RequestChain
 
-  constructor: (@settings) ->
+  constructor: (@settings={}) ->
     @chain = []
 
     # Set environmental variables
