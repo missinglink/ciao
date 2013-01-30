@@ -49,8 +49,6 @@ https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.
 
 Ciao uses a special syntax to declare the start and end of code blocks.
 
-The parser will include all code following the directive within that block.
-
 Currently 4 interpreter directives are supported:
 
 * `#! before` block, this is merged in to every `request` block.
