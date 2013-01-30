@@ -204,7 +204,7 @@ response.body.should.include 'Bingo Bango Bongo!'
 response.body.should.match /^[a-z0-9]{40}/
 
 #? Test json object contains properties
-json.should.eql {
+json.should.include {
   id: "10000000000000000000",
   name: "Bingo Bango Bongo!"
 }
