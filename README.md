@@ -145,7 +145,17 @@ The `body` property is sent as the request body. If the body is an object then C
 
 All `request` blocks have access to an object named `config` which contains all the static configuration properties defined in the ciao config. (as discussed above)
 
-`http.request` reference: http://nodejs.org/api/http.html#http_http_request_options_callback
+### Request properties
+
+* `host` A domain name or IP address of the server to issue the request to. Defaults to 'localhost'.
+* `hostname` To support url.parse() hostname is preferred over host
+* `port` Port of remote server. Defaults to 80.
+* `method` A string specifying the HTTP request method. Defaults to 'GET'.
+* `path` Request path. Defaults to '/'. Should include query string if any. E.G. '/index.html?page=12'
+* `headers` An object containing request headers.
+* `auth` Basic authentication i.e. 'user:password' to compute an Authorization header.
+
+Full `http.request` reference: http://nodejs.org/api/http.html#http_http_request_options_callback
 
 ### Examples
 
