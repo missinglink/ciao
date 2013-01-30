@@ -4,7 +4,7 @@ path = require 'path'
 
 class Suite
 
-  constructor: (@settings, @done) ->
+  constructor: (@done) ->
     @files = []
     @listeners = []
 

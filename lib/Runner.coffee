@@ -14,7 +14,7 @@ class Runner
 
   complete: (error, request, response, body) =>
 
-    throw new Error error if error
+    throw new Error "[REQUEST ERROR] " + error if error
 
     res =
       body: body

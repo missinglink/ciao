@@ -15,13 +15,17 @@ class Request
     if req.port is 443 then protocol = https
     req.agent = false # Disable agent to avoid socket errors
 
+    @request protocol, req
+
+  request: (protocol, req) ->
+
     request = protocol.request req, (res) =>
 
       res.setEncoding 'utf8'
       res.on 'data', (chunk) => @data += chunk
-      res.on 'end', () => @listeners.map (listener) => listener null, req, res, @data
-      res.on 'error', (e) => @listeners.map (listener) -> listener e, req, res, null
-      res.on 'close', (e) => @listeners.map (listener) -> listener e, req, res, null
+      res.on 'end',  ()   => @listeners.map (listener) => listener null, req, res, @data
+      res.on 'error', (e) => @listeners.map (listener) -> listener e, req, res, @data
+      res.on 'close', (e) => @listeners.map (listener) -> listener e, req, res, @data
 
     if req.body?
 

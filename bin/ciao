@@ -18,16 +18,17 @@ program
   .option('-d, --documentation [dir]', 'generate documentation in output dir')
   .parse(process.argv);
 
-settings = new Settings();
-
-var suite = new Suite( settings, function( filename, suite )
+var suite = new Suite( function( filename, suite )
 {
-  CiaoScript.load( filename, suite.settings, function( settings, parser )
+  CiaoScript.load( filename, new Settings(), function( settings, parser )
   {
     var runner = new Runner( parser.sections.assert );
     
     // Set Reporter
-    if( !program.silent ){ runner.listener( Reporter.standard ); }
+    if( !program.silent ){
+      runner.listener( Reporter.standard );
+      // runner.listener( Reporter.debug );
+    }
 
     // HTTP Request
     var http = new Request();
