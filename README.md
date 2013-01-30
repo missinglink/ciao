@@ -33,7 +33,7 @@ headers: 'Accept': 'application/json'
 response.statusCode.should.equal 200
 response.should.have.header 'server', 'GitHub.com'
 
-#? Should be data
+#? Should be what we are looking for...
 json.sha.should.match /^[a-z0-9]{40}/
 json.should.include
   type: 'file'
