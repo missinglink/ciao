@@ -11,7 +11,7 @@ describe 'Suite', ->
       suite = new Suite (path,sweet) ->
         sweet.should.equal suite
         path.should.eql 'ciao.json'
-        suite.files.should.eql [ 'ciao.json' ]
+        sweet.files.should.eql [ 'ciao.json' ]
         done()
       suite.walk 'ciao.json'
 
@@ -20,7 +20,9 @@ describe 'Suite', ->
       counter = 0
       suite = new Suite (path,sweet) ->
         [ 'img/cans.jpg', 'img/ciao.png' ].should.include path
+        sweet.files.should.include path
         counter++
+        sweet.files.length.should.eql counter
         done() if counter > 1
       suite.walk 'img'
 
@@ -37,6 +39,8 @@ describe 'Suite', ->
       counter = 0
       suite = new Suite (path,sweet) ->
         should.exist path
+        sweet.files.should.include path
         counter++
+        sweet.files.length.should.eql counter
         done() if counter > 5
       suite.walk 'scripts'
