@@ -22,7 +22,7 @@ class Runner
       headers: response.headers
 
     try json = JSON.parse body
-    catch e then json = null
+    catch e then json = {}
 
     for test in @groups
 
