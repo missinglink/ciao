@@ -115,7 +115,7 @@ $ ciao scripts/
 
 ## API Documentation
 
-Ciao generates documentation for each `?> request`, the resulting `response` and all `#? assertion` blocks.
+Ciao generates documentation for each `#> request`, the resulting `response` and all `#? assertion` blocks.
 
 The documentation is in `markdown` format and is available in the directory specified using the `-d` option when executing `ciao`
 
