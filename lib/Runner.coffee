@@ -30,7 +30,7 @@ class Runner
       script.push "try"
       script.push Runner.indentSource( test.source, ' ', 2 )
       script.push "catch e"
-      script.push "  console.log e.message"
+      script.push "  console.error e.message"
       script.push "  process.exit 1"
       script.push "process.exit 0"
 
