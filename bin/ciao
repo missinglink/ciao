@@ -54,5 +54,5 @@ if( program.args[0] ){
   suite.walk( program.args[0] );
 }
 else {
-  program.outputHelp();
+  program.help();
 }
