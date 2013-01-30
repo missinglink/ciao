@@ -1,8 +1,8 @@
 {
   "name": "ciao",
-  "preferGlobal": false,
+  "preferGlobal": true,
   "private": false,
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "ciao",
   "contributors": [],
   "dependencies": {
@@ -24,6 +24,7 @@
   "devDependencies": {    
     "mocha": "*"
   },
+  "readme": " Not quite ready for you yet... ",
   "engines": {
     "node": "0.8.x",
     "npm": "1.1.x"

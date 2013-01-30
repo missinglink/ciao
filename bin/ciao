@@ -26,5 +26,11 @@ var suite = new TestSuite( settings, function( filename, suite ){
   request.transfer( script.request );
 });
 
-// Run single script(s)
-suite.walk( program.args[0] );
+if( program.args[0] ){
+  // Run single script(s)
+  suite.walk( program.args[0] );
+}
+
+else {
+  program.outputHelp();
+}

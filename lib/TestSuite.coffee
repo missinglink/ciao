@@ -14,7 +14,6 @@ class TestSuite
     try
       stats = fs.statSync path
     catch e
-      console.log 'FAIL'
       console.log e.message or e
       return null
 
