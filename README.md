@@ -112,36 +112,25 @@ You can also use ciao on directories to recursively run all scripts.
 $ ciao scripts/
 ```
 
-## Configuration
+## API Documentation
 
-Ciao looks for a global configuration file called `ciao.json` in your current working directory.
+Ciao generates documentation for each `request`, the resulting `response` and all `assertion` blocks.
 
-Example `ciao.json`
+The documentation is in `markdown` format and is available in the directory specified using the `-d` option when executing `ciao`
 
-```javascript
-{
-  "defaults": {
-    "host": "www.google.co.uk",
-    "port": 80,
-    "headers": {
-      "User-Agent": "Ciao/Client 1.0"
-    }
-  },
-  "config": {
-    "bingo": "bango"
-  }
-}
+eg. To generate documentation in `./doc` for all scripts in `./scripts`:
+```bash
+$ ciao -d doc scripts
 ```
 
-The `defaults` section is merged in to every request that is made, it's useful for specifying global request properties such as `host` and `port`.
-
-The `config` section is useful for storing session tokens or any sort of data you would like available to `before` or `request` blocks.
+An example generated documentation file can be found here:
+https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md
 
 ## Requests
 
 The Ciao request format is the same as that of the `node.js` native http client `http.request`.
 
-All `request` blocks have access to an object named `config` which contains all the static configuration properties defined in the ciao config. (as discussed above)
+All `request` blocks have access to an object named `config` which contains all the static configuration properties defined in the ciao config. (as discussed below)
 
 ### Request properties
 
@@ -215,19 +204,30 @@ response.should.have.header 'location', 'http://www.example.com/'
 
 `should.js` reference: https://github.com/visionmedia/should.js/
 
-## API Documentation
+## Configuration
 
-Ciao generates documentation for each `request`, the resulting `response` and all `assertion` blocks.
+Ciao looks for a global configuration file called `ciao.json` in your current working directory.
 
-The documentation is in `markdown` format and is available in the directory specified using the `-d` option when executing `ciao`
+Example `ciao.json`
 
-eg. To generate documentation in `./doc` for all scripts in `./scripts`:
-```bash
-$ ciao -d doc scripts
+```javascript
+{
+  "defaults": {
+    "host": "www.google.co.uk",
+    "port": 80,
+    "headers": {
+      "User-Agent": "Ciao/Client 1.0"
+    }
+  },
+  "config": {
+    "bingo": "bango"
+  }
+}
 ```
 
-An example generated documentation file can be found here:
-https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md
+The `defaults` section is merged in to every request that is made, it's useful for specifying global request properties such as `host` and `port`.
+
+The `config` section is useful for storing session tokens or any sort of data you would like available to `before` or `request` blocks.
 
 ## How it works
 
