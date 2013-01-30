@@ -27,11 +27,11 @@ Please ignore this Junk Section
 #? Status: 303 See other
 response.statusCode.should.equal 302
 
-#? Response header has a location /
-response.headers.should.have 'location', '/'
+#? Response has a Content-Type header
+response.headers.should.have.property 'content-type', 'text/html; charset=ISO-8859-1'
 
 #? Response body should contain specific js
 response.body.should.include 'window.attachEvent'
 
 #? Should set a cookie
-response.should.have.header 'Set-Cookie'
+response.headers.should.have.property 'set-cookie'

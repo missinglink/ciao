@@ -62,7 +62,7 @@ describe 'ScriptParser', ->
       parser.sections.assert[0].title.should.eql 'Status: 303 See other'
       parser.sections.assert[0].source.should.eql parser.lines[27]
 
-      parser.sections.assert[1].title.should.eql 'Response header has a location /'
+      parser.sections.assert[1].title.should.eql 'Response has a Content-Type header'
       parser.sections.assert[1].source.should.eql parser.lines[30]
 
       parser.sections.assert[2].title.should.eql 'Response body should contain specific js'
