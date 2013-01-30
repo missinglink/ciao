@@ -1,6 +1,6 @@
 # Github page for missinglink/ciao
 
-*Generated: Wed Jan 30 2013 21:35:09 GMT+0000 (GMT)*
+*Generated: Wed Jan 30 2013 22:38:54 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -21,20 +21,20 @@
 Status: 200
 {
   "server": "GitHub.com",
-  "date": "Wed, 30 Jan 2013 21:35:04 GMT",
+  "date": "Wed, 30 Jan 2013 22:38:49 GMT",
   "content-type": "text/html; charset=utf-8",
   "connection": "close",
   "status": "200 OK",
   "x-frame-options": "deny",
-  "x-runtime": "177",
-  "etag": "\"c7251bc71693e8b20979925c2910c577\"",
+  "etag": "\"806163c847c38ceb82c91a83afff81b9\"",
   "set-cookie": [
-    "logged_in=no; domain=.github.com; path=/; expires=Sun, 30-Jan-2033 21:35:04 GMT",
-    "_gh_sess=BAh7BzoPc2Vzc2lvbl9pZCIlOTNmNDY1ZjU2ZDIzZDI3YjYzNzFjOGEwYmZlZTIxMzk6EF9jc3JmX3Rva2VuIjFNcFlWMFNuT3F4LzliTm5jTkRoRWV4MS92Q0lEcytBMDNlbndsbTIwazkwPQ%3D%3D--f7b9eb8bb9592d4a8ca21dbbd9fd14974cbaed4e; path=/; expires=Sun, 01-Jan-2023 00:00:00 GMT; secure; HttpOnly"
+    "logged_in=no; domain=.github.com; path=/; expires=Sun, 30-Jan-2033 22:38:49 GMT",
+    "_gh_sess=BAh7BzoPc2Vzc2lvbl9pZCIlMjZhZDUwMWJhNDMzYzljNjM5NWY3ZjVjZWRjY2UwNDM6EF9jc3JmX3Rva2VuIjFsTFRCbURqM1ZPUEF3RnRUaE42dTVIT1NMK0VWRmI3R21yb3NkUTA5ajI4PQ%3D%3D--46cd01efa422b2be029875aa90e3220c1a5e6b67; path=/; expires=Sun, 01-Jan-2023 00:00:00 GMT; secure; HttpOnly"
   ],
-  "strict-transport-security": "max-age=2592000",
   "cache-control": "private, max-age=0, must-revalidate",
-  "content-length": "61774"
+  "x-runtime": "118",
+  "content-length": "62162",
+  "strict-transport-security": "max-age=2592000"
 }
 ```
 ```html
@@ -62,7 +62,7 @@ Status: 200
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <meta content="authenticity_token" name="csrf-param" />
-<meta content="MpYV0SnOqx/9bNncNDhEex1/vCIDs+A03enwlm20k90=" name="csrf-token" />
+<meta content="lLTBmDj3VOPAwFtThN6u5HOSL+EVFb7GmrosdQ09j28=" name="csrf-token" />
 
     <link href="https://a248.e.akamai.net/assets.github.com/assets/github-2cc00d0d3118fa5d35135cc56fe1a0c14611b069.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="https://a248.e.akamai.net/assets.github.com/assets/github2-51b9072e946bbf41f065de13b1579268fde9b919.css" media="screen" rel="stylesheet" type="text/css" />
@@ -70,10 +70,10 @@ Status: 200
 
 
         <script src="https://a248.e.akamai.net/assets.github.com/assets/frameworks-995182d02a0effa06cdc51e33fe6e729014a3c91.js" type="text/javascript"></script>
-      <script src="https://a248.e.akamai.net/assets.github.com/assets/github-3b024c3282e8b169931c5fe18f45c240cd672a97.js" type="text/javascript"></script>
+      <script src="https://a248.e.akamai.net/assets.github.com/assets/github-f426b884410e23325b49a9fb69303f9f73f2100f.js" type="text/javascript"></script>
       
 
-        <link rel='permalink' href='/missinglink/ciao/tree/a8caee4ea9068f9de4b27f1bb665395de350d988'>
+        <link rel='permalink' href='/missinglink/ciao/tree/d268b3aa250f9655d499f0d12a5a030f9f597336'>
     <meta property="og:title" content="ciao"/>
     <meta property="og:type" content="githubog:gitrepository"/>
     <meta property="og:url" content="https://github.com/missinglink/ciao"/>
@@ -105,8 +105,8 @@ Status: 200
           <div class="container clearfix">
 
             <a class="header-logo-wordmark" href="https://github.com/">
-              <img alt="GitHub" class="github-logo-4x" height="30" src="https://a248.e.akamai.net/assets.github.com/images/modules/header/logov7@4x.png?1340659511" />
-              <img alt="GitHub" class="github-logo-4x-hover" height="30" src="https://a248.e.akamai.net/assets.github.com/images/modules/header/logov7@4x-hover.png?1340659511" />
+              <img alt="GitHub" class="github-logo-4x" height="30" src="https://a248.e.akamai.net/assets.github.com/images/modules/header/logov7@4x.png?1338956357" />
+              <img alt="GitHub" class="github-logo-4x-hover" height="30" src="https://a248.e.akamai.net/assets.github.com/images/modules/header/logov7@4x-hover.png?1338956357" />
             </a>
 
               
@@ -215,17 +215,17 @@ Status: 200
 
 
 <div class="repository-homepage" id="repository_homepage">
-  <p></p>
+  <p><a href="http://missinglink.github.com/ciao/" rel="nofollow">http://missinglink.github.com/ciao/</a></p>
 </div>
 
 
         </div>
 
       <div class="edit-repo-desc-homepage" style="display:none">
-        <form accept-charset="UTF-8" action="/missinglink/ciao/settings/update_meta" id="js-update-repo-meta-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="MpYV0SnOqx/9bNncNDhEex1/vCIDs+A03enwlm20k90=" /></div>
+        <form accept-charset="UTF-8" action="/missinglink/ciao/settings/update_meta" id="js-update-repo-meta-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="lLTBmDj3VOPAwFtThN6u5HOSL+EVFb7GmrosdQ09j28=" /></div>
           <p class="error" style="display:none">Sorry, but there was a problem saving your changes.</p>
           <input type="text" id="repository-description-field" class="description-field" name="repo_description" value="Ciao is a simple command line utility for testing http(s) requests and generating API documentation" placeholder="Add a description to this repository">
-          <input type="text" id="repository-homepage-field" class="homepage-field" name="repo_homepage" value="" placeholder="Add a website to this repository">
+          <input type="text" id="repository-homepage-field" class="homepage-field" name="repo_homepage" value="http://missinglink.github.com/ciao/" placeholder="Add a website to this repository">
 
           <div class="edit-repo-actions">
             <button type="submit" class="button save-button">Save changes</button>
@@ -352,7 +352,7 @@ Status: 200
           
 
 
-<!-- tree commit key: views10/v8/tree:v21:5599a8a40a955279b7d65603bf31ea0f -->
+<!-- tree commit key: views10/v8/tree:v21:87de59a2cd7b2fadc3b5bc225b990fd3 -->
 
   <div id="slider">
       <div class="frame-meta">
@@ -360,7 +360,7 @@ Status: 200
 
           <p class="history-link js-history-link-replace">
 <a href="/missinglink/ciao/commits/master">                <span class="mini-icon mini-icon-history tooltipped" title="Browse commits for this branch"></span>
-                222 commits
+                225 commits
 </a>          </p>
 
         <div class="breadcrumb">
@@ -375,21 +375,31 @@ Status: 200
       
 
   <div class="frames">
-    <div class="frame" data-permalink-url="/missinglink/ciao/tree/a8caee4ea9068f9de4b27f1bb665395de350d988" data-title="missinglink/ciao · GitHub" data-type="tree">
+    <div class="frame" data-permalink-url="/missinglink/ciao/tree/d268b3aa250f9655d499f0d12a5a030f9f597336" data-title="missinglink/ciao · GitHub" data-type="tree">
 
       <div class="bubble tree-browser-wrapper">
 
       <table class="tree-browser css-truncate" cellpadding="0" cellspacing="0">
         <thead>
-            <div class="commit commit-loader commit-tease js-details-container js-deferred-content" data-url="/missinglink/ciao/tree-commit/master">
-              <p class="commit-title blank">
-                Fetching latest commit…
-              </p>
-              <div class="commit-meta">
-                <p class="loader-loading"><img alt="Octocat-spinner-32-eaf2f5" height="16" src="https://a248.e.akamai.net/assets.github.com/images/spinners/octocat-spinner-32-EAF2F5.gif?1340659511" width="16" /></p>
-                <p class="loader-error">Cannot retrieve the latest commit at this time</p>
-              </div>
-            </div>
+            
+  <div class="commit commit-tease js-details-container">
+    <p class="commit-title ">
+        <a href="/missinglink/ciao/commit/d268b3aa250f9655d499f0d12a5a030f9f597336" class="message">Documentation</a>
+        
+    </p>
+    <div class="commit-meta">
+      <span class="js-zeroclipboard zeroclipboard-link" data-clipboard-text="d268b3aa250f9655d499f0d12a5a030f9f597336" data-copied-hint="copied!" title="Copy SHA"><span class="mini-icon mini-icon-clipboard"></span></span>
+      <a href="/missinglink/ciao/commit/d268b3aa250f9655d499f0d12a5a030f9f597336" class="sha-block">latest commit <span class="sha">d268b3aa25</span></a>
+
+      <div class="authorship">
+        <img class="gravatar" height="20" src="https://secure.gravatar.com/avatar/37100264577268fd5f5e2a6d9517050d?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="20" />
+        <span class="author-name"><a href="/missinglink" rel="author">missinglink</a></span>
+        authored <time class="js-relative-date updated" datetime="2013-01-30T13:41:24-08:00" title="2013-01-30 13:41:24">January 30, 2013</time>
+
+      </div>
+    </div>
+  </div>
+
         </thead>
 
         
@@ -411,11 +421,11 @@ Status: 200
     </tr>
     <tr>
       <td class="icon"><span class="mini-icon mini-icon-directory"></span></td>
-      <td class="content"><a href="/missinglink/ciao/tree/master/doc" class="js-slide-to css-truncate-target" id="9a09b4dfda82e3e665e31092d1c3ec8d-32a2c0cb7c093be005fd50d3f1b43b2c0fe38c47" title="doc">doc</a></td>
-      <td class="age"><time class="js-relative-date" datetime="2013-01-30T13:34:36-08:00" title="2013-01-30 13:34:36">January 30, 2013</time></td>
+      <td class="content"><a href="/missinglink/ciao/tree/master/doc" class="js-slide-to css-truncate-target" id="9a09b4dfda82e3e665e31092d1c3ec8d-56a5d50a52ea9ff4e6db78c918fee201804c1602" title="doc">doc</a></td>
+      <td class="age"><time class="js-relative-date" datetime="2013-01-30T13:35:12-08:00" title="2013-01-30 13:35:12">January 30, 2013</time></td>
 
       <td class="message">
-          <a href="/missinglink/ciao/commit/a8caee4ea9068f9de4b27f1bb665395de350d988" class="message">Documentation</a>
+          <a href="/missinglink/ciao/commit/eb99ccfb4b58a649082b69aeccd7a37cfa331a95" class="message">Documentation</a>
           [<a href="/missinglink" rel="author">missinglink</a>]
 
       </td>
@@ -477,11 +487,11 @@ Status: 200
     </tr>
     <tr>
       <td class="icon"><span class="mini-icon mini-icon-text-file"></span></td>
-      <td class="content"><a href="/missinglink/ciao/blob/master/.gitignore" class="js-slide-to css-truncate-target" id="a084b794bc0759e7a6b77810e01874f2-7cba241125e7127fed1fde6cb974597fd043cb1d" title=".gitignore">.gitignore</a></td>
-      <td class="age"><time class="js-relative-date" datetime="2013-01-30T06:29:58-08:00" title="2013-01-30 06:29:58">January 30, 2013</time></td>
+      <td class="content"><a href="/missinglink/ciao/blob/master/.gitignore" class="js-slide-to css-truncate-target" id="a084b794bc0759e7a6b77810e01874f2-93f13619916123cf5434dab2ffcc8263c7420af1" title=".gitignore">.gitignore</a></td>
+      <td class="age"><time class="js-relative-date" datetime="2013-01-30T13:35:12-08:00" title="2013-01-30 13:35:12">January 30, 2013</time></td>
 
       <td class="message">
-          <a href="/missinglink/ciao/commit/a4f3db892673ce83f39b9d6501048a06f734ce3d" class="message">Update .gitignore</a>
+          <a href="/missinglink/ciao/commit/eb99ccfb4b58a649082b69aeccd7a37cfa331a95" class="message">Documentation</a>
           [<a href="/missinglink" rel="author">missinglink</a>]
 
       </td>
@@ -499,11 +509,11 @@ Status: 200
     </tr>
     <tr>
       <td class="icon"><span class="mini-icon mini-icon-text-file"></span></td>
-      <td class="content"><a href="/missinglink/ciao/blob/master/README.md" class="js-slide-to css-truncate-target" id="04c6e90faac2675aa89e2176d2eec7d8-33b1a73c14880a6871d3dcd77aa85e31a91c1445" title="README.md">README.md</a></td>
-      <td class="age"><time class="js-relative-date" datetime="2013-01-30T13:12:34-08:00" title="2013-01-30 13:12:34">January 30, 2013</time></td>
+      <td class="content"><a href="/missinglink/ciao/blob/master/README.md" class="js-slide-to css-truncate-target" id="04c6e90faac2675aa89e2176d2eec7d8-8d78bdfdffbfb93b6d9748d49f6ccb3320a3dcfe" title="README.md">README.md</a></td>
+      <td class="age"><time class="js-relative-date" datetime="2013-01-30T13:41:24-08:00" title="2013-01-30 13:41:24">January 30, 2013</time></td>
 
       <td class="message">
-          <a href="/missinglink/ciao/commit/b190e3c0bbb806e547f7765c83236ab8c8e01296" class="message">Documentation</a>
+          <a href="/missinglink/ciao/commit/d268b3aa250f9655d499f0d12a5a030f9f597336" class="message">Documentation</a>
           [<a href="/missinglink" rel="author">missinglink</a>]
 
       </td>
@@ -601,8 +611,6 @@ Status: 200
 <a name="interpreter-directives" class="anchor" href="#interpreter-directives"><span class="mini-icon mini-icon-link"></span></a>Interpreter directives</h2>
 
 <p>Ciao uses a special syntax to declare the start and end of code blocks.</p>
-
-<p>The parser will include all code following the directive within that block.</p>
 
 <p>Currently 4 interpreter directives are supported:</p>
 
@@ -827,8 +835,6 @@ Status: 200
 
 <p>This isolates the main thread from malicious assertion code and ensures the fastest execution of tests.</p>
 
-<p><code>http.request</code> reference: <a href="http://nodejs.org/api/http.html#http_http_request_options_callback">http://nodejs.org/api/http.html#http_http_request_options_callback</a></p>
-
 <h2>
 <a name="known-bugs" class="anchor" href="#known-bugs"><span class="mini-icon mini-icon-link"></span></a>Known bugs</h2>
 
@@ -914,7 +920,7 @@ Status: 200
 <br style="clear:both;">
 
 <div id="js-frame-loading-template" class="frame frame-loading large-loading-area" style="display:none;">
-  <img class="js-frame-loading-spinner" src="https://a248.e.akamai.net/assets.github.com/images/spinners/octocat-spinner-128.gif?1347543527" height="64" width="64">
+  <img class="js-frame-loading-spinner" src="https://a248.e.akamai.net/assets.github.com/images/spinners/octocat-spinner-128.gif?1347543528" height="64" width="64">
 </div>
 
 
@@ -977,7 +983,7 @@ Status: 200
       <hr class="footer-divider">
 
 
-    <p class="right">&copy; 2013 <span title="0.18490s from fe16.rs.github.com">GitHub</span> Inc. All rights reserved.</p>
+    <p class="right">&copy; 2013 <span title="0.12477s from fe1.rs.github.com">GitHub</span> Inc. All rights reserved.</p>
     <a class="left" href="https://github.com/">
       <span class="mega-icon mega-icon-invertocat"></span>
     </a>
@@ -1385,7 +1391,7 @@ I think you should use an
 
     
     
-    <span id='server_response_time' data-time='0.18583' data-host='fe16'></span>
+    <span id='server_response_time' data-time='0.12576' data-host='fe1'></span>
     
   </body>
 </html>
@@ -1395,13 +1401,13 @@ I think you should use an
 
 ## Tests
 
-### ✓ Repo is public
-```javascript
-response.statusCode.should.equal 200
-```
-
 ### ✓ Should be github
 ```javascript
 response.should.have.header 'server', 'GitHub.com'
+```
+
+### ✓ Repo is public
+```javascript
+response.statusCode.should.equal 200
 ```
 

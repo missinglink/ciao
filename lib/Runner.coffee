@@ -1,5 +1,6 @@
 Process = require './Process'
-coffee = 'node_modules/coffee-script/bin/coffee'
+path = require 'path'
+coffee = path.resolve( __dirname + '/../node_modules/coffee-script/bin/coffee' )
 
 class Runner
 
@@ -10,7 +11,7 @@ class Runner
 
     # Set environmental variables
     @env = process.env
-    @env['NODE_PATH'] = process.cwd() + '/node_modules'
+    @env['NODE_PATH'] = path.resolve( __dirname + '/../node_modules' )
 
   complete: (error, request, response, body) =>
 

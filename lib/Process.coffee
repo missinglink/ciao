@@ -25,4 +25,8 @@ class Process extends EventEmitter
       @proc.stdin.write data
       @proc.stdin.end()
 
+    @proc.stdin.on 'error', (e) -> null
+    @proc.stdout.on 'error', (e) -> null
+    @proc.stderr.on 'error', (e) -> null
+
 module.exports = Process

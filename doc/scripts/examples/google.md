@@ -1,6 +1,6 @@
 # Try to confuse google
 
-*Generated: Wed Jan 30 2013 21:35:06 GMT+0000 (GMT)*
+*Generated: Wed Jan 30 2013 22:38:58 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -26,7 +26,7 @@
 Status: 405
 {
   "allow": "GET, HEAD",
-  "date": "Wed, 30 Jan 2013 21:35:02 GMT",
+  "date": "Wed, 30 Jan 2013 22:38:54 GMT",
   "content-type": "text/html; charset=UTF-8",
   "server": "gws",
   "content-length": "959",
@@ -52,6 +52,11 @@ Status: 405
 
 ## Tests
 
+### ✓ Should return a content-type header
+```javascript
+response.should.have.header 'content-type', 'text/html; charset=UTF-8'
+```
+
 ### ✓ Response.body should contain '!!1'
 ```javascript
 response.body.should.include '!!1'
@@ -60,10 +65,5 @@ response.body.should.include '!!1'
 ### ✓ Status: 405 Method Not Allowed
 ```javascript
 response.statusCode.should.equal 405
-```
-
-### ✓ Should return a content-type header
-```javascript
-response.should.have.header 'content-type', 'text/html; charset=UTF-8'
 ```
 

@@ -1,6 +1,6 @@
 # Get package details from the npm registry
 
-*Generated: Wed Jan 30 2013 21:35:07 GMT+0000 (GMT)*
+*Generated: Wed Jan 30 2013 22:38:54 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -23,7 +23,7 @@ Status: 200
   "vary": "Accept",
   "server": "CouchDB/1.2.1 (Erlang OTP/R15B)",
   "etag": "\"5E2HNX8HU62DALFY9KNOZ2DIM\"",
-  "date": "Wed, 30 Jan 2013 21:33:20 GMT",
+  "date": "Wed, 30 Jan 2013 22:37:07 GMT",
   "content-type": "application/json",
   "content-length": "1085"
 }

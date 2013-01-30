@@ -3,6 +3,7 @@ CoffeeScript = require 'coffee-script'
 Process = require './Process'
 Runner = require './Runner'
 async = require 'async'
+path = require 'path'
 
 class RequestChain
 
@@ -11,7 +12,7 @@ class RequestChain
 
     # Set environmental variables
     @env = process.env
-    @env['NODE_PATH'] = process.cwd() + '/node_modules'
+    @env['NODE_PATH'] = path.resolve( __dirname + '/../node_modules' )
 
   merge: (settings) =>
     @chain.push (prev) ->
@@ -51,7 +52,7 @@ class RequestChain
       script.push ''
 
       # Spawn child process
-      child = new Process 'node_modules/coffee-script/bin/coffee', [ '-s' ], { env: @env }
+      child = new Process path.resolve( __dirname + '/../node_modules/coffee-script/bin/coffee' ), [ '-s' ], { env: @env }
 
       child.on 'exit', (code, stdout, stderr) =>
 

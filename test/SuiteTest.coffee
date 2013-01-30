@@ -42,5 +42,5 @@ describe 'Suite', ->
         sweet.files.should.include path
         counter++
         sweet.files.length.should.eql counter
-        done() if counter > 5
+        done() if counter > 6
       suite.walk 'scripts'
