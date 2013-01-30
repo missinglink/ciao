@@ -74,6 +74,8 @@ npm install
 npm run ciao
 ```
 
+![Ciao](https://github.com/missinglink/ciao/raw/master/img/ciao.png "Ciao")
+
 ## Running the command line interface
 
 For now you will need to manually add `bin/` to your path before executing `ciao`
