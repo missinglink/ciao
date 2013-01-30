@@ -19,15 +19,15 @@ describe 'CiaoScript', ->
       construct = -> CiaoScript.load 'not/existing', settings
       construct.should.throw "ENOENT, no such file or directory 'not/existing'"
 
-    it 'should throw if the script does not contain a request block', ->
+    it 'should not throw if the script does not contain a request block', (done) ->
 
-      construct = -> CiaoScript.load 'fixtures/script01.coffee', settings
-      construct.should.throw "FATAL: You must define a request section in: fixtures/script01.coffee"
+      construct = -> CiaoScript.load 'fixtures/script01.coffee', settings, () -> done()
+      construct.should.not.throw()
 
-    it 'should throw if the script does not contain any assert blocks', ->
+    it 'should throw if the script does not contain any assert blocks', (done) ->
 
-      construct = -> CiaoScript.load 'fixtures/script02.coffee', settings
-      construct.should.throw "FATAL: No assert blocks found"
+      construct = -> CiaoScript.load 'fixtures/script02.coffee', settings, () -> done()
+      construct.should.not.throw()
 
     it 'should accept valid scripts', (done) ->
 

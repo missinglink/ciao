@@ -32,11 +32,14 @@ module.exports.load = ( filename, settings, callback ) ->
   parser = new ScriptParser fs.readFileSync(filename), filename
 
   if parser.sections.request.length < 1
-    throw new Error 'FATAL: You must define a request section in: ' + filename
+    console.error 'WARNING: Skipping file, no request section found in: ' + filename
+    return callback settings, parser
 
   if parser.sections.request.length > 1
     console.error 'WARNING: You may only have one request section per script in: ' + filename
 
-  unless parser.sections.assert[0] then throw new Error 'FATAL: No assert blocks found'
+  unless parser.sections.assert[0]
+    console.error 'WARNING: Skipping file, no assert blocks found in: ' + filename
+    return callback settings, parser
 
   return mergeSettings settings, parser, callback
