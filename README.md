@@ -1,6 +1,6 @@
 # Ciao - Functional testing made easy
 
-Ciao is a simple framework for testing HTTP(s) requests and generating API documentation.
+Ciao is a simple command line utility for testing HTTP(s) requests and generating API documentation.
 
 ## Anatomy of a ciao script:
 
@@ -53,7 +53,8 @@ The title is used for reporting & documentation, so the better your titles, the 
 Ciao is still in beta, if you are lucky enough to have git access, you're best to use:
 
 ```bash
-git clone git@github.com:missinglink/ciao.git node_modules/ciao
+git clone git@github.com:missinglink/ciao.git ciao
+cd ciao
 ```
 
 DO NOT DO THIS! (yet) or you will get old code.
@@ -82,25 +83,33 @@ PATH=bin/:$PATH
 ciao scripts/static/README.example.coffee
 ```
 
+You can also use ciao on directories
+
+```bash
+PATH=bin/:$PATH
+ciao scripts
+```
+
 ## Setting up your project
 
-There are many ways to configure ciao, but the bare basics are:
+Ciao looks for a global configuration file called `ciao.json` in the current working directorys.
+
+Example `ciao.json`
 
 ```javascript
-path = require('path');
-ciao = require('ciao');
-
-runner = new ciao({
-  "testDir": path.resolve( './scripts' ),
-  "docDir": path.resolve( './doc' ),
-  "defaults": {
-    "host": 'www.google.co.uk',
-    "port": 80
+{
+  "settings": {
+    "testDir": "./scripts",
+    "docDir": "./doc"
   },
-  "config": {
-    'tester@test.com': 'foo'
+  "defaults": {
+    "host": "www.google.co.uk",
+    "port": 80,
+    "headers": {
+      "User-Agent": "Ciao/Client 1.0"
+    }
   }
-});
+}
 ```
 
 This will set up ciao to read scripts from `./scripts` and write documentation to `./doc`
