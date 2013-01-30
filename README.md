@@ -74,8 +74,6 @@ npm install
 npm run ciao
 ```
 
-![Ciao](https://github.com/missinglink/ciao/raw/master/img/ciao.png "Ciao")
-
 ## Running the command line interface
 
 For now you will need to manually add `bin/` to your path before executing `ciao`
@@ -84,6 +82,8 @@ For now you will need to manually add `bin/` to your path before executing `ciao
 PATH=bin/:$PATH
 ciao scripts/static/README.example.coffee
 ```
+
+![Ciao](https://github.com/missinglink/ciao/raw/master/img/ciao.png "Ciao")
 
 You can also use ciao on directories
 
