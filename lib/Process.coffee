@@ -18,7 +18,8 @@ class Process extends EventEmitter
     @proc.stderr.on 'data', (data) => @stderr += data
     
     @proc.on 'exit', (code) =>
-      @emit 'exit', code, @stdout, @stderr, @data
+      # Put a 10ms delay on to give the std buffers time to write all their data out
+      setTimeout ( () => @emit 'exit', code, @stdout, @stderr, @data ), 10
 
     @on 'write', (data) =>
       @proc.stdin.setEncoding 'utf-8'

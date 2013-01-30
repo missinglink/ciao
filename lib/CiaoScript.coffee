@@ -1,63 +1,11 @@
 fs = require 'fs'
 ScriptParser = require './ScriptParser'
-deepmerge = require 'deepmerge'
-CoffeeScript = require 'coffee-script'
 Settings = require './Settings'
-Q = require 'q'
-Process = require './Process'
-Runner = require './Runner'
-
-class RequestChain
-
-  constructor: () ->
-    @chain = []
-
-    # Set environmental variables
-    @env = process.env
-    @env['NODE_PATH'] = process.cwd() + '/node_modules'
-
-  merge: (settings) =>
-    @chain.push (prev) ->
-      deepmerge prev, settings
-
-  mergeScript: (source) =>
-    @chain.push (prev) =>
-
-      script = []
-      script.push "config = " + JSON.stringify( prev.config or {} )
-      script.push ''
-      script.push "try"
-      script.push "  console.log( JSON.stringify( "
-      script.push Runner.indentSource( source, ' ', 4 )
-      script.push "  ))"
-      script.push "catch e"
-      script.push "  console.log e.message"
-      script.push "  process.exit 1"
-      script.push "process.exit 0"
-
-      deferred = Q.defer();
-
-      # Spawn child process
-      child = new Process 'node_modules/coffee-script/bin/coffee', [ '-s' ], { env: @env }
-
-      child.on 'exit', (code, stdout, stderr) =>
-        deferred.resolve deepmerge prev, defaults: JSON.parse stdout
-
-      child.on 'error', console.log
-      child.emit 'write', script.join '\n'
-
-      return deferred.promise
-
-  run: () =>
-    step = Q.fcall( () -> {} )
-    step = step.then( link ) for link in @chain
-    step.then @done
-
-  done: () => console.log 'RequestChain FAIL'
+RequestChain = require './RequestChain'
 
 class CiaoScript
 
-  @load: (filename,settings,cb) ->
+  @load: ( filename, settings, callback ) ->
 
     throw new Error 'Invalid settings' unless settings and settings instanceof Settings
 
@@ -74,19 +22,21 @@ class CiaoScript
 
     chain = new RequestChain()
     chain.merge settings
+    parser.sections.auth.map ( section ) -> chain.mergeScriptProcess section.source
+    chain.mergeScriptProcess parser.sections.request[0].source
 
-    for section in parser.sections.auth
-      chain.mergeScript section.source
+    chain.done = ( settings ) =>
 
-    chain.mergeScript parser.sections.request[0].source
+      unless settings.defaults?.host
+        throw new Error 'FATAL: Invalid request section, you must specify a host'
 
-    chain.done = (settings) =>
+      unless settings.defaults?.method
+        throw new Error 'FATAL: Invalid request section, you must specify a a method'
 
-      unless settings.defaults?.host then throw new Error 'FATAL: Invalid request section, you must specify a host'
-      unless settings.defaults?.method then throw new Error 'FATAL: Invalid request section, you must specify a a method'
-      unless settings.defaults?.path then throw new Error 'FATAL: Invalid request section, you must specify a path'
+      unless settings.defaults?.path
+        throw new Error 'FATAL: Invalid request section, you must specify a path'
 
-      cb settings, parser
+      callback settings, parser
     
     chain.run();
 

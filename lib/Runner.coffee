@@ -46,7 +46,7 @@ class Runner
 
   @indentSource: (source,char=' ',indentation=2) ->
 
-    indent = Array(indentation).join(' ')
-    return indent + ( source + "\n" ).split("\n").join("\n#{indent}")
+    indent = Array(indentation+1).join(char)
+    return indent + source.split("\n").join("\n#{indent}")
 
 module.exports = Runner
