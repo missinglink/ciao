@@ -1,6 +1,6 @@
 # Try to confuse google
 
-*Generated: Wed Jan 30 2013 21:34:30 GMT+0000 (GMT)*
+*Generated: Wed Jan 30 2013 21:35:06 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -26,7 +26,7 @@
 Status: 405
 {
   "allow": "GET, HEAD",
-  "date": "Wed, 30 Jan 2013 21:34:26 GMT",
+  "date": "Wed, 30 Jan 2013 21:35:02 GMT",
   "content-type": "text/html; charset=UTF-8",
   "server": "gws",
   "content-length": "959",

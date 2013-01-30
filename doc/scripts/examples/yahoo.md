@@ -1,6 +1,6 @@
 # Register new user
 
-*Generated: Wed Jan 30 2013 21:34:30 GMT+0000 (GMT)*
+*Generated: Wed Jan 30 2013 21:35:06 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -25,7 +25,7 @@ Status: 301
   "location": "http://uk.yahoo.com/",
   "vary": "Accept-Encoding",
   "content-type": "text/html; charset=utf-8",
-  "age": "882",
+  "age": "918",
   "content-length": "81",
   "connection": "close",
   "via": "HTTP/1.1 rc3.ops.ch1.yahoo.com (YahooTrafficServer/1.20.10 [cHs f ])",
@@ -39,11 +39,6 @@ Status: 301
 
 ## Tests
 
-### ✓ Should return a server name
-```javascript
-response.should.have.header 'server', 'YTS/1.20.10'
-```
-
 ### ✓ Response should redirect to http://uk.yahoo.com/foo
 ```javascript
 response.should.have.header 'location', 'http://uk.yahoo.com/'
@@ -52,5 +47,10 @@ response.should.have.header 'location', 'http://uk.yahoo.com/'
 ### ✓ Status: 301
 ```javascript
 response.statusCode.should.equal 301
+```
+
+### ✓ Should return a server name
+```javascript
+response.should.have.header 'server', 'YTS/1.20.10'
 ```
 
