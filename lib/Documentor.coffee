@@ -32,7 +32,7 @@ class Documentor
     if res.headers?['content-type']?
 
       parseContentType = res.headers['content-type'].split ';'
-      if parseContentType[0] and parseContentType[0] is 'application/json'
+      if parseContentType[0] and parseContentType[0].match /^(text|application)\/(json|javascript)$/
 
         contentType = 'javascript'
         body = JSON.stringify(JSON.parse(body),null,2)

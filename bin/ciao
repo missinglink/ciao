@@ -30,32 +30,34 @@ var suite = new Suite( function( filename, suite )
 
   CiaoScript.load( filename, settings, function( settings, parser )
   {
-    var runner = new Runner( parser.sections.assert );
-    
-    // Set Reporter
-    if( !program.silent ){
-      runner.listener( Reporter.standard );
-      // runner.listener( Reporter.request );
-      // runner.listener( Reporter.debug );
+    if( parser.sections.request[0] ){
+      var runner = new Runner( parser.sections.assert );
+      
+      // Set Reporter
+      if( !program.silent ){
+        runner.listener( Reporter.standard );
+        // runner.listener( Reporter.request );
+        // runner.listener( Reporter.debug );
+      }
+
+      // HTTP Request
+      var http = new Request();
+      http.listener( runner.complete );
+
+      // Documentation
+      if( program.documentation )
+      {
+        filename = path.resolve( filename );
+        var docTarget = filename.replace( process.cwd(), process.cwd() + '/' + program.documentation );
+        var docFile = docTarget.replace( '.coffee', '.md' );
+        var documentation = new Documentor( parser.sections.request[0].title, docFile );
+        runner.listener( documentation.documentTest );
+        http.listener( documentation.documentTransaction );
+      }
+
+      // Send the Request
+      http.transfer( settings.defaults );
     }
-
-    // HTTP Request
-    var http = new Request();
-    http.listener( runner.complete );
-
-    // Documentation
-    if( program.documentation )
-    {
-      filename = path.resolve( filename );
-      var docTarget = filename.replace( process.cwd(), process.cwd() + '/' + program.documentation );
-      var docFile = docTarget.replace( '.coffee', '.md' );
-      var documentation = new Documentor( parser.sections.request[0].title, docFile );
-      runner.listener( documentation.documentTest );
-      http.listener( documentation.documentTransaction );
-    }
-
-    // Send the Request
-    http.transfer( settings.defaults );
   });
 });
 

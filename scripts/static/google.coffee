@@ -5,7 +5,7 @@ headers: 'User-Agent': 'Ciao/Client 1.0'
 #! Log in
 headers: 'Cookie': config['tester@test.com']
 
-#> Register new user
+#> Try to confuse google
 host: 'www.google.com'
 path: '/'
 method: 'POST'
@@ -16,7 +16,7 @@ body:
   email: 'example@example.com'
   password: 'mySecretPass'
 
-#? Status: 405
+#? Status: 405 Method Not Allowed
 response.statusCode.should.equal 405
 
 #? Response.body should contain '!!1'
