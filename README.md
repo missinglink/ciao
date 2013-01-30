@@ -104,7 +104,7 @@ $ ciao scripts/static/README.example.coffee
  ✓ Response.body should contain company name
 ```
 
-### Running all scripts in directory
+### Running all scripts in a directory
 
 You can also use ciao on directories to recursively run all scripts.
 
@@ -230,7 +230,7 @@ ciao -d doc scripts
 ```
 
 An example generated documentation file can be found here:
-https://github.com/missinglink/ciao/blob/master/example.md
+https://github.com/missinglink/ciao/blob/master/doc/scripts/static/github-api.md
 
 ## How it works
 
