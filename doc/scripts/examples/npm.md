@@ -1,6 +1,6 @@
 # Get package details from the npm registry
 
-*Generated: Wed Jan 30 2013 22:38:54 GMT+0000 (GMT)*
+*Generated: Wed Jan 30 2013 23:28:03 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -22,8 +22,8 @@ Status: 200
 {
   "vary": "Accept",
   "server": "CouchDB/1.2.1 (Erlang OTP/R15B)",
-  "etag": "\"5E2HNX8HU62DALFY9KNOZ2DIM\"",
-  "date": "Wed, 30 Jan 2013 22:37:07 GMT",
+  "etag": "\"A03POHAO52PVHM3078B1OK9GO\"",
+  "date": "Wed, 30 Jan 2013 23:26:16 GMT",
   "content-type": "application/json",
   "content-length": "1085"
 }
@@ -33,7 +33,7 @@ Status: 200
   "name": "ciao",
   "preferGlobal": true,
   "private": false,
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Ciao is a simple command line utility for testing http(s) requests and generating API documentation",
   "contributors": [],
   "dependencies": {
@@ -66,10 +66,10 @@ Status: 200
     "type": "git",
     "url": "https://github.com/missinglink/ciao.git"
   },
-  "_id": "ciao@0.1.2",
+  "_id": "ciao@0.1.3",
   "dist": {
-    "shasum": "fec23119b47298c7b9c7021d3004721fd9b3d7ac",
-    "tarball": "http://registry.npmjs.org/ciao/-/ciao-0.1.2.tgz"
+    "shasum": "d40c5bf02944c235fc9fe0ccba71af0868ee5eb9",
+    "tarball": "http://registry.npmjs.org/ciao/-/ciao-0.1.3.tgz"
   },
   "maintainers": [
     {

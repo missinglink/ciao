@@ -88,6 +88,7 @@ peter@edgy:/var/www/ciao$ ciao --help
     -V, --version              output the version number
     -c, --conf [dir]           an additional config file to load after ciao.json
     -s, --silent               disable reporters
+    -v, --verbose              report full requests and responses on error
     -d, --documentation [dir]  generate documentation in output dir
 ```
 

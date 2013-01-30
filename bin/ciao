@@ -12,10 +12,11 @@ var Suite = require( '../lib/Suite' );
 var program = require('commander');
 
 program
-  .version('0.1.3')
+  .version('0.1.4')
   .usage('[options] <file ...>')
   .option('-c, --conf [dir]', 'an additional config file to load after ciao.json')
   .option('-s, --silent', 'disable reporters')
+  .option('-v, --verbose', 'report full requests and responses on error')
   .option('-d, --documentation [dir]', 'generate documentation in output dir')
   .parse(process.argv);
 
@@ -38,6 +39,9 @@ var suite = new Suite( function( filename, suite )
         runner.listener( Reporter.standard );
         // runner.listener( Reporter.request );
         // runner.listener( Reporter.debug );
+        if( program.verbose ){
+          runner.listener( Reporter.reqRes );
+        }
       }
 
       // HTTP Request

@@ -1,6 +1,6 @@
 # Facebook graph API call
 
-*Generated: Wed Jan 30 2013 22:38:53 GMT+0000 (GMT)*
+*Generated: Wed Jan 30 2013 23:28:03 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -27,8 +27,8 @@ Status: 200
   "expires": "Sat, 01 Jan 2000 00:00:00 GMT",
   "pragma": "no-cache",
   "x-fb-rev": "724288",
-  "x-fb-debug": "+gNwaMvxcrr/w8UE+DLha6aCpADoJZBW2ys0mN9tqQY=",
-  "date": "Wed, 30 Jan 2013 22:38:49 GMT",
+  "x-fb-debug": "aiwAqgp9juR3cs3y6MJKoWT4D+XnyK7NZZ2GzMxY6aU=",
+  "date": "Wed, 30 Jan 2013 23:27:59 GMT",
   "connection": "close",
   "content-length": "148"
 }

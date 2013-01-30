@@ -1,6 +1,6 @@
 # Github page for missinglink/ciao
 
-*Generated: Wed Jan 30 2013 22:38:54 GMT+0000 (GMT)*
+*Generated: Wed Jan 30 2013 23:28:03 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -21,20 +21,20 @@
 Status: 200
 {
   "server": "GitHub.com",
-  "date": "Wed, 30 Jan 2013 22:38:49 GMT",
+  "date": "Wed, 30 Jan 2013 23:27:59 GMT",
   "content-type": "text/html; charset=utf-8",
   "connection": "close",
   "status": "200 OK",
+  "content-length": "51152",
+  "x-runtime": "77",
+  "etag": "\"ea9bdf2520e1dc8279e9474223b9d1c1\"",
   "x-frame-options": "deny",
-  "etag": "\"806163c847c38ceb82c91a83afff81b9\"",
-  "set-cookie": [
-    "logged_in=no; domain=.github.com; path=/; expires=Sun, 30-Jan-2033 22:38:49 GMT",
-    "_gh_sess=BAh7BzoPc2Vzc2lvbl9pZCIlMjZhZDUwMWJhNDMzYzljNjM5NWY3ZjVjZWRjY2UwNDM6EF9jc3JmX3Rva2VuIjFsTFRCbURqM1ZPUEF3RnRUaE42dTVIT1NMK0VWRmI3R21yb3NkUTA5ajI4PQ%3D%3D--46cd01efa422b2be029875aa90e3220c1a5e6b67; path=/; expires=Sun, 01-Jan-2023 00:00:00 GMT; secure; HttpOnly"
-  ],
   "cache-control": "private, max-age=0, must-revalidate",
-  "x-runtime": "118",
-  "content-length": "62162",
-  "strict-transport-security": "max-age=2592000"
+  "strict-transport-security": "max-age=2592000",
+  "set-cookie": [
+    "logged_in=no; domain=.github.com; path=/; expires=Sun, 30-Jan-2033 23:27:59 GMT",
+    "_gh_sess=BAh7BzoPc2Vzc2lvbl9pZCIlZjRiZjMzMTYyNjhkNjNiNDU5ZWM0NzlkYzMyMzhhMmE6EF9jc3JmX3Rva2VuIjF5cDBaSVNaU2hGNEF3Mjl3bE5kVVh3cHZtUWJlSlVFazBtTXRRSUI2R3FJPQ%3D%3D--75f30a61b4bd3e9ce2c689c4f818edd0de36e9f1; path=/; expires=Sun, 01-Jan-2023 00:00:00 GMT; secure; HttpOnly"
+  ]
 }
 ```
 ```html
@@ -62,18 +62,18 @@ Status: 200
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <meta content="authenticity_token" name="csrf-param" />
-<meta content="lLTBmDj3VOPAwFtThN6u5HOSL+EVFb7GmrosdQ09j28=" name="csrf-token" />
+<meta content="yp0ZISZShF4Aw29wlNdUXwpvmQbeJUEk0mMtQIB6GqI=" name="csrf-token" />
 
-    <link href="https://a248.e.akamai.net/assets.github.com/assets/github-2cc00d0d3118fa5d35135cc56fe1a0c14611b069.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="https://a248.e.akamai.net/assets.github.com/assets/github2-51b9072e946bbf41f065de13b1579268fde9b919.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="https://a248.e.akamai.net/assets.github.com/assets/github-38b176043cca4486e745994b8bca0ff462aaccb0.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="https://a248.e.akamai.net/assets.github.com/assets/github2-3dfade455751c308f4b207b1a29a6cb39093d144.css" media="screen" rel="stylesheet" type="text/css" />
     
 
 
-        <script src="https://a248.e.akamai.net/assets.github.com/assets/frameworks-995182d02a0effa06cdc51e33fe6e729014a3c91.js" type="text/javascript"></script>
-      <script src="https://a248.e.akamai.net/assets.github.com/assets/github-f426b884410e23325b49a9fb69303f9f73f2100f.js" type="text/javascript"></script>
+        <script src="https://a248.e.akamai.net/assets.github.com/assets/frameworks-d61440caec5d2210a2242b084cdb2bc6597e00b7.js" type="text/javascript"></script>
+      <script src="https://a248.e.akamai.net/assets.github.com/assets/github-18d7eca5c5624e94f7a88f2049cdc702fbdcc8ff.js" type="text/javascript"></script>
       
 
-        <link rel='permalink' href='/missinglink/ciao/tree/d268b3aa250f9655d499f0d12a5a030f9f597336'>
+        <link rel='permalink' href='/missinglink/ciao/tree/ed2edfdcd9e04dcf07457d3f8ee2865c707f11ff'>
     <meta property="og:title" content="ciao"/>
     <meta property="og:type" content="githubog:gitrepository"/>
     <meta property="og:url" content="https://github.com/missinglink/ciao"/>
@@ -105,8 +105,8 @@ Status: 200
           <div class="container clearfix">
 
             <a class="header-logo-wordmark" href="https://github.com/">
-              <img alt="GitHub" class="github-logo-4x" height="30" src="https://a248.e.akamai.net/assets.github.com/images/modules/header/logov7@4x.png?1338956357" />
-              <img alt="GitHub" class="github-logo-4x-hover" height="30" src="https://a248.e.akamai.net/assets.github.com/images/modules/header/logov7@4x-hover.png?1338956357" />
+              <img alt="GitHub" class="github-logo-4x" height="30" src="https://a248.e.akamai.net/assets.github.com/images/modules/header/logov7@4x.png?1340659511" />
+              <img alt="GitHub" class="github-logo-4x-hover" height="30" src="https://a248.e.akamai.net/assets.github.com/images/modules/header/logov7@4x-hover.png?1340659511" />
             </a>
 
               
@@ -222,7 +222,7 @@ Status: 200
         </div>
 
       <div class="edit-repo-desc-homepage" style="display:none">
-        <form accept-charset="UTF-8" action="/missinglink/ciao/settings/update_meta" id="js-update-repo-meta-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="lLTBmDj3VOPAwFtThN6u5HOSL+EVFb7GmrosdQ09j28=" /></div>
+        <form accept-charset="UTF-8" action="/missinglink/ciao/settings/update_meta" id="js-update-repo-meta-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="yp0ZISZShF4Aw29wlNdUXwpvmQbeJUEk0mMtQIB6GqI=" /></div>
           <p class="error" style="display:none">Sorry, but there was a problem saving your changes.</p>
           <input type="text" id="repository-description-field" class="description-field" name="repo_description" value="Ciao is a simple command line utility for testing http(s) requests and generating API documentation" placeholder="Add a description to this repository">
           <input type="text" id="repository-homepage-field" class="homepage-field" name="repo_homepage" value="http://missinglink.github.com/ciao/" placeholder="Add a website to this repository">
@@ -352,7 +352,7 @@ Status: 200
           
 
 
-<!-- tree commit key: views10/v8/tree:v21:87de59a2cd7b2fadc3b5bc225b990fd3 -->
+<!-- tree commit key: views10/v8/tree:v21:8da104a221603fed98d3f4301948c813 -->
 
   <div id="slider">
       <div class="frame-meta">
@@ -360,7 +360,7 @@ Status: 200
 
           <p class="history-link js-history-link-replace">
 <a href="/missinglink/ciao/commits/master">                <span class="mini-icon mini-icon-history tooltipped" title="Browse commits for this branch"></span>
-                225 commits
+                226 commits
 </a>          </p>
 
         <div class="breadcrumb">
@@ -375,7 +375,7 @@ Status: 200
       
 
   <div class="frames">
-    <div class="frame" data-permalink-url="/missinglink/ciao/tree/d268b3aa250f9655d499f0d12a5a030f9f597336" data-title="missinglink/ciao · GitHub" data-type="tree">
+    <div class="frame" data-permalink-url="/missinglink/ciao/tree/ed2edfdcd9e04dcf07457d3f8ee2865c707f11ff" data-title="missinglink/ciao · GitHub" data-type="tree">
 
       <div class="bubble tree-browser-wrapper">
 
@@ -384,17 +384,17 @@ Status: 200
             
   <div class="commit commit-tease js-details-container">
     <p class="commit-title ">
-        <a href="/missinglink/ciao/commit/d268b3aa250f9655d499f0d12a5a030f9f597336" class="message">Documentation</a>
+        <a href="/missinglink/ciao/commit/ed2edfdcd9e04dcf07457d3f8ee2865c707f11ff" class="message">v0.1.3</a>
         
     </p>
     <div class="commit-meta">
-      <span class="js-zeroclipboard zeroclipboard-link" data-clipboard-text="d268b3aa250f9655d499f0d12a5a030f9f597336" data-copied-hint="copied!" title="Copy SHA"><span class="mini-icon mini-icon-clipboard"></span></span>
-      <a href="/missinglink/ciao/commit/d268b3aa250f9655d499f0d12a5a030f9f597336" class="sha-block">latest commit <span class="sha">d268b3aa25</span></a>
+      <span class="js-zeroclipboard zeroclipboard-link" data-clipboard-text="ed2edfdcd9e04dcf07457d3f8ee2865c707f11ff" data-copied-hint="copied!" title="Copy SHA"><span class="mini-icon mini-icon-clipboard"></span></span>
+      <a href="/missinglink/ciao/commit/ed2edfdcd9e04dcf07457d3f8ee2865c707f11ff" class="sha-block">latest commit <span class="sha">ed2edfdcd9</span></a>
 
       <div class="authorship">
         <img class="gravatar" height="20" src="https://secure.gravatar.com/avatar/37100264577268fd5f5e2a6d9517050d?s=140&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="20" />
         <span class="author-name"><a href="/missinglink" rel="author">missinglink</a></span>
-        authored <time class="js-relative-date updated" datetime="2013-01-30T13:41:24-08:00" title="2013-01-30 13:41:24">January 30, 2013</time>
+        authored <time class="js-relative-date updated" datetime="2013-01-30T14:39:45-08:00" title="2013-01-30 14:39:45">January 30, 2013</time>
 
       </div>
     </div>
@@ -410,22 +410,22 @@ Status: 200
 
     <tr>
       <td class="icon"><span class="mini-icon mini-icon-directory"></span></td>
-      <td class="content"><a href="/missinglink/ciao/tree/master/bin" class="js-slide-to css-truncate-target" id="c1111bd512b29e821b120b86446026b8-f4c1699ba7a73d84978834f5ef37a82d893c48c2" title="bin">bin</a></td>
-      <td class="age"><time class="js-relative-date" datetime="2013-01-30T13:25:42-08:00" title="2013-01-30 13:25:42">January 30, 2013</time></td>
+      <td class="content"><a href="/missinglink/ciao/tree/master/bin" class="js-slide-to css-truncate-target" id="c1111bd512b29e821b120b86446026b8-895f21ceabe15afa86dd52b59b22a91ea142660e" title="bin">bin</a></td>
+      <td class="age"><time class="js-relative-date" datetime="2013-01-30T14:39:45-08:00" title="2013-01-30 14:39:45">January 30, 2013</time></td>
 
       <td class="message">
-          <a href="/missinglink/ciao/commit/8633011f3b4ec1fd4913670bbcd8dfab634e3ebd" class="message">v0.1.2</a>
+          <a href="/missinglink/ciao/commit/ed2edfdcd9e04dcf07457d3f8ee2865c707f11ff" class="message">v0.1.3</a>
           [<a href="/missinglink" rel="author">missinglink</a>]
 
       </td>
     </tr>
     <tr>
       <td class="icon"><span class="mini-icon mini-icon-directory"></span></td>
-      <td class="content"><a href="/missinglink/ciao/tree/master/doc" class="js-slide-to css-truncate-target" id="9a09b4dfda82e3e665e31092d1c3ec8d-56a5d50a52ea9ff4e6db78c918fee201804c1602" title="doc">doc</a></td>
-      <td class="age"><time class="js-relative-date" datetime="2013-01-30T13:35:12-08:00" title="2013-01-30 13:35:12">January 30, 2013</time></td>
+      <td class="content"><a href="/missinglink/ciao/tree/master/doc" class="js-slide-to css-truncate-target" id="9a09b4dfda82e3e665e31092d1c3ec8d-a74e4898fe790b47c2bad224460dba34db628187" title="doc">doc</a></td>
+      <td class="age"><time class="js-relative-date" datetime="2013-01-30T14:39:45-08:00" title="2013-01-30 14:39:45">January 30, 2013</time></td>
 
       <td class="message">
-          <a href="/missinglink/ciao/commit/eb99ccfb4b58a649082b69aeccd7a37cfa331a95" class="message">Documentation</a>
+          <a href="/missinglink/ciao/commit/ed2edfdcd9e04dcf07457d3f8ee2865c707f11ff" class="message">v0.1.3</a>
           [<a href="/missinglink" rel="author">missinglink</a>]
 
       </td>
@@ -454,11 +454,11 @@ Status: 200
     </tr>
     <tr>
       <td class="icon"><span class="mini-icon mini-icon-directory"></span></td>
-      <td class="content"><a href="/missinglink/ciao/tree/master/lib" class="js-slide-to css-truncate-target" id="e8acc63b1e238f3255c900eed37254b8-901cfad10ffffa4a8c0a85aa1ef18b40b4b1ce9a" title="lib">lib</a></td>
-      <td class="age"><time class="js-relative-date" datetime="2013-01-30T12:31:33-08:00" title="2013-01-30 12:31:33">January 30, 2013</time></td>
+      <td class="content"><a href="/missinglink/ciao/tree/master/lib" class="js-slide-to css-truncate-target" id="e8acc63b1e238f3255c900eed37254b8-8caba8ec915885f786243b0ef841d43b1d171e6a" title="lib">lib</a></td>
+      <td class="age"><time class="js-relative-date" datetime="2013-01-30T14:39:45-08:00" title="2013-01-30 14:39:45">January 30, 2013</time></td>
 
       <td class="message">
-          <a href="/missinglink/ciao/commit/b52d3a518ae7ea0d700a26f044ef7beafcb0be16" class="message">Fixes</a> <a href="https://github.com/missinglink/ciao/issues/14" title="Assert blocks should have access to `json`" class="issue-link">#14</a> <a href="/missinglink/ciao/commit/b52d3a518ae7ea0d700a26f044ef7beafcb0be16" class="message">- Assert blocks get access to property</a>
+          <a href="/missinglink/ciao/commit/ed2edfdcd9e04dcf07457d3f8ee2865c707f11ff" class="message">v0.1.3</a>
           [<a href="/missinglink" rel="author">missinglink</a>]
 
       </td>
@@ -476,11 +476,11 @@ Status: 200
     </tr>
     <tr>
       <td class="icon"><span class="mini-icon mini-icon-directory"></span></td>
-      <td class="content"><a href="/missinglink/ciao/tree/master/test" class="js-slide-to css-truncate-target" id="098f6bcd4621d373cade4e832627b4f6-79bebdfc84b378138b8bf5d66d8d23e1169b1568" title="test">test</a></td>
-      <td class="age"><time class="js-relative-date" datetime="2013-01-30T11:23:14-08:00" title="2013-01-30 11:23:14">January 30, 2013</time></td>
+      <td class="content"><a href="/missinglink/ciao/tree/master/test" class="js-slide-to css-truncate-target" id="098f6bcd4621d373cade4e832627b4f6-50856bec4c427f45923626190f124fdc306c941f" title="test">test</a></td>
+      <td class="age"><time class="js-relative-date" datetime="2013-01-30T14:39:45-08:00" title="2013-01-30 14:39:45">January 30, 2013</time></td>
 
       <td class="message">
-          <a href="/missinglink/ciao/commit/24dcfb5afeb4b322893f4e5507e47035ca531b4b" class="message">Unit tests</a>
+          <a href="/missinglink/ciao/commit/ed2edfdcd9e04dcf07457d3f8ee2865c707f11ff" class="message">v0.1.3</a>
           [<a href="/missinglink" rel="author">missinglink</a>]
 
       </td>
@@ -542,11 +542,11 @@ Status: 200
     </tr>
     <tr>
       <td class="icon"><span class="mini-icon mini-icon-text-file"></span></td>
-      <td class="content"><a href="/missinglink/ciao/blob/master/package.json" class="js-slide-to css-truncate-target" id="b9cfc7f2cdf78a7f4b91a753d10865a2-2fee7835801ee3329fd984a4679c7a2f936a7dc9" title="package.json">package.json</a></td>
-      <td class="age"><time class="js-relative-date" datetime="2013-01-30T13:25:42-08:00" title="2013-01-30 13:25:42">January 30, 2013</time></td>
+      <td class="content"><a href="/missinglink/ciao/blob/master/package.json" class="js-slide-to css-truncate-target" id="b9cfc7f2cdf78a7f4b91a753d10865a2-fb3d7c871035f46e935234c5889a59ed0a338b8e" title="package.json">package.json</a></td>
+      <td class="age"><time class="js-relative-date" datetime="2013-01-30T14:39:45-08:00" title="2013-01-30 14:39:45">January 30, 2013</time></td>
 
       <td class="message">
-          <a href="/missinglink/ciao/commit/8633011f3b4ec1fd4913670bbcd8dfab634e3ebd" class="message">v0.1.2</a>
+          <a href="/missinglink/ciao/commit/ed2edfdcd9e04dcf07457d3f8ee2865c707f11ff" class="message">v0.1.3</a>
           [<a href="/missinglink" rel="author">missinglink</a>]
 
       </td>
@@ -920,7 +920,7 @@ Status: 200
 <br style="clear:both;">
 
 <div id="js-frame-loading-template" class="frame frame-loading large-loading-area" style="display:none;">
-  <img class="js-frame-loading-spinner" src="https://a248.e.akamai.net/assets.github.com/images/spinners/octocat-spinner-128.gif?1347543528" height="64" width="64">
+  <img class="js-frame-loading-spinner" src="https://a248.e.akamai.net/assets.github.com/images/spinners/octocat-spinner-128.gif?1347543527" height="64" width="64">
 </div>
 
 
@@ -983,7 +983,7 @@ Status: 200
       <hr class="footer-divider">
 
 
-    <p class="right">&copy; 2013 <span title="0.12477s from fe1.rs.github.com">GitHub</span> Inc. All rights reserved.</p>
+    <p class="right">&copy; 2013 <span title="0.08470s from fe16.rs.github.com">GitHub</span> Inc. All rights reserved.</p>
     <a class="left" href="https://github.com/">
       <span class="mega-icon mega-icon-invertocat"></span>
     </a>
@@ -1000,388 +1000,6 @@ Status: 200
 
     
 
-    
-
-<div id="keyboard_shortcuts_pane" class="instapaper_ignore readability-extra" style="display:none">
-  <h2>Keyboard Shortcuts <small><a href="#" class="js-see-all-keyboard-shortcuts">(see all)</a></small></h2>
-
-  <div class="columns threecols">
-    <div class="column first">
-      <h3>Site wide shortcuts</h3>
-      <dl class="keyboard-mappings">
-        <dt>s</dt>
-        <dd>Focus command bar</dd>
-      </dl>
-      <dl class="keyboard-mappings">
-        <dt>?</dt>
-        <dd>Bring up this help dialog</dd>
-      </dl>
-    </div><!-- /.column.first -->
-
-    <div class="column middle" style='display:none'>
-      <h3>Commit list</h3>
-      <dl class="keyboard-mappings">
-        <dt>j</dt>
-        <dd>Move selection down</dd>
-      </dl>
-      <dl class="keyboard-mappings">
-        <dt>k</dt>
-        <dd>Move selection up</dd>
-      </dl>
-      <dl class="keyboard-mappings">
-        <dt>c <em>or</em> o <em>or</em> enter</dt>
-        <dd>Open commit</dd>
-      </dl>
-      <dl class="keyboard-mappings">
-        <dt>y</dt>
-        <dd>Expand URL to its canonical form</dd>
-      </dl>
-    </div><!-- /.column.first -->
-
-    <div class="column last js-hidden-pane" style='display:none'>
-      <h3>Pull request list</h3>
-      <dl class="keyboard-mappings">
-        <dt>j</dt>
-        <dd>Move selection down</dd>
-      </dl>
-      <dl class="keyboard-mappings">
-        <dt>k</dt>
-        <dd>Move selection up</dd>
-      </dl>
-      <dl class="keyboard-mappings">
-        <dt>o <em>or</em> enter</dt>
-        <dd>Open issue</dd>
-      </dl>
-      <dl class="keyboard-mappings">
-        <dt><span class="platform-mac">⌘</span><span class="platform-other">ctrl</span> <em>+</em> enter</dt>
-        <dd>Submit comment</dd>
-      </dl>
-      <dl class="keyboard-mappings">
-        <dt><span class="platform-mac">⌘</span><span class="platform-other">ctrl</span> <em>+</em> shift p</dt>
-        <dd>Preview comment</dd>
-      </dl>
-      <dl class="keyboard-mappings">
-        <dt><span class="platform-mac">⌘</span><span class="platform-other">ctrl</span> <em>+</em> shift l</dt>
-        <dd>Go fullscreen</dd>
-      </dl>
-    </div><!-- /.columns.last -->
-
-  </div><!-- /.columns.equacols -->
-
-  <div class="js-hidden-pane" style='display:none'>
-    <div class="rule"></div>
-
-    <h3>Issues</h3>
-
-    <div class="columns threecols">
-      <div class="column first">
-        <dl class="keyboard-mappings">
-          <dt>j</dt>
-          <dd>Move selection down</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>k</dt>
-          <dd>Move selection up</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>x</dt>
-          <dd>Toggle selection</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>o <em>or</em> enter</dt>
-          <dd>Open issue</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt><span class="platform-mac">⌘</span><span class="platform-other">ctrl</span> <em>+</em> enter</dt>
-          <dd>Submit comment</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt><span class="platform-mac">⌘</span><span class="platform-other">ctrl</span> <em>+</em> shift p</dt>
-          <dd>Preview comment</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt><span class="platform-mac">⌘</span><span class="platform-other">ctrl</span> <em>+</em> shift l</dt>
-          <dd>Go fullscreen</dd>
-        </dl>
-      </div><!-- /.column.first -->
-      <div class="column last">
-        <dl class="keyboard-mappings">
-          <dt>c</dt>
-          <dd>Create issue</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>l</dt>
-          <dd>Create label</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>i</dt>
-          <dd>Back to inbox</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>u</dt>
-          <dd>Back to issues</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>/</dt>
-          <dd>Focus issues search</dd>
-        </dl>
-      </div>
-    </div>
-  </div>
-
-  <div class="js-hidden-pane" style='display:none'>
-    <div class="rule"></div>
-
-    <h3>Issues Dashboard</h3>
-
-    <div class="columns threecols">
-      <div class="column first">
-        <dl class="keyboard-mappings">
-          <dt>j</dt>
-          <dd>Move selection down</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>k</dt>
-          <dd>Move selection up</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>o <em>or</em> enter</dt>
-          <dd>Open issue</dd>
-        </dl>
-      </div><!-- /.column.first -->
-    </div>
-  </div>
-
-  <div class="js-hidden-pane" style='display:none'>
-    <div class="rule"></div>
-
-    <h3>Network Graph</h3>
-    <div class="columns equacols">
-      <div class="column first">
-        <dl class="keyboard-mappings">
-          <dt><span class="badmono">←</span> <em>or</em> h</dt>
-          <dd>Scroll left</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt><span class="badmono">→</span> <em>or</em> l</dt>
-          <dd>Scroll right</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt><span class="badmono">↑</span> <em>or</em> k</dt>
-          <dd>Scroll up</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt><span class="badmono">↓</span> <em>or</em> j</dt>
-          <dd>Scroll down</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>t</dt>
-          <dd>Toggle visibility of head labels</dd>
-        </dl>
-      </div><!-- /.column.first -->
-      <div class="column last">
-        <dl class="keyboard-mappings">
-          <dt>shift <span class="badmono">←</span> <em>or</em> shift h</dt>
-          <dd>Scroll all the way left</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>shift <span class="badmono">→</span> <em>or</em> shift l</dt>
-          <dd>Scroll all the way right</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>shift <span class="badmono">↑</span> <em>or</em> shift k</dt>
-          <dd>Scroll all the way up</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>shift <span class="badmono">↓</span> <em>or</em> shift j</dt>
-          <dd>Scroll all the way down</dd>
-        </dl>
-      </div><!-- /.column.last -->
-    </div>
-  </div>
-
-  <div class="js-hidden-pane" >
-    <div class="rule"></div>
-    <div class="columns threecols">
-      <div class="column first js-hidden-pane" >
-        <h3>Source Code Browsing</h3>
-        <dl class="keyboard-mappings">
-          <dt>t</dt>
-          <dd>Activates the file finder</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>l</dt>
-          <dd>Jump to line</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>w</dt>
-          <dd>Switch branch/tag</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>y</dt>
-          <dd>Expand URL to its canonical form</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>i</dt>
-          <dd>Show/hide all inline notes</dd>
-      </div>
-    </div>
-  </div>
-
-  <div class="js-hidden-pane" style='display:none'>
-    <div class="rule"></div>
-    <div class="columns threecols">
-      <div class="column first">
-        <h3>Browsing Commits</h3>
-        <dl class="keyboard-mappings">
-          <dt><span class="platform-mac">⌘</span><span class="platform-other">ctrl</span> <em>+</em> enter</dt>
-          <dd>Submit comment</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>escape</dt>
-          <dd>Close form</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>p</dt>
-          <dd>Parent commit</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>o</dt>
-          <dd>Other parent commit</dd>
-        </dl>
-      </div>
-    </div>
-  </div>
-
-  <div class="js-hidden-pane" style='display:none'>
-    <div class="rule"></div>
-    <h3>Notifications</h3>
-
-    <div class="columns threecols">
-      <div class="column first">
-        <dl class="keyboard-mappings">
-          <dt>j</dt>
-          <dd>Move selection down</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>k</dt>
-          <dd>Move selection up</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>o <em>or</em> enter</dt>
-          <dd>Open notification</dd>
-        </dl>
-      </div><!-- /.column.first -->
-
-      <div class="column second">
-        <dl class="keyboard-mappings">
-          <dt>e <em>or</em> shift i <em>or</em> y</dt>
-          <dd>Mark as read</dd>
-        </dl>
-        <dl class="keyboard-mappings">
-          <dt>shift m</dt>
-          <dd>Mute thread</dd>
-        </dl>
-      </div><!-- /.column.first -->
-    </div>
-  </div>
-
-</div>
-
-    <div id="markdown-help" class="instapaper_ignore readability-extra">
-  <h2>Markdown Cheat Sheet</h2>
-
-  <div class="cheatsheet-content">
-
-  <div class="mod">
-    <div class="col">
-      <h3>Format Text</h3>
-      <p>Headers</p>
-      <pre>
-# This is an &lt;h1&gt; tag
-## This is an &lt;h2&gt; tag
-###### This is an &lt;h6&gt; tag</pre>
-     <p>Text styles</p>
-     <pre>
-*This text will be italic*
-_This will also be italic_
-**This text will be bold**
-__This will also be bold__
-
-*You **can** combine them*
-</pre>
-    </div>
-    <div class="col">
-      <h3>Lists</h3>
-      <p>Unordered</p>
-      <pre>
-* Item 1
-* Item 2
-  * Item 2a
-  * Item 2b</pre>
-     <p>Ordered</p>
-     <pre>
-1. Item 1
-2. Item 2
-3. Item 3
-   * Item 3a
-   * Item 3b</pre>
-    </div>
-    <div class="col">
-      <h3>Miscellaneous</h3>
-      <p>Images</p>
-      <pre>
-![GitHub Logo](/images/logo.png)
-Format: ![Alt Text](url)
-</pre>
-     <p>Links</p>
-     <pre>
-http://github.com - automatic!
-[GitHub](http://github.com)</pre>
-<p>Blockquotes</p>
-     <pre>
-As Kanye West said:
-
-> We're living the future so
-> the present is our past.
-</pre>
-    </div>
-  </div>
-  <div class="rule"></div>
-
-  <h3>Code Examples in Markdown</h3>
-  <div class="col">
-      <p>Syntax highlighting with <a href="http://github.github.com/github-flavored-markdown/" title="GitHub Flavored Markdown" target="_blank">GFM</a></p>
-      <pre>
-```javascript
-function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:'#foo'})
-  }
-}
-```</pre>
-    </div>
-    <div class="col">
-      <p>Or, indent your code 4 spaces</p>
-      <pre>
-Here is a Python code example
-without syntax highlighting:
-
-    def foo:
-      if not bar:
-        return true</pre>
-    </div>
-    <div class="col">
-      <p>Inline code for comments</p>
-      <pre>
-I think you should use an
-`&lt;addr&gt;` element here instead.</pre>
-    </div>
-  </div>
-
-  </div>
-</div>
-
 
     <div id="ajax-error-message" class="flash flash-error">
       <span class="mini-icon mini-icon-exclamation"></span>
@@ -1391,7 +1009,7 @@ I think you should use an
 
     
     
-    <span id='server_response_time' data-time='0.12576' data-host='fe1'></span>
+    <span id='server_response_time' data-time='0.08491' data-host='fe16'></span>
     
   </body>
 </html>
@@ -1401,13 +1019,13 @@ I think you should use an
 
 ## Tests
 
-### ✓ Should be github
-```javascript
-response.should.have.header 'server', 'GitHub.com'
-```
-
 ### ✓ Repo is public
 ```javascript
 response.statusCode.should.equal 200
+```
+
+### ✓ Should be github
+```javascript
+response.should.have.header 'server', 'GitHub.com'
 ```
 

@@ -3,7 +3,11 @@ Runner = require './Runner'
 
 firstrun = true
 
-module.exports.standard = (code,stdout,stderr,data,logger=console) =>
+logger = console
+
+module.exports.standard = (code,stdout,stderr,data,log=console) =>
+
+  logger = log if log
 
   # Hack for adding first newline
   if firstrun is true
@@ -31,6 +35,19 @@ module.exports.standard = (code,stdout,stderr,data,logger=console) =>
     # logger.log '\n' + debug
 
   logger.log ''
+
+module.exports.reqRes = (code,stdout,stderr,data) =>
+
+  unless code is 0
+
+    logger.log '\n -- REQUEST -----------'
+    logger.log JSON.stringify( data.request, null, 2 )
+
+    logger.log '\n -- RESPONSE -----------'
+    logger.log data.response.statusCode
+    logger.log JSON.stringify( data.request.headers, null, 2 )
+    foo = JSON.parse( data.response.body )
+    logger.log JSON.stringify( foo, null, 2 )
 
 module.exports.debug = (code,stdout,stderr,data) =>
 
