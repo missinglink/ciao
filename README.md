@@ -1,6 +1,8 @@
 # Ciao
 
-Ciao is a simple command line utility for testing HTTP(s) requests and generating API documentation.
+![Cans](https://github.com/missinglink/ciao/raw/master/img/cans.jpg "Cans")
+
+Ciao is a simple command line utility for testing http(s) requests and generating API documentation.
 
 ## Scripts:
 
