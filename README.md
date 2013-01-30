@@ -95,7 +95,7 @@ You can also use ciao on directories to recursively run all scripts.
 ciao scripts
 ```
 
-## Setting up your project
+## Configuration
 
 Ciao looks for a global configuration file called `ciao.json` in your current working directory.
 
