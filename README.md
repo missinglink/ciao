@@ -55,25 +55,20 @@ Ciao is still in beta, if you are lucky enough to have git access, you're best t
 ```bash
 git clone git@github.com:missinglink/ciao.git ciao
 cd ciao
+npm install
 PATH=bin/:$PATH
+ciao --help
 ```
 
 If you want to install the most stable `ciao` binary globally on your system via `npm` then use
 
 ```bash
 npm install -g ciao
+ciao --help
 ```
 
 Note: documentation (such as this README) should only refer to `bleeding edge` and not `stable`.
 
-## Quick start
-
-Clone the project, enter the project directory and run:
-
-```bash
-npm install
-npm run ciao
-```
 
 ## Running the command line interface
 
@@ -196,6 +191,16 @@ https://github.com/missinglink/ciao/issues
 Please report everything as it comes up, no matter how small.
 
 ## Contributing
+
+### Quick start
+
+Clone the project, enter the project directory and run:
+
+```bash
+npm install
+npm test
+npm run ciao
+```
 
 ### I have push access, what can I push?
 
