@@ -6,7 +6,6 @@ class Suite
 
   constructor: (@done) ->
     @files = []
-    @listeners = []
 
   # Get list of files recursively
   walk: (path) =>
@@ -21,14 +20,15 @@ class Suite
 
       walker = walk.walk( path, { followLinks: false } )
       walker.on 'file', ( root, stat, next ) =>
-        @files.push( root + '/' + stat.name )
+        scriptpath = root + '/' + stat.name
+        @files.push scriptpath
+        @done scriptpath, @
         next()
-      walker.on 'end', () => @done file, @ for file in @files
 
     else if stats.isFile()
       @files.push path
       @done path, @
 
-  listener: (callback) => @listeners.push callback
+    else throw new Error 'Not a file or a directory...'
 
 module.exports = Suite
