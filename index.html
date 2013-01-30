@@ -80,8 +80,6 @@
 
 <p>Ciao uses a special syntax to declare the start and end of code blocks.</p>
 
-<p>The parser will include all code following the directive within that block.</p>
-
 <p>Currently 4 interpreter directives are supported:</p>
 
 <ul>
@@ -292,8 +290,6 @@
 <p>After a <code>response</code> comes back from the target server; all <code>#? assertion</code> blocks are fired asyncronously in a seperate child process.</p>
 
 <p>This isolates the main thread from malicious assertion code and ensures the fastest execution of tests.</p>
-
-<p><code>http.request</code> reference: <a href="http://nodejs.org/api/http.html#http_http_request_options_callback">http://nodejs.org/api/http.html#http_http_request_options_callback</a></p>
 
 <h2>Known bugs</h2>
 
