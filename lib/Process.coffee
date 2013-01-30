@@ -13,7 +13,6 @@ class Process extends EventEmitter
     @stdout = ''
     @stderr = ''
     @proc = cp.spawn @command, @args, @options
-
     @proc.stdout.on 'data', (data) => @stdout += data
     @proc.stderr.on 'data', (data) => @stderr += data
     
