@@ -50,7 +50,7 @@ The title is used for reporting & documentation, so the better your titles, the 
 
 ## Installing Ciao
 
-Ciao is still in beta, if you are lucky enough to have git access, you're best to `bleeding edge`:
+Ciao is still in beta, if you are lucky enough to have git access, you're best to use `bleeding edge`:
 
 ```bash
 git clone git@github.com:missinglink/ciao.git ciao
