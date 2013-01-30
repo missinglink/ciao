@@ -158,9 +158,8 @@ Full `http.request` reference: http://nodejs.org/api/http.html#http_http_request
 
 ### Examples
 
-Posting data to a JSON web service
-
 ```coffee-script
+#> Post data to a JSON web service
 path: '/blog/article'
 method: 'POST'
 headers:
