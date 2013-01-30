@@ -188,6 +188,32 @@ Each test case has access to two objects named `title` & `response`.
 
 In all 3 cases, these properties are exactly the same as what you would get if you used `http.request`.
 
+### Examples
+
+```coffee-script
+#? Test the response code
+response.statusCode.should.equal 200
+
+#? Test a header is set
+response.should.have.header 'server'
+
+#? Test a header value
+response.should.have.header 'server', 'apache'
+
+#? Test body contains string
+response.body.should.include 'Bingo Bango Bongo!'
+
+#? Test body contains regex
+response.body.should.match /^[a-z0-9]{40}/
+
+#? Test json object contains properties
+JSON.parse( response.body ).should.eql {
+  id: "10000000000000000000",
+  name: "Bingo Bango Bongo!"
+}
+
+```
+
 `should.js` reference: https://github.com/visionmedia/should.js/
 
 ## API Documentation
