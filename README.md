@@ -50,24 +50,14 @@ The title is used for reporting & documentation, so the better your titles, the 
 
 ## Installing Ciao
 
-Ciao is still in beta, if you are lucky enough to have git access, you're best to use `bleeding edge`:
-
-```bash
-git clone git@github.com:missinglink/ciao.git ciao
-cd ciao
-npm install
-PATH=bin/:$PATH
-ciao --help
-```
-
-If you want to install the most stable `ciao` binary globally on your system via `npm` then use
+To install the most stable `ciao` binary globally on your system via `npm` you can simply:
 
 ```bash
 npm install -g ciao
 ciao --help
 ```
 
-Note: documentation (such as this README) should only refer to `bleeding edge` and not `stable`.
+Note: documentation (such as this README) may cover features not yet available via `npm`.
 
 
 ## Running the command line interface
@@ -208,14 +198,16 @@ Please report everything as it comes up, no matter how small.
 
 ## Contributing
 
+Ciao is still in beta, if you are lucky enough to have git access, you're best to use `bleeding edge`:
+
 ### Quick start
 
-Clone the project, enter the project directory and run:
-
 ```bash
+git clone git@github.com:missinglink/ciao.git ciao
+cd ciao
 npm install
 npm test
-npm run ciao
+./bin/ciao scripts/static
 ```
 
 ### I have push access, what can I push?
