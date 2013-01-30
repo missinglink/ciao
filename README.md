@@ -33,7 +33,6 @@ response.statusCode.should.equal 200
 response.should.have.header 'server', 'GitHub.com'
 
 #? Should be data
-json = JSON.parse( response.body )
 json.sha.should.match /^[a-z0-9]{40}/
 json.should.include
   type: 'file'
@@ -177,16 +176,14 @@ You can add assertions to your scripts by including `assertion` blocks.
 
 Currently assertion blocks only provide the functionality of the `should` js framework, but I am looking at adding more assertion libraries in the future.
 
-Each test case has access to two objects named `title` & `response`.
+Each test case has access to three objects named `title`, `response` & `json`.
 
 * `title` is simply the title specified in the interpreter directive (as discussed above)
-* `response` contains 3 properties:
-
+* `response` contains 3 properties returned by `http.request`
   * `response.body` contains the body of the http(s) response.
   * `response.statusCode` contains the status code of the http(s) response.
   * `response.headers` contains an array of headers that were returned.
-
-In all 3 cases, these properties are exactly the same as what you would get if you used `http.request`.
+* `json` the result of parsing the response.body with `JSON.parse` (null for invalid json).
 
 ### Examples
 
@@ -207,7 +204,7 @@ response.body.should.include 'Bingo Bango Bongo!'
 response.body.should.match /^[a-z0-9]{40}/
 
 #? Test json object contains properties
-JSON.parse( response.body ).should.eql {
+json.should.eql {
   id: "10000000000000000000",
   name: "Bingo Bango Bongo!"
 }

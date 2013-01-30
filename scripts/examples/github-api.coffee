@@ -13,7 +13,6 @@ response.statusCode.should.equal 200
 response.should.have.header 'server', 'GitHub.com'
 
 #? Should be data
-json = JSON.parse( response.body )
 json.sha.should.match /^[a-z0-9]{40}/
 json.should.include
   type: 'file'

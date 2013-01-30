@@ -9,7 +9,7 @@ path: '/peter.johnson.nz'
 response.statusCode.should.equal 200
 
 #? Should be a graph user object
-JSON.parse( response.body ).should.eql {
+json.should.eql {
   id: "1617360746",
   name: "Peter Johnson",
   first_name: "Peter",

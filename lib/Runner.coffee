@@ -21,11 +21,15 @@ class Runner
       statusCode: response.statusCode
       headers: response.headers
 
+    try json = JSON.parse body
+    catch e then json = null
+
     for test in @groups
 
       script = []
       script.push "should = require 'should'"
       script.push "title = '" + test.title.split("'").join("\\'") + "'"
+      script.push "json = " + JSON.stringify json
       script.push "response = " + JSON.stringify res
       script.push "try"
       script.push Runner.indentSource( test.source, ' ', 2 )
