@@ -179,7 +179,12 @@ In all 3 cases, these properties are exactly the same as what you would get if y
 
 Ciao generates documentation for each `request`, the resulting `response` and all `assertion` blocks.
 
-The documentation is in `markdown` format and is available in the directory specified in the ciao config (as discussed above).
+The documentation is in `markdown` format and is available in the directory specified using the `-d` option when executing `ciao`
+
+eg. To generate documentation in `./doc` for all scripts in `./scripts`:
+```bash
+ciao -d doc scripts
+```
 
 An example generated documentation file can be found here:
 https://github.com/missinglink/ciao/blob/master/example.md
