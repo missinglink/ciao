@@ -152,7 +152,7 @@ All `request` blocks have access to an object named `config` which contains all 
 * `path` Request path. Defaults to '/'. Should include query string if any. E.G. '/index.html?page=12'
 * `headers` An object containing request headers.
 * `auth` Basic authentication i.e. 'user:password' to compute an Authorization header.
-* `body` If body is an object then it will be stringified before sending.
+* `body` If body is an object then `JSON.stringify` will be run on it before sending.
 
 Full `http.request` reference: http://nodejs.org/api/http.html#http_http_request_options_callback
 
