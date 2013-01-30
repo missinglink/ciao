@@ -92,14 +92,13 @@ ciao scripts
 
 ## Setting up your project
 
-Ciao looks for a global configuration file called `ciao.json` in the current working directorys.
+Ciao looks for a global configuration file called `ciao.json` in your current working directory.
 
 Example `ciao.json`
 
 ```javascript
 {
   "settings": {
-    "testDir": "./scripts",
     "docDir": "./doc"
   },
   "defaults": {
@@ -112,7 +111,7 @@ Example `ciao.json`
 }
 ```
 
-This will set up ciao to read scripts from `./scripts` and write documentation to `./doc`
+The `docDir` property will set up ciao to write documentation to `./doc`
 
 The `defaults` section is merged in to every request that is made, it's useful for specifying global request properties such as `host` and `port`.
 
