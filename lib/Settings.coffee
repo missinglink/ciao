@@ -24,10 +24,12 @@ class Settings
       unless silent
         console.log "\n \x1b[1;33m⚠\x1b[1;33m  WARNING: Failed to load #{filename}\x1b[0m"
 
+    return @
+
   merge: (settings) =>
 
-    if settings.defaults then @defaults = deepmerge @defaults, settings.defaults
-    if settings.config then @config = deepmerge @config, settings.config
+    if settings?.defaults then @defaults = deepmerge @defaults, settings.defaults
+    if settings?.config then @config = deepmerge @config, settings.config
 
     return @
 
