@@ -1,9 +1,9 @@
-CiaoScript = require 'lib/CiaoScript'
+Script = require 'lib/Script'
 should = require 'should'
 fs = require 'fs'
 Settings = require 'lib/Settings'
 
-describe 'CiaoScript', ->
+describe 'Script', ->
 
   describe 'constructor', ->
 
@@ -11,25 +11,25 @@ describe 'CiaoScript', ->
 
     it 'should throw unless settings are provided', ->
 
-      construct = -> CiaoScript.load ''
+      construct = -> Script.load ''
       construct.should.throw "Invalid settings"
 
     it 'should throw on invalid file', ->
 
-      construct = -> CiaoScript.load 'not/existing', settings
+      construct = -> Script.load 'not/existing', settings
       construct.should.throw "ENOENT, no such file or directory 'not/existing'"
 
     it 'should not throw if the script does not contain a request block', (done) ->
 
-      construct = -> CiaoScript.load 'fixtures/script01.coffee', settings, () -> done()
+      construct = -> Script.load 'fixtures/script01.coffee', settings, () -> done()
       construct.should.not.throw()
 
     it 'should throw if the script does not contain any assert blocks', (done) ->
 
-      construct = -> CiaoScript.load 'fixtures/script02.coffee', settings, () -> done()
+      construct = -> Script.load 'fixtures/script02.coffee', settings, () -> done()
       construct.should.not.throw()
 
     it 'should accept valid scripts', (done) ->
 
-      construct = -> CiaoScript.load 'fixtures/script101.coffee', settings, () -> done()
+      construct = -> Script.load 'fixtures/script101.coffee', settings, () -> done()
       construct.should.not.throw()

@@ -2,7 +2,7 @@
 
 var path = require( 'path' );
 var coffee = require( 'coffee-script' );
-var CiaoScript = require( '../lib/CiaoScript' );
+var Script = require( '../lib/Script' );
 var Runner = require( '../lib/Runner' );
 var Reporter = require( '../lib/Reporter' );
 var Documentor = require( '../lib/Documentor' );
@@ -28,7 +28,7 @@ var suite = new Suite( function( filename, suite )
   settings = new Settings();
   settings.merge( basesettings );
 
-  CiaoScript.load( filename, settings, function( settings, parser )
+  Script.load( filename, settings, function( settings, parser )
   {
     if( parser.sections.request[0] ){
       var runner = new Runner( parser.sections.assert );
