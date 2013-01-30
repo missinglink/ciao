@@ -2,7 +2,6 @@
 CoffeeScript = require 'coffee-script'
 Process = require './Process'
 Runner = require './Runner'
-merge = require 'deepmerge'
 async = require 'async'
 
 class RequestChain

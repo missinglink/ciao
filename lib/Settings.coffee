@@ -4,24 +4,24 @@ fs = require 'fs'
 
 class Settings
 
-  constructor: (settings={}, filename='ciao.json') ->
+  constructor: () ->
 
     @config = {}
     @defaults =
-      host: "localhost"
-      port: 3000
+      protocol: 'http:'
+      host: "www.example.com"
+      port: 80
+      path: '/'
 
-    @loadFromFile filename
-    @merge settings
-
-  loadFromFile: (filename) ->
+  loadFromFile: (filename,silent=false) =>
 
     try
       throw new Error 'Failed to stat config file' unless fs.statSync filename
       json = JSON.parse fs.readFileSync filename
       return @merge json
     catch e
-      console.log "WARN: Failed to load #{filename}" 
+      unless silent
+        console.log "\n \x1b[1;33m⚠\x1b[1;33m  WARNING: Failed to load #{filename}\x1b[0m"
 
   merge: (settings) =>
 

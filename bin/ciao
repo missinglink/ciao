@@ -20,6 +20,7 @@ program
   .parse(process.argv);
 
 basesettings = new Settings();
+basesettings.loadFromFile( 'ciao.json', true );
 if( program.conf ){ basesettings.loadFromFile( program.conf ); }
 
 var suite = new Suite( function( filename, suite )
