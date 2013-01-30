@@ -34,13 +34,10 @@ The parser will include all code following the directive within that block.
 
 Currently 4 interpreter directives are supported:
 
-`#!` defines a `before` block, this is merged in to every `request` block.
-
-`#>` defines a `request` block, this is the main http(s) query definition block.
-
-`#?` defines an `assertion` block, this defines a test case which the `result` should conform to.
-
-`##` defines a `junk` block, all code in this block will be ignored by the parser.
+* `#!` defines a `before` block, this is merged in to every `request` block.
+* `#>` defines a `request` block, this is the main http(s) query definition block.
+* `#?` defines an `assertion` block, this defines a test case which the `result` should conform to.
+* `##` defines a `junk` block, all code in this block will be ignored by the parser.
 
 Each directive is followed by a single space and a directive title
 
