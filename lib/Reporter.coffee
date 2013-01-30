@@ -1,7 +1,7 @@
 
 firstrun = true
 
-module.exports = (code,stdout,stderr,data) =>
+module.exports.standard = (code,stdout,stderr,data) =>
 
   # Hack for adding first newline
   if firstrun is true

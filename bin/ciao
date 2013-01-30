@@ -3,12 +3,12 @@
 var path = require( 'path' );
 var coffee = require( 'coffee-script' );
 var CiaoScript = require( '../lib/CiaoScript' );
-var TestRunner = require( '../lib/TestRunner' );
+var Runner = require( '../lib/Runner' );
 var Reporter = require( '../lib/Reporter' );
 var Documentor = require( '../lib/Documentor' );
 var Request = require( '../lib/Request' );
 var Settings = require( '../lib/Settings' );
-var TestSuite = require( '../lib/TestSuite' );
+var Suite = require( '../lib/Suite' );
 var program = require('commander');
 
 program
@@ -20,29 +20,33 @@ program
 
 settings = new Settings();
 
-var suite = new TestSuite( settings, function( filename, suite )
+var suite = new Suite( settings, function( filename, suite )
 {
-  var script = new CiaoScript( filename, suite.settings );
-  var runner = new TestRunner( script.parser.sections.assert );
-  
-  if( !program.silent ){
-    runner.listener( Reporter );
-  }
-
-  var request = new Request();
-  request.listener( runner.complete );
-
-  if( program.documentation )
+  CiaoScript.load( filename, suite.settings, function( settings, parser )
   {
-    filename = path.resolve( filename );
-    var docTarget = filename.replace( process.cwd(), process.cwd() + '/' + program.documentation );
-    var docFile = docTarget.replace( '.coffee', '.md' );
-    var documentation = new Documentor( script.parser.sections.request[0].title, docFile );
-    runner.listener( documentation.documentTest );
-    request.listener( documentation.documentTransaction );
-  }
+    var runner = new Runner( parser.sections.assert );
+    
+    // Set Reporter
+    if( !program.silent ){ runner.listener( Reporter.standard ); }
 
-  request.transfer( script.request );
+    // HTTP Request
+    var http = new Request();
+    http.listener( runner.complete );
+
+    // Documentation
+    if( program.documentation )
+    {
+      filename = path.resolve( filename );
+      var docTarget = filename.replace( process.cwd(), process.cwd() + '/' + program.documentation );
+      var docFile = docTarget.replace( '.coffee', '.md' );
+      var documentation = new Documentor( parser.sections.request[0].title, docFile );
+      runner.listener( documentation.documentTest );
+      http.listener( documentation.documentTransaction );
+    }
+
+    // Send the Request
+    http.transfer( settings.defaults );
+  });
 });
 
 // Run script(s)

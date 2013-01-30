@@ -2,7 +2,7 @@ fs = require 'fs'
 walk = require 'walk'
 path = require 'path'
 
-class TestSuite
+class Suite
 
   constructor: (@settings, @done) ->
     @files = []
@@ -31,4 +31,4 @@ class TestSuite
 
   listener: (callback) => @listeners.push callback
 
-module.exports = TestSuite
+module.exports = Suite

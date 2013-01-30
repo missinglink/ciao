@@ -12,7 +12,8 @@
     "underscore": "~1.4.3",
     "deepmerge": "~0.2.5",
     "should": "~1.2.1",
-    "commander": "*"
+    "commander": "*",
+    "q": "*"
   },
   "bin": {
     "ciao": "./bin/ciao"

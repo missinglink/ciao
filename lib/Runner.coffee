@@ -1,7 +1,7 @@
 Process = require './Process'
 coffee = 'node_modules/coffee-script/bin/coffee'
 
-class TestRunner
+class Runner
 
   constructor: (groups) ->
 
@@ -28,7 +28,7 @@ class TestRunner
       script.push "title = '" + test.title.split("'").join("\\'") + "'"
       script.push "response = " + JSON.stringify res
       script.push "try"
-      script.push TestRunner.indentSource( test.source, ' ', 2 )
+      script.push Runner.indentSource( test.source, ' ', 2 )
       script.push "catch e"
       script.push "  console.log e.message"
       script.push "  process.exit 1"
@@ -49,4 +49,4 @@ class TestRunner
     indent = Array(indentation).join(' ')
     return indent + ( source + "\n" ).split("\n").join("\n#{indent}")
 
-module.exports = TestRunner
+module.exports = Runner

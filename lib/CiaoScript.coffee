@@ -2,34 +2,65 @@ fs = require 'fs'
 ScriptParser = require './ScriptParser'
 deepmerge = require 'deepmerge'
 CoffeeScript = require 'coffee-script'
+Settings = require './Settings'
+
+class RequestChain
+
+  constructor: () ->
+    @chain = []
+
+  merge: (settings) =>
+    @chain.push (prev) ->
+      deepmerge prev, settings
+
+  mergeScript: (script) =>
+    @chain.push (prev) ->
+      deepmerge prev, defaults: CoffeeScript.eval script
+
+  run: () =>
+    settings = {}
+    settings = link settings for link in @chain
+    @done settings
+
+  done: () => console.log 'RequestChain FAIL'
 
 class CiaoScript
 
-  constructor: (@filename,settings) ->
+  @load: (filename,settings,cb) ->
 
-    throw new Error 'Failed to stat file' unless fs.statSync @filename
-    @parser = new ScriptParser fs.readFileSync(@filename), @filename
+    throw new Error 'Invalid settings' unless settings and settings instanceof Settings
 
-    if @parser.sections.request.length < 1
-      console.log @filename
+    throw new Error 'Failed to stat file' unless fs.statSync filename
+    parser = new ScriptParser fs.readFileSync(filename), filename
+
+    if parser.sections.request.length < 1
+      console.log filename
       throw new Error 'FATAL: You must define a request section'
 
-    if @parser.sections.request.length > 1
-      console.log @filename
+    if parser.sections.request.length > 1
+      console.log filename
       console.error 'WARNING: You may only have one request section per script'
 
-    @request = settings.defaults or {}
+    unless parser.sections.assert[0] then throw new Error 'FATAL: No test sections found'
 
-    for config in @parser.sections.auth
-      script = "config = " + JSON.stringify(settings.config) + "\n\n" + config.source
-      @request = deepmerge @request, CoffeeScript.eval script
+    chain = new RequestChain()
+    chain.merge settings
 
-    script = "config = " + JSON.stringify(settings.config) + "\n\n" + @parser.sections.request[0].source
-    @request = deepmerge @request, CoffeeScript.eval script
+    for section in parser.sections.auth
+      chain.mergeScript "config = " + JSON.stringify(settings.config) + "\n\n" + section.source + '\n'
 
-    unless @request?.host then throw new Error 'FATAL: Invalid request section, you must specify a host'
-    unless @request?.method then throw new Error 'FATAL: Invalid request section, you must specify a a method'
-    unless @request?.path then throw new Error 'FATAL: Invalid request section, you must specify a path'
-    unless @parser.sections.assert[0] then throw new Error 'FATAL: No test sections found'
+    chain.mergeScript "config = " + JSON.stringify(settings.config) + "\n\n" + parser.sections.request[0].source + '\n'
+
+    chain.done = (settings) =>
+
+      unless settings.defaults?.host then throw new Error 'FATAL: Invalid request section, you must specify a host'
+      unless settings.defaults?.method then throw new Error 'FATAL: Invalid request section, you must specify a a method'
+      unless settings.defaults?.path then throw new Error 'FATAL: Invalid request section, you must specify a path'
+
+      cb settings, parser
+    
+    chain.run();
+
+  done: (request) => console.log 'CiaoScript FAIL'
 
 module.exports = CiaoScript
