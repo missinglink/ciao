@@ -212,6 +212,8 @@ JSON.parse( response.body ).should.eql {
   name: "Bingo Bango Bongo!"
 }
 
+#? Check for a redirect
+response.should.have.header 'location', 'http://www.example.com/'
 ```
 
 `should.js` reference: https://github.com/visionmedia/should.js/
