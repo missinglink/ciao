@@ -2,7 +2,7 @@
 
 Ciao is a simple command line utility for testing HTTP(s) requests and generating API documentation.
 
-## Ciao scripts:
+## Scripts:
 
 Ciao scripts are written in coffee-script, however it's important to note that they are interpreted, not executed.
 
