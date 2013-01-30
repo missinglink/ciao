@@ -74,6 +74,7 @@ $ ciao --help
 ```
 
 Note: documentation (such as this README) may cover features not yet available via `npm`.
+
 Note: you will need `node` and `npm` installed first: http://nodejs.org/download/
 
 
