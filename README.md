@@ -60,7 +60,7 @@ $ ciao --help
 Note: documentation (such as this README) may cover features not yet available via `npm`.
 
 
-## Running the command line interface
+## Running Scripts
 
 ```
 peter@edgy:/var/www/ciao$ ciao --help
@@ -76,7 +76,7 @@ peter@edgy:/var/www/ciao$ ciao --help
     -d, --documentation [dir]  generate documentation in output dir
 ```
 
-### Running a script
+### Running a single script
 
 ```bash
 $ ciao scripts/static/README.example.coffee 
