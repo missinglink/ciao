@@ -1,6 +1,6 @@
 # Facebook graph API call
 
-*Generated: Wed Jan 30 2013 19:23:08 GMT+0000 (GMT)*
+*Generated: Wed Jan 30 2013 21:00:48 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -27,8 +27,8 @@ Status: 200
   "expires": "Sat, 01 Jan 2000 00:00:00 GMT",
   "pragma": "no-cache",
   "x-fb-rev": "724288",
-  "x-fb-debug": "5yObA/zsThTs++Qa8zA9ljw6C9PTfQX7Gl6Suv8tC5Q=",
-  "date": "Wed, 30 Jan 2013 19:23:04 GMT",
+  "x-fb-debug": "3jIGW9qgVW5Yf7xRJmQP+tM9aRlq7NrQKzt90erRroM=",
+  "date": "Wed, 30 Jan 2013 21:00:44 GMT",
   "connection": "close",
   "content-length": "148"
 }
@@ -54,7 +54,7 @@ response.statusCode.should.equal 200
 
 ### ✓ Should be a graph user object
 ```javascript
-JSON.parse( response.body ).should.eql {
+json.should.eql {
   id: "1617360746",
   name: "Peter Johnson",
   first_name: "Peter",

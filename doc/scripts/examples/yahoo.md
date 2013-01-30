@@ -1,6 +1,6 @@
 # Register new user
 
-*Generated: Wed Jan 30 2013 19:23:08 GMT+0000 (GMT)*
+*Generated: Wed Jan 30 2013 21:00:48 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -19,13 +19,13 @@
 ```javascript
 Status: 301
 {
-  "date": "Wed, 30 Jan 2013 19:06:27 GMT",
+  "date": "Wed, 30 Jan 2013 20:51:25 GMT",
   "p3p": "policyref=\"http://info.yahoo.com/w3c/p3p.xml\", CP=\"CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC GOV\"",
   "cache-control": "max-age=3600, public",
   "location": "http://uk.yahoo.com/",
   "vary": "Accept-Encoding",
   "content-type": "text/html; charset=utf-8",
-  "age": "997",
+  "age": "559",
   "content-length": "81",
   "connection": "close",
   "via": "HTTP/1.1 rc6.ops.ird.yahoo.com (YahooTrafficServer/1.20.10 [cHs f ])",
@@ -33,7 +33,7 @@ Status: 301
 }
 ```
 ```html
-<!-- rc6.ops.ird.yahoo.com uncompressed/chunked Wed Jan 30 19:06:27 UTC 2013 -->
+<!-- rc6.ops.ird.yahoo.com uncompressed/chunked Wed Jan 30 20:51:25 UTC 2013 -->
 
 ```
 

@@ -1,6 +1,6 @@
 # Github page for missinglink/ciao
 
-*Generated: Wed Jan 30 2013 19:23:09 GMT+0000 (GMT)*
+*Generated: Wed Jan 30 2013 21:00:49 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -21,18 +21,18 @@
 Status: 404
 {
   "server": "GitHub.com",
-  "date": "Wed, 30 Jan 2013 19:23:04 GMT",
+  "date": "Wed, 30 Jan 2013 21:00:44 GMT",
   "content-type": "text/html; charset=utf-8",
   "connection": "close",
   "status": "404 Not Found",
-  "strict-transport-security": "max-age=2592000",
-  "x-runtime": "8",
-  "cache-control": "no-cache",
   "content-length": "229258",
   "set-cookie": [
-    "logged_in=no; domain=.github.com; path=/; expires=Sun, 30-Jan-2033 19:23:04 GMT"
+    "logged_in=no; domain=.github.com; path=/; expires=Sun, 30-Jan-2033 21:00:44 GMT"
   ],
-  "x-frame-options": "deny"
+  "x-frame-options": "deny",
+  "strict-transport-security": "max-age=2592000",
+  "x-runtime": "8",
+  "cache-control": "no-cache"
 }
 ```
 ```html
@@ -552,13 +552,13 @@ Please, don't. https://github.com/styleguide/templates/2.0
 
 ## Tests
 
-### ✓ Should be github
-```javascript
-response.should.have.header 'server', 'GitHub.com'
-```
-
 ### ✓ Repo is private
 ```javascript
 response.statusCode.should.equal 404
+```
+
+### ✓ Should be github
+```javascript
+response.should.have.header 'server', 'GitHub.com'
 ```
 
