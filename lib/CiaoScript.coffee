@@ -3,6 +3,7 @@ ScriptParser = require './ScriptParser'
 deepmerge = require 'deepmerge'
 CoffeeScript = require 'coffee-script'
 Settings = require './Settings'
+Q = require 'q'
 
 class RequestChain
 
@@ -18,9 +19,9 @@ class RequestChain
       deepmerge prev, defaults: CoffeeScript.eval script
 
   run: () =>
-    settings = {}
-    settings = link settings for link in @chain
-    @done settings
+    step = Q.fcall( () -> {} )
+    step = step.then( (settings) => link settings ) for link in @chain
+    step.then (settings) => @done settings
 
   done: () => console.log 'RequestChain FAIL'
 
@@ -41,7 +42,7 @@ class CiaoScript
       console.log filename
       console.error 'WARNING: You may only have one request section per script'
 
-    unless parser.sections.assert[0] then throw new Error 'FATAL: No test sections found'
+    unless parser.sections.assert[0] then throw new Error 'FATAL: No assert blocks found'
 
     chain = new RequestChain()
     chain.merge settings

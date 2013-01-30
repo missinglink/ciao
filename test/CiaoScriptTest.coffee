@@ -11,40 +11,25 @@ describe 'CiaoScript', ->
 
     it 'should throw unless settings are provided', ->
 
-      construct = -> new CiaoScript ''
+      construct = -> CiaoScript.load ''
       construct.should.throw "Invalid settings"
 
     it 'should throw on invalid file', ->
 
-      construct = -> new CiaoScript 'not/existing', settings
+      construct = -> CiaoScript.load 'not/existing', settings
       construct.should.throw "ENOENT, no such file or directory 'not/existing'"
 
-    it 'should throw if the script is invalid', ->
+    it 'should throw if the script does not contain a request block', ->
 
-      construct = -> new CiaoScript 'fixtures/script01.coffee', settings
+      construct = -> CiaoScript.load 'fixtures/script01.coffee', settings
       construct.should.throw "FATAL: You must define a request section"
 
-    # it 'should throw unless settings are provided', ->
+    it 'should throw if the script does not contain any assert blocks', ->
 
-    #   (-> new CiaoScript 'fixtures/script101.coffee', {} ).should.throw "Invalid settings, you must provide "
+      construct = -> CiaoScript.load 'fixtures/script02.coffee', settings
+      construct.should.throw "FATAL: No assert blocks found"
 
+    it 'should accept valid scripts', (done) ->
 
-    # it 'should accept valid scripts', ->
-
-    #   parser = new CiaoScript 'fixtures/script101.coffee', settings
-
-  #   it 'should create empty sections', ->
-
-  #     parser.sections.junk.should.be.instanceOf Array
-  #     parser.sections.auth.should.be.instanceOf Array
-  #     parser.sections.request.should.be.instanceOf Array
-  #     parser.sections.assert.should.be.instanceOf Array
-
-  # describe 'script02', ->
-
-  #   parser = new CiaoScript script02, 'script02'
-
-  #   it 'should not require a leading newline', ->
-
-  #     parser.sections.request[0].title.should.eql 'Test for no leading newline'
-  #     parser.sections.request[0].source.should.eql parser.lines[1]
+      construct = -> CiaoScript.load 'fixtures/script101.coffee', settings, done
+      construct.should.not.throw()
