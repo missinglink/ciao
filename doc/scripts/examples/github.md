@@ -1,6 +1,6 @@
 # Github page for missinglink/ciao
 
-*Generated: Wed Jan 30 2013 14:15:21 GMT+0000 (GMT)*
+*Generated: Wed Jan 30 2013 15:15:47 GMT+0000 (GMT)*
 ## Request
 ```javascript
 {
@@ -21,18 +21,18 @@
 Status: 404
 {
   "server": "GitHub.com",
-  "date": "Wed, 30 Jan 2013 14:15:18 GMT",
+  "date": "Wed, 30 Jan 2013 15:15:42 GMT",
   "content-type": "text/html; charset=utf-8",
   "connection": "close",
   "status": "404 Not Found",
   "set-cookie": [
-    "logged_in=no; domain=.github.com; path=/; expires=Sun, 30-Jan-2033 14:15:18 GMT"
+    "logged_in=no; domain=.github.com; path=/; expires=Sun, 30-Jan-2033 15:15:42 GMT"
   ],
+  "content-length": "229258",
   "strict-transport-security": "max-age=2592000",
   "cache-control": "no-cache",
-  "x-frame-options": "deny",
-  "content-length": "229258",
-  "x-runtime": "9"
+  "x-runtime": "8",
+  "x-frame-options": "deny"
 }
 ```
 ```html

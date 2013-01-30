@@ -43,7 +43,7 @@ json.should.include
   git_url: 'https://api.github.com/repos/joyent/node/git/blobs/' + json.sha
 ```
 When you run a script, documentation is produced. eg:
-https://github.com/missinglink/ciao/blob/master/doc/scripts/static/github-api.md
+https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md
 
 ## Interpreter directives
 
@@ -95,12 +95,12 @@ peter@edgy:/var/www/ciao$ ciao --help
 ### Running a single script
 
 ```bash
-$ ciao scripts/static/README.example.coffee 
+$ ciao scripts/examples/README.example.coffee 
 
- GET http://www.google.co.uk/ scripts/static/README.example.coffee 
+ GET http://www.google.co.uk/ scripts/examples/README.example.coffee 
  ✓ Status: 200 OK
 
- GET http://www.google.co.uk/ scripts/static/README.example.coffee 
+ GET http://www.google.co.uk/ scripts/examples/README.example.coffee 
  ✓ Response.body should contain company name
 ```
 
@@ -230,7 +230,7 @@ ciao -d doc scripts
 ```
 
 An example generated documentation file can be found here:
-https://github.com/missinglink/ciao/blob/master/doc/scripts/static/github-api.md
+https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md
 
 ## How it works
 
@@ -260,7 +260,7 @@ $ git clone git@github.com:missinglink/ciao.git ciao
 $ cd ciao
 $ npm install
 $ npm test
-$ ./bin/ciao scripts/static
+$ ./bin/ciao scripts/examples
 ```
 
 ### I have push access, what can I push?
