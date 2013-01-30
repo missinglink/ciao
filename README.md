@@ -53,8 +53,8 @@ The title is used for reporting & documentation, so the better your titles, the 
 To install the most stable `ciao` binary globally on your system via `npm` you can simply:
 
 ```bash
-[sudo] npm install -g ciao
-ciao --help
+$ [sudo] npm install -g ciao
+$ ciao --help
 ```
 
 Note: documentation (such as this README) may cover features not yet available via `npm`.
@@ -77,15 +77,20 @@ peter@edgy:/var/www/ciao$ ciao --help
 ```
 
 ```bash
-ciao scripts/static/README.example.coffee
-```
+$ ciao scripts/static/README.example.coffee 
 
-![Ciao](https://github.com/missinglink/ciao/raw/master/img/ciao.png "Ciao")
+ GET http://www.google.co.uk/ scripts/static/README.example.coffee 
+ ✓ Status: 200 OK
+
+ GET http://www.google.co.uk/ scripts/static/README.example.coffee 
+ ✓ Response.body should contain company name
+
+```
 
 You can also use ciao on directories to recursively run all scripts.
 
 ```bash
-ciao scripts
+$ ciao scripts
 ```
 
 ## Configuration
@@ -198,11 +203,11 @@ Ciao is still in beta, if you are lucky enough to have git access, you're best t
 ### Quick start
 
 ```bash
-git clone git@github.com:missinglink/ciao.git ciao
-cd ciao
-npm install
-npm test
-./bin/ciao scripts/static
+$ git clone git@github.com:missinglink/ciao.git ciao
+$ cd ciao
+$ npm install
+$ npm test
+$ ./bin/ciao scripts/static
 ```
 
 ### I have push access, what can I push?
@@ -216,7 +221,7 @@ Pretty please; provide unit tests and script fixtures in the `test` and `fixture
 The unit test suite is run using `mocha`
 
 ```bash
-npm test
+$ npm test
 ```
 
 ### Running Ciao test scripts
@@ -224,7 +229,7 @@ npm test
 This will execute all tests in the `./scripts` directory and write documentation in the `./doc` directory.
 
 ```bash
-npm run ciao
+$ npm run ciao
 ```
 
 ### Code review
