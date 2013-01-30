@@ -76,6 +76,8 @@ peter@edgy:/var/www/ciao$ ciao --help
     -d, --documentation [dir]  generate documentation in output dir
 ```
 
+### Running a script
+
 ```bash
 $ ciao scripts/static/README.example.coffee 
 
@@ -84,13 +86,14 @@ $ ciao scripts/static/README.example.coffee
 
  GET http://www.google.co.uk/ scripts/static/README.example.coffee 
  ✓ Response.body should contain company name
-
 ```
+
+### Running all scripts in directory
 
 You can also use ciao on directories to recursively run all scripts.
 
 ```bash
-$ ciao scripts
+$ ciao scripts/
 ```
 
 ## Configuration
