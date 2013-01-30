@@ -3,6 +3,7 @@ should = require 'should'
 fs = require 'fs'
 
 script01 = fs.readFileSync 'fixtures/script01.coffee'
+script02 = fs.readFileSync 'fixtures/script02.coffee'
 script101 = fs.readFileSync 'fixtures/script101.coffee'
 
 describe 'ScriptParser', ->
@@ -13,6 +14,15 @@ describe 'ScriptParser', ->
 
       parser = new ScriptParser script01
       parser.lines.should.eql [ 'A', 'FILE' ]
+
+    describe 'script02', ->
+
+      parser = new ScriptParser script02, 'script02'
+
+      it 'should not require a leading newline', ->
+
+        parser.sections.request[0].title.should.eql 'Test for no leading newline'
+        parser.sections.request[0].source.should.eql parser.lines[1]
 
     describe 'script101', ->
 
