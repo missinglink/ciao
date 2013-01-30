@@ -6,6 +6,7 @@ headers: 'User-Agent': 'Ciao/Client 1.0'
 headers: 'Cookie': config['tester@test.com']
 
 #> Register new user
+host: 'www.google.com'
 path: '/'
 method: 'POST'
 headers:

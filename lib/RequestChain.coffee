@@ -7,7 +7,7 @@ merge = require 'deepmerge'
 
 class RequestChain
 
-  constructor: () ->
+  constructor: (@settings) ->
     @chain = []
 
     # Set environmental variables
@@ -16,7 +16,7 @@ class RequestChain
 
   merge: (settings) =>
     @chain.push (prev) ->
-      merge prev, settings
+      prev.merge settings
 
   mergeScriptEval: (source) =>
     @chain.push (prev) =>
@@ -30,7 +30,7 @@ class RequestChain
       try
         result = CoffeeScript.eval script.join '\n'
         throw new Error 'Invalid request / before block' unless typeof result is 'object'
-        return merge prev, defaults: result
+        return prev.merge defaults: result
       catch e
         console.log '[PARSER ERROR] ' + e.message
         return prev
@@ -61,7 +61,7 @@ class RequestChain
         try
           result = JSON.parse stdout
           throw new Error 'Invalid request / before block' unless typeof result is 'object'
-          deferred.resolve merge prev, defaults: result
+          deferred.resolve prev.merge defaults: result
         catch e
           console.log stdout
           console.log script.join '\n'
@@ -74,7 +74,7 @@ class RequestChain
       return deferred.promise
 
   run: () =>
-    step = Q.fcall( () -> {} )
+    step = Q.fcall( () => @settings )
     step = step.then( link ) for link in @chain
     step.then @done
 

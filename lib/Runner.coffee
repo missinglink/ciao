@@ -35,7 +35,7 @@ class Runner
       script.push "process.exit 0"
 
       # Spawn child process
-      child = new Process coffee, [ '-s' ], { env: @env }, { test: test }
+      child = new Process coffee, [ '-s' ], { env: @env }, { test: test, request: request }
 
       child.on 'exit', (code, stdout, stderr, data) =>
         @listeners.map (listener) => listener code, stdout, stderr, data

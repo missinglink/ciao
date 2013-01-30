@@ -3,43 +3,40 @@ ScriptParser = require './ScriptParser'
 Settings = require './Settings'
 RequestChain = require './RequestChain'
 
-class CiaoScript
+mergeSettings = ( settings, parser, callback ) ->
 
-  @load: ( filename, settings, callback ) ->
+  chain = new RequestChain( settings )
+  parser.sections.auth.map ( section ) -> chain.mergeScriptProcess section.source
+  chain.mergeScriptProcess parser.sections.request[0].source
 
-    throw new Error 'Invalid settings' unless settings and settings instanceof Settings
+  chain.done = ( settings ) =>
 
-    throw new Error 'Failed to stat file' unless fs.statSync filename
-    parser = new ScriptParser fs.readFileSync(filename), filename
+    unless settings.defaults?.host
+      throw new Error 'FATAL: Invalid request section, you must specify a host'
 
-    if parser.sections.request.length < 1
-      throw new Error 'FATAL: You must define a request section in: ' + filename
+    unless settings.defaults?.method
+      throw new Error 'FATAL: Invalid request section, you must specify a a method'
 
-    if parser.sections.request.length > 1
-      console.error 'WARNING: You may only have one request section per script in: ' + filename
+    unless settings.defaults?.path
+      throw new Error 'FATAL: Invalid request section, you must specify a path'
 
-    unless parser.sections.assert[0] then throw new Error 'FATAL: No assert blocks found'
+    callback settings, parser
 
-    chain = new RequestChain()
-    chain.merge settings
-    parser.sections.auth.map ( section ) -> chain.mergeScriptProcess section.source
-    chain.mergeScriptProcess parser.sections.request[0].source
+  chain.run()
 
-    chain.done = ( settings ) =>
+module.exports.load = ( filename, settings, callback ) ->
 
-      unless settings.defaults?.host
-        throw new Error 'FATAL: Invalid request section, you must specify a host'
+  throw new Error 'Invalid settings' unless settings and settings instanceof Settings
 
-      unless settings.defaults?.method
-        throw new Error 'FATAL: Invalid request section, you must specify a a method'
+  throw new Error 'Failed to stat file' unless fs.statSync filename
+  parser = new ScriptParser fs.readFileSync(filename), filename
 
-      unless settings.defaults?.path
-        throw new Error 'FATAL: Invalid request section, you must specify a path'
+  if parser.sections.request.length < 1
+    throw new Error 'FATAL: You must define a request section in: ' + filename
 
-      callback settings, parser
-    
-    chain.run();
+  if parser.sections.request.length > 1
+    console.error 'WARNING: You may only have one request section per script in: ' + filename
 
-  done: (request) => console.log 'CiaoScript FAIL'
+  unless parser.sections.assert[0] then throw new Error 'FATAL: No assert blocks found'
 
-module.exports = CiaoScript
+  return mergeSettings settings, parser, callback

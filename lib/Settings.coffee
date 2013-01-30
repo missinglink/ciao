@@ -16,13 +16,15 @@ class Settings
       json = JSON.parse fs.readFileSync @filename
       @merge json
     catch e
-      console.log "WARN: Failed to load config file"  
+      console.log "WARN: Failed to load #{@filename}" 
 
     @merge settings
 
-  merge: (settings) ->
+  merge: (settings) =>
 
     if settings.defaults then @defaults = deepmerge @defaults, settings.defaults
     if settings.config then @config = deepmerge @config, settings.config
+
+    return @
 
 module.exports = Settings
