@@ -129,7 +129,7 @@ https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.
 
 ## Requests
 
-The Ciao request format is the same as that of the `node.js` native http client `http.request`.
+`#?` The ciao request format is the same as that of the `node.js` native http client `http.request`.
 
 All `request` blocks have access to an object named `config` which contains all the static configuration properties defined in the ciao config. (as discussed below)
 
@@ -172,7 +172,7 @@ json.preferGlobal.should.be.true
 
 ## Assertions
 
-You can add assertions to your scripts by including `assertion` blocks.
+`#?` You can add assertions to your scripts by including `assertion` blocks.
 
 Currently assertion blocks only provide the functionality of the `should` js framework, but I am looking at adding more assertion libraries in the future.
 
