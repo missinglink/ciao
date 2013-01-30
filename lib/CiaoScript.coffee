@@ -21,7 +21,7 @@ class RequestChain
   run: () =>
     step = Q.fcall( () -> {} )
     step = step.then( (settings) => link settings ) for link in @chain
-    step.then (settings) => @done settings
+    step.then @done
 
   done: () => console.log 'RequestChain FAIL'
 
