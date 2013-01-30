@@ -225,7 +225,7 @@ The documentation is in `markdown` format and is available in the directory spec
 
 eg. To generate documentation in `./doc` for all scripts in `./scripts`:
 ```bash
-ciao -d doc scripts
+$$ ciao -d doc scripts
 ```
 
 An example generated documentation file can be found here:
