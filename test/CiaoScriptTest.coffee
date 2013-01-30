@@ -31,5 +31,5 @@ describe 'CiaoScript', ->
 
     it 'should accept valid scripts', (done) ->
 
-      construct = -> CiaoScript.load 'fixtures/script101.coffee', settings, done
+      construct = -> CiaoScript.load 'fixtures/script101.coffee', settings, () -> done()
       construct.should.not.throw()

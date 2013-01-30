@@ -4,23 +4,53 @@ deepmerge = require 'deepmerge'
 CoffeeScript = require 'coffee-script'
 Settings = require './Settings'
 Q = require 'q'
+Process = require './Process'
+Runner = require './Runner'
 
 class RequestChain
 
   constructor: () ->
     @chain = []
 
+    # Set environmental variables
+    @env = process.env
+    @env['NODE_PATH'] = process.cwd() + '/node_modules'
+
   merge: (settings) =>
     @chain.push (prev) ->
       deepmerge prev, settings
 
-  mergeScript: (script) =>
-    @chain.push (prev) ->
-      deepmerge prev, defaults: CoffeeScript.eval script
+  mergeScript: (source) =>
+    @chain.push (prev) =>
+
+      script = []
+      script.push "config = " + JSON.stringify( prev.config or {} )
+      script.push ''
+      script.push "try"
+      script.push "  console.log( JSON.stringify( "
+      script.push Runner.indentSource( source, ' ', 4 )
+      script.push "  ))"
+      script.push "catch e"
+      script.push "  console.log e.message"
+      script.push "  process.exit 1"
+      script.push "process.exit 0"
+
+      deferred = Q.defer();
+
+      # Spawn child process
+      child = new Process 'node_modules/coffee-script/bin/coffee', [ '-s' ], { env: @env }
+
+      child.on 'exit', (code, stdout, stderr) =>
+        deferred.resolve deepmerge prev, defaults: JSON.parse stdout
+
+      child.on 'error', console.log
+      child.emit 'write', script.join '\n'
+
+      return deferred.promise
 
   run: () =>
     step = Q.fcall( () -> {} )
-    step = step.then( (settings) => link settings ) for link in @chain
+    step = step.then( link ) for link in @chain
     step.then @done
 
   done: () => console.log 'RequestChain FAIL'
@@ -48,9 +78,9 @@ class CiaoScript
     chain.merge settings
 
     for section in parser.sections.auth
-      chain.mergeScript "config = " + JSON.stringify(settings.config) + "\n\n" + section.source + '\n'
+      chain.mergeScript section.source
 
-    chain.mergeScript "config = " + JSON.stringify(settings.config) + "\n\n" + parser.sections.request[0].source + '\n'
+    chain.mergeScript parser.sections.request[0].source
 
     chain.done = (settings) =>
 
