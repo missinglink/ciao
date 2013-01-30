@@ -28,3 +28,7 @@ module.exports.debug = (code,stdout,stderr,data) =>
   console.log 'stdout', stdout
   console.log 'stderr', stderr
   console.log 'data', data
+
+module.exports.request = (code,stdout,stderr,data) =>
+
+  console.log data.request
