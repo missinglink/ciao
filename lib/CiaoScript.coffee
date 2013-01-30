@@ -65,12 +65,10 @@ class CiaoScript
     parser = new ScriptParser fs.readFileSync(filename), filename
 
     if parser.sections.request.length < 1
-      console.log filename
-      throw new Error 'FATAL: You must define a request section'
+      throw new Error 'FATAL: You must define a request section in: ' + filename
 
     if parser.sections.request.length > 1
-      console.log filename
-      console.error 'WARNING: You may only have one request section per script'
+      console.error 'WARNING: You may only have one request section per script in: ' + filename
 
     unless parser.sections.assert[0] then throw new Error 'FATAL: No assert blocks found'
 

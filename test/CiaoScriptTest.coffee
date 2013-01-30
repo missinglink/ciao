@@ -22,7 +22,7 @@ describe 'CiaoScript', ->
     it 'should throw if the script does not contain a request block', ->
 
       construct = -> CiaoScript.load 'fixtures/script01.coffee', settings
-      construct.should.throw "FATAL: You must define a request section"
+      construct.should.throw "FATAL: You must define a request section in: fixtures/script01.coffee"
 
     it 'should throw if the script does not contain any assert blocks', ->
 
