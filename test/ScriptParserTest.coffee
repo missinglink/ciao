@@ -10,57 +10,63 @@ describe 'ScriptParser', ->
 
   describe 'constructor', ->
 
+    parser = new ScriptParser script01
+
     it 'should parse the script in to lines', ->
 
-      parser = new ScriptParser script01
       parser.lines.should.eql [ 'A', 'FILE' ]
 
-    describe 'script02', ->
+    it 'should create empty sections', ->
 
-      parser = new ScriptParser script02, 'script02'
+      parser.sections.junk.should.be.instanceOf Array
+      parser.sections.auth.should.be.instanceOf Array
+      parser.sections.request.should.be.instanceOf Array
+      parser.sections.assert.should.be.instanceOf Array
 
-      it 'should not require a leading newline', ->
+  describe 'script02', ->
 
-        parser.sections.request[0].title.should.eql 'Test for no leading newline'
-        parser.sections.request[0].source.should.eql parser.lines[1]
+    parser = new ScriptParser script02, 'script02'
 
-    describe 'script101', ->
+    it 'should not require a leading newline', ->
 
-      parser = new ScriptParser script101, 'script101'
+      parser.sections.request[0].title.should.eql 'Test for no leading newline'
+      parser.sections.request[0].source.should.eql parser.lines[1]
 
-      it 'should create empty sections', ->
+  describe 'script101', ->
 
-        parser.sections.junk.should.be.instanceOf Array
-        parser.sections.auth.should.be.instanceOf Array
-        parser.sections.request.should.be.instanceOf Array
-        parser.sections.assert.should.be.instanceOf Array
+    parser = new ScriptParser script101, 'script101'
 
-      it 'should parse auth sections', ->
+    it 'should parse auth sections', ->
 
-        parser.sections.auth[0].title.should.eql 'Requried Headers'
-        parser.sections.auth[0].source.should.eql parser.lines[2]
+      parser.sections.auth[0].title.should.eql 'Requried Headers'
+      parser.sections.auth[0].source.should.eql parser.lines[2]
 
-        parser.sections.auth[1].title.should.eql 'Log in'
-        parser.sections.auth[1].source.should.eql parser.lines[5]
+      parser.sections.auth[1].title.should.eql 'Log in'
+      parser.sections.auth[1].source.should.eql parser.lines[5]
 
-      it 'should parse request sections', ->
+    it 'should parse request sections', ->
 
-        parser.sections.request[0].title.should.eql 'Register new user'
-        parser.sections.request[0].source.should.eql parser.lines[8..17].join '\n'
+      parser.sections.request[0].title.should.eql 'Register new user'
+      parser.sections.request[0].source.should.eql parser.lines[8..17].join '\n'
 
-        parser.sections.request[1].title.should.eql 'Foo Bar'
-        parser.sections.request[1].source.should.eql parser.lines[20..21].join '\n'
+      parser.sections.request[1].title.should.eql 'Foo Bar'
+      parser.sections.request[1].source.should.eql parser.lines[20..21].join '\n'
 
-      it 'should parse assert sections', ->
+    it 'should parse junk sections', ->
 
-        parser.sections.assert[0].title.should.eql 'Status: 303 See other'
-        parser.sections.assert[0].source.should.eql parser.lines[24]
+      parser.sections.junk[1].title.should.eql 'This is a junk section'
+      parser.sections.junk[1].source.should.eql parser.lines[24]
 
-        parser.sections.assert[1].title.should.eql 'Response header has a location /'
-        parser.sections.assert[1].source.should.eql parser.lines[27]
+    it 'should parse assert sections', ->
 
-        parser.sections.assert[2].title.should.eql 'Response.body should be empty'
-        parser.sections.assert[2].source.should.eql parser.lines[30]
+      parser.sections.assert[0].title.should.eql 'Status: 303 See other'
+      parser.sections.assert[0].source.should.eql parser.lines[27]
 
-        parser.sections.assert[3].title.should.eql 'Should set a cookie'
-        parser.sections.assert[3].source.should.eql parser.lines[33]
+      parser.sections.assert[1].title.should.eql 'Response header has a location /'
+      parser.sections.assert[1].source.should.eql parser.lines[30]
+
+      parser.sections.assert[2].title.should.eql 'Response.body should be empty'
+      parser.sections.assert[2].source.should.eql parser.lines[33]
+
+      parser.sections.assert[3].title.should.eql 'Should set a cookie'
+      parser.sections.assert[3].source.should.eql parser.lines[36]

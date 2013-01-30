@@ -21,6 +21,9 @@ body:
 path: '/foo'
 method: 'POST'
 
+## This is a junk section
+Please ignore this Junk Section
+
 #? Status: 303 See other
 response.statusCode.should.equal 302
 
