@@ -4,22 +4,29 @@ fs = require 'fs'
 
 class Settings
 
-  constructor: (@filename='ciao.json') ->
-
-    @defaults =
-      host: "localhost"
-      port: 3000
+  constructor: (settings={}, @filename='ciao.json') ->
 
     @config = {}
     @testDir = './scripts'
     @docDir = './doc'
+    @defaults =
+      host: "localhost"
+      port: 3000
 
-    throw new Error 'Failed to stat config file' unless fs.statSync @filename
-    json = JSON.parse fs.readFileSync @filename
+    try
+      throw new Error 'Failed to stat config file' unless fs.statSync @filename
+      json = JSON.parse fs.readFileSync @filename
+      @merge json
+    catch e
+      console.log "WARN: Failed to load config file"  
 
-    if json.defaults then @defaults = deepmerge @defaults, json.defaults
-    if json.config then @config = deepmerge @config, json.config
-    if json.testDir then @testDir = deepmerge @testDir, json.testDir
-    if json.docDir then @docDir = deepmerge @docDir, json.docDir
+    @merge settings
+
+  merge: (settings) ->
+
+    if settings.defaults then @defaults = deepmerge @defaults, settings.defaults
+    if settings.config then @config = deepmerge @config, settings.config
+    if settings.testDir then @testDir = deepmerge @testDir, settings.testDir
+    if settings.docDir then @docDir = deepmerge @docDir, settings.docDir
 
 module.exports = Settings

@@ -1,28 +1,30 @@
 #!/usr/bin/env node
 
-coffee = require( 'coffee-script' );
-CiaoScript = require( '../lib/CiaoScript' );
-TestRunner = require( '../lib/TestRunner' );
-Reporter = require( '../lib/Reporter' );
-Request = require( '../lib/Request' );
-Settings = require( '../lib/Settings' );
-
+var coffee = require( 'coffee-script' );
+var CiaoScript = require( '../lib/CiaoScript' );
+var TestRunner = require( '../lib/TestRunner' );
+var Reporter = require( '../lib/Reporter' );
+var Request = require( '../lib/Request' );
+var Settings = require( '../lib/Settings' );
+var TestSuite = require( '../lib/TestSuite' );
 var program = require('commander');
 
 program
   .version('0.0.1')
   .usage('[options] <file ...>')
-  .option('-r, --recursive', 'include subdirectories')
+  .option('-d, --documentation', 'generate documentation')
   .parse(process.argv);
 
 settings = new Settings();
 
-var script = new CiaoScript( program.args[0], settings );
+var suite = new TestSuite( settings, function( filename, suite ){
+  var script = new CiaoScript( filename, suite.settings );
+  var runner = new TestRunner( script.parser.sections.assert );
+  runner.listener( Reporter );
+  var request = new Request();
+  request.listener( runner.complete );
+  request.transfer( script.request );
+});
 
-var runner = new TestRunner( script.parser.sections.assert );
-runner.listener( Reporter );
-
-var request = new Request();
-request.listener( runner.complete );
-
-request.transfer( script.request );
+// Run single script(s)
+suite.walk( program.args[0] );

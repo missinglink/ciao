@@ -1,4 +1,8 @@
 {
+  "settings": {
+    "testDir": "./scripts",
+    "docDir": "./doc"
+  },
   "defaults": {
     "host": "www.google.co.uk",
     "port": 80,

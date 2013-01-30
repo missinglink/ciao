@@ -8,12 +8,14 @@ class CiaoScript
   constructor: (@filename,settings) ->
 
     throw new Error 'Failed to stat file' unless fs.statSync @filename
-    @parser = new ScriptParser fs.readFileSync @filename
+    @parser = new ScriptParser fs.readFileSync(@filename), @filename
 
-    if @parser.sections.request.length < 1 
+    if @parser.sections.request.length < 1
+      console.log @filename
       throw new Error 'FATAL: You must define a request section'
 
     if @parser.sections.request.length > 1
+      console.log @filename
       console.error 'WARNING: You may only have one request section per script'
 
     @request = settings.defaults or {}

@@ -15,10 +15,6 @@ body:
   email: 'example@example.com'
   password: 'mySecretPass'
 
-#> Foo Bar
-path: '/foo'
-method: 'POST'
-
 #? Status: 405
 response.statusCode.should.equal 405
 
