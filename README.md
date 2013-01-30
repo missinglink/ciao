@@ -246,8 +246,6 @@ After a `response` comes back from the target server; all `#? assertion` blocks 
 
 This isolates the main thread from malicious assertion code and ensures the fastest execution of tests.
 
-`http.request` reference: http://nodejs.org/api/http.html#http_http_request_options_callback
-
 ## Known bugs
 
 It's early stages yet; there are a bunch of issues reported here:
