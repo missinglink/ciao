@@ -53,7 +53,7 @@ The title is used for reporting & documentation, so the better your titles, the 
 To install the most stable `ciao` binary globally on your system via `npm` you can simply:
 
 ```bash
-npm install -g ciao
+[sudo] npm install -g ciao
 ciao --help
 ```
 
