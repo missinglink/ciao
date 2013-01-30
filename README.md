@@ -27,6 +27,8 @@ port: 443
 protocol: 'https:'
 host: 'api.github.com'
 path: '/repos/joyent/node/readme'
+headers:
+  'Accept': 'application/json'
 
 #? Readme is available on Github
 response.statusCode.should.equal 200
