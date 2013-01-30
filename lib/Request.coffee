@@ -13,6 +13,7 @@ class Request
 
     protocol = http
     if req.port is 443 then protocol = https
+    req.agent = false # Disable agent to avoid socket errors
 
     request = protocol.request req, (res) =>
 
@@ -28,8 +29,8 @@ class Request
         request.write "#{req.body}\n"
 
       else if 'object' is typeof req.body
-        foo = JSON.stringify req.body
-        request.write "#{foo}\n"
+        json = JSON.stringify req.body
+        request.write "#{json}\n"
 
     request.end()
 
