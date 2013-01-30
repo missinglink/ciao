@@ -9,6 +9,7 @@ class Documentor
     @title = title
     mkdirp.sync path.dirname destination
     @destination = fs.createWriteStream destination
+    @destination.on 'error', (error) -> console.log error.message
 
   documentTransaction: (error,req,res,body) =>
 
@@ -40,7 +41,6 @@ class Documentor
     doc += "```#{contentType}\n" + body + "\n```\n\n"
     doc += "## Tests" + "\n\n"
 
-    @destination.on 'error', (error) -> console.log error.message
     @destination.write doc
 
   documentTest: (code,stdout,stderr,data) =>
