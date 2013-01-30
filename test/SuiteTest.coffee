@@ -24,6 +24,12 @@ describe 'Suite', ->
         done() if counter > 1
       suite.walk 'img'
 
+    it 'throw on symlink or any other non file or directory', ->
+
+      counter = 0
+      suite = new Suite()
+      (-> suite.walk '/dev/null' ).should.throw 'Not a file or a directory...'
+
   describe 'should recurse subdirectories', ->
 
     it 'walks', (done) ->
