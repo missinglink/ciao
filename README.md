@@ -180,9 +180,9 @@ Each test case has access to three objects named `title`, `response` & `json`.
 
 * `title` is simply the title specified in the interpreter directive (as discussed above)
 * `response` contains 3 properties returned by `http.request`
-  * `response.body` contains the body of the http(s) response.
-  * `response.statusCode` contains the status code of the http(s) response.
-  * `response.headers` contains an array of headers that were returned.
+  * `body` contains the body of the http(s) response.
+  * `statusCode` contains the status code of the http(s) response.
+  * `headers` contains an array of headers that were returned.
 * `json` the result of parsing the response.body with `JSON.parse` (empty for invalid json).
 
 ### Examples
