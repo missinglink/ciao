@@ -17,7 +17,7 @@ module.exports.standard = (code,stdout,stderr,data) =>
     console.log " \x1b[1;32m✓\x1b[0;32m #{data.test.title}\x1b[0m"
 
   else
-    console.log " \x1b[1;31m✘\x1b[0;32m #{data.test.title}\x1b[0m"
+    console.log " \x1b[1;31m✘\x1b[1;31m #{data.test.title}\x1b[0m"
 
   if stdout
     stdout = stdout.replace /^\s+|\s+$/g, ''
@@ -25,10 +25,10 @@ module.exports.standard = (code,stdout,stderr,data) =>
 
   if stderr
     stderr = stderr.replace /^\s+|\s+$/g, ''
-    console.log " \x1b[31m#{stderr}\x1b[0m"
+    console.log " \x1b[1;33m#{stderr}\x1b[0m"
 
-    debug = Runner.indentSource data.test.source, ' #? ', 1
-    console.log "\x1b[1m#{debug}\x1b[0m"
+    # debug = Runner.indentSource data.test.source, '\x1b[1m  #? \x1b[0m', 1
+    # console.log '\n' + debug
 
   console.log ''
 
