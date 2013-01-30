@@ -65,7 +65,7 @@ describe 'ScriptParser', ->
       parser.sections.assert[1].title.should.eql 'Response header has a location /'
       parser.sections.assert[1].source.should.eql parser.lines[30]
 
-      parser.sections.assert[2].title.should.eql 'Response.body should be empty'
+      parser.sections.assert[2].title.should.eql 'Response body should contain specific js'
       parser.sections.assert[2].source.should.eql parser.lines[33]
 
       parser.sections.assert[3].title.should.eql 'Should set a cookie'

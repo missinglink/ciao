@@ -30,8 +30,8 @@ response.statusCode.should.equal 302
 #? Response header has a location /
 response.headers.should.have 'location', '/'
 
-#? Response.body should be empty
-response.body.should.equal ''
+#? Response body should contain specific js
+response.body.should.include 'window.attachEvent'
 
 #? Should set a cookie
 response.should.have.header 'Set-Cookie'
