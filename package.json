@@ -13,7 +13,8 @@
     "deepmerge": "~0.2.5",
     "should": "~1.2.1",
     "commander": "*",
-    "q": "*"
+    "q": "*",
+    "async": "~0.1.22"
   },
   "bin": {
     "ciao": "./bin/ciao"
@@ -22,7 +23,7 @@
     "test": "export NODE_PATH=`pwd` && node node_modules/mocha/bin/mocha --recursive --reporter spec --compilers coffee:coffee-script test",
     "ciao": "export NODE_PATH=`pwd` && rm -rf doc && mkdir doc && ./bin/ciao -d doc scripts"
   },
-  "devDependencies": {    
+  "devDependencies": {
     "mocha": "*"
   },
   "readme": " Not quite ready for you yet... ",

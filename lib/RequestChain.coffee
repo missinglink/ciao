@@ -1,9 +1,9 @@
 
 CoffeeScript = require 'coffee-script'
-Q = require 'q'
 Process = require './Process'
 Runner = require './Runner'
 merge = require 'deepmerge'
+async = require 'async'
 
 class RequestChain
 
@@ -19,7 +19,7 @@ class RequestChain
       prev.merge settings
 
   mergeScriptEval: (source) =>
-    @chain.push (prev) =>
+    @chain.push (prev,callback) =>
 
       script = []
       script.push "config = " + JSON.stringify( prev.config or {} )
@@ -30,13 +30,13 @@ class RequestChain
       try
         result = CoffeeScript.eval script.join '\n'
         throw new Error 'Invalid request / before block' unless typeof result is 'object'
-        return prev.merge defaults: result
+        return callback null, defaults: result, config: {}
       catch e
         console.log '[PARSER ERROR] ' + e.message
-        return prev
+        return callback null, { defaults: {}, config: {} }
 
   mergeScriptProcess: (source) =>
-    @chain.push (prev) =>
+    @chain.push (prev,callback) =>
 
       script = []
       script.push "config = " + JSON.stringify( prev.config or {} )
@@ -51,8 +51,6 @@ class RequestChain
       script.push "  process.exit 1"
       script.push ''
 
-      deferred = Q.defer();
-
       # Spawn child process
       child = new Process 'node_modules/coffee-script/bin/coffee', [ '-s' ], { env: @env }
 
@@ -60,29 +58,29 @@ class RequestChain
 
         if stderr
           # console.error stderr
-          return deferred.reject stderr
+          return callback stderr
 
         try
           result = JSON.parse stdout
           throw new Error 'Invalid request / before block' unless typeof result is 'object'
-          return deferred.resolve prev.merge defaults: result
+          return callback null, defaults: result, config: {}
         catch e
           console.log 'ERR', stderr
           console.log stdout
           console.log script.join '\n'
           console.log '[PARSER ERROR] ' + e.message
-          return deferred.resolve prev
+          return callback null, { defaults: {}, config: {} }
 
       child.on 'error', console.log
       child.emit 'write', script.join '\n'
 
-      return deferred.promise
-
   run: () =>
-    step = Q.fcall( () => @settings )
-    step.fail (error) -> console.log 'FAIL' + error
-    step = step.then( link ) for link in @chain
-    step.then @done, (error) -> console.log error
+
+    async.parallel @chain.map( (link) => return (callback) => link @settings, callback ),
+      (err, results) =>
+        throw new Error err if err
+        results.map (result) => @settings.merge result
+        @done @settings
 
   done: () => console.log 'RequestChain FAIL'
 
