@@ -2,7 +2,7 @@
   "name": "ciao",
   "preferGlobal": true,
   "private": false,
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Ciao is a simple command line utility for testing http(s) requests and generating API documentation",
   "contributors": [],
   "dependencies": {
@@ -26,7 +26,8 @@
   "devDependencies": {
     "mocha": "*"
   },
-  "readme": "Documentation: https://github.com/missinglink/ciao",
+  "readme": "# Ciao\n\nCiao is a simple command line utility for testing http(s) requests and generating API documentation.\n\n
+Full documentation: http://missinglink.github.com/ciao/",
   "engines": {
     "node": "0.8.x",
     "npm": "1.1.x"
