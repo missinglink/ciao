@@ -26,8 +26,7 @@
   "devDependencies": {
     "mocha": "*"
   },
-  "readme": "# Ciao\n\nCiao is a simple command line utility for testing http(s) requests and generating API documentation.\n\n
-Full documentation: http://missinglink.github.com/ciao/",
+  "readme": "# Ciao\n\nCiao is a simple command line utility for testing http(s) requests and generating API documentation.\n\nFull documentation: http://missinglink.github.com/ciao/",
   "engines": {
     "node": "0.8.x",
     "npm": "1.1.x"
