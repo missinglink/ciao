@@ -116,11 +116,12 @@
   Usage: ciao [options] &lt;file ...&gt;
 
   Options:
-
     -h, --help                 output usage information
     -V, --version              output the version number
+    -g, --gist [id]            load script from github gist id
     -c, --conf [dir]           an additional config file to load after ciao.json
     -s, --silent               disable reporters
+    -v, --verbose              report full requests and responses on error
     -d, --documentation [dir]  generate documentation in output dir
 </code></pre>
 
@@ -140,6 +141,13 @@
 <p>You can also use ciao on directories to recursively run all scripts.</p>
 
 <div class="highlight"><pre><span class="nv">$ </span>ciao scripts/
+</pre></div>
+
+<h3>Running a gist as a script</h3>
+
+<p>You can run remote scripts from github if you have the gist id.</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>ciao --gist 4678610
 </pre></div>
 
 <h2>API Documentation</h2>
@@ -285,11 +293,12 @@
 
 <h2>How it works</h2>
 
-<p>Under-the-hood Ciao fires off all requests asyncronously using <code>http.request</code>.</p>
+<p>When parsing <code>script</code> &amp; <code>config</code> files ciao launches child processes to excute the coffee-script source.
+This isolates the main thread from malicious code and ensures the fastest execution of tests.</p>
+
+<p>All the requests are launched asyncronously using <code>http.request</code>.</p>
 
 <p>After a <code>response</code> comes back from the target server; all <code>#? assertion</code> blocks are fired asyncronously in a seperate child process.</p>
-
-<p>This isolates the main thread from malicious assertion code and ensures the fastest execution of tests.</p>
 
 <h2>Known bugs</h2>
 
