@@ -65,10 +65,10 @@ class RequestChain
           throw new Error 'Invalid request / before block' unless typeof result is 'object'
           return callback null, defaults: result, config: {}
         catch e
-          console.log 'ERR', stderr
-          console.log stdout
-          console.log script.join '\n'
-          console.log '[PARSER ERROR] ' + e.message
+          # console.log 'ERR', stderr
+          # console.log stdout
+          # console.log script.join '\n'
+          throw e
           return callback null, { defaults: {}, config: {} }
 
       child.on 'error', console.log

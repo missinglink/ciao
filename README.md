@@ -83,9 +83,9 @@ peter@edgy:/var/www/ciao$ ciao --help
   Usage: ciao [options] <file ...>
 
   Options:
-
     -h, --help                 output usage information
     -V, --version              output the version number
+    -g, --gist [id]            load script from github gist id
     -c, --conf [dir]           an additional config file to load after ciao.json
     -s, --silent               disable reporters
     -v, --verbose              report full requests and responses on error
@@ -110,6 +110,14 @@ You can also use ciao on directories to recursively run all scripts.
 
 ```bash
 $ ciao scripts/
+```
+
+### Running a gist as a script
+
+You can run remote scripts from github if you have the gist id.
+
+```bash
+$ ciao --gist 4678610
 ```
 
 ## API Documentation

@@ -2,6 +2,7 @@
 
 var path = require( 'path' );
 var coffee = require( 'coffee-script' );
+var program = require('commander');
 var Script = require( '../lib/Script' );
 var Runner = require( '../lib/Runner' );
 var Reporter = require( '../lib/Reporter' );
@@ -9,11 +10,12 @@ var Documentor = require( '../lib/Documentor' );
 var Request = require( '../lib/Request' );
 var Settings = require( '../lib/Settings' );
 var Suite = require( '../lib/Suite' );
-var program = require('commander');
+var ScriptParser = require( '../lib/ScriptParser' );
 
 program
-  .version('0.1.4')
+  .version('0.1.5')
   .usage('[options] <file ...>')
+  .option('-g, --gist [id]', 'load script from github gist id')
   .option('-c, --conf [dir]', 'an additional config file to load after ciao.json')
   .option('-s, --silent', 'disable reporters')
   .option('-v, --verbose', 'report full requests and responses on error')
@@ -24,51 +26,73 @@ basesettings = new Settings();
 basesettings.loadFromFile( 'ciao.json', true );
 if( program.conf ){ basesettings.loadFromFile( program.conf ); }
 
-var suite = new Suite( function( filename, suite )
+var ciao = function( settings, parser, filename )
 {
-  settings = new Settings();
-  settings.merge( basesettings );
-
-  Script.load( filename, settings, function( settings, parser )
-  {
-    if( parser.sections.request[0] ){
-      var runner = new Runner( parser.sections.assert );
-      
-      // Set Reporter
-      if( !program.silent ){
-        runner.listener( Reporter.standard );
-        // runner.listener( Reporter.request );
-        // runner.listener( Reporter.debug );
-        if( program.verbose ){
-          runner.listener( Reporter.reqRes );
-        }
+  if( parser.sections.request[0] ){
+    var runner = new Runner( parser.sections.assert );
+    
+    // Set Reporter
+    if( !program.silent ){
+      runner.listener( Reporter.standard );
+      if( program.verbose ){
+        runner.listener( Reporter.reqRes );
       }
-
-      // HTTP Request
-      var http = new Request();
-      http.listener( runner.complete );
-
-      // Documentation
-      if( program.documentation )
-      {
-        filename = path.resolve( filename );
-        var docTarget = filename.replace( process.cwd(), process.cwd() + '/' + program.documentation );
-        var docFile = docTarget.replace( '.coffee', '.md' );
-        var documentation = new Documentor( parser.sections.request[0].title, docFile );
-        runner.listener( documentation.documentTest );
-        http.listener( documentation.documentTransaction );
-      }
-
-      // Send the Request
-      http.transfer( settings.defaults );
     }
+
+    // HTTP Request
+    var http = new Request();
+    http.listener( runner.complete );
+
+    // Documentation
+    if( program.documentation )
+    {
+      filename = path.resolve( filename );
+      var docTarget = filename.replace( process.cwd(), process.cwd() + '/' + program.documentation );
+      var docFile = docTarget.replace( '.coffee', '.md' );
+      var documentation = new Documentor( parser.sections.request[0].title, docFile );
+      runner.listener( documentation.documentTest );
+      http.listener( documentation.documentTransaction );
+    }
+
+    // Send the Request
+    http.transfer( settings.defaults );
+  }
+};
+
+// Run gist
+if( program.gist ){
+  settings = new Settings();
+  request = new Request();
+  request.listener( function( e, req, res, data ){
+    parser = new ScriptParser( data, program.gist );
+    if( !parser.sections.request[0] )
+    {
+      console.error( 'Gist does not contain any request blocks' );
+      return process.exit( 1 );
+    }
+    Script.mergeSettings( program.gist, settings, parser, ciao );
   });
-});
+  request.transfer({
+    "protocol": "https:",
+    "port": 443,
+    "host": "gist.github.com",
+    "path": "/raw/" + program.gist
+  });
+}
 
 // Run script(s)
-if( program.args[0] ){
+else if( program.args[0] )
+{
+  var suite = new Suite( function( filename, suite )
+  {
+    settings = new Settings();
+    settings.merge( basesettings );
+    Script.load( filename, settings, ciao );
+  });
+
   suite.walk( program.args[0] );
 }
+
 else {
   program.help();
 }

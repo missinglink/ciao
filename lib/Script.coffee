@@ -3,7 +3,7 @@ ScriptParser = require './ScriptParser'
 Settings = require './Settings'
 RequestChain = require './RequestChain'
 
-mergeSettings = ( settings, parser, callback ) ->
+module.exports.mergeSettings = mergeSettings = ( filename, settings, parser, callback ) ->
 
   chain = new RequestChain( settings )
   parser.sections.auth.map ( section ) -> chain.mergeScriptProcess section.source
@@ -20,7 +20,7 @@ mergeSettings = ( settings, parser, callback ) ->
     unless settings.defaults?.path
       throw new Error 'FATAL: Invalid request section, you must specify a path'
 
-    callback settings, parser
+    callback settings, parser, filename
 
   chain.run()
 
@@ -42,4 +42,4 @@ module.exports.load = ( filename, settings, callback ) ->
     console.error " \x1b[1;33m⚠\x1b[1;33m  WARNING: Skipping file, no assert blocks found in: #{filename}\x1b[0m"
     return callback settings, parser
 
-  return mergeSettings settings, parser, callback
+  return mergeSettings filename, settings, parser, callback
