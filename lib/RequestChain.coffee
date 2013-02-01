@@ -82,6 +82,6 @@ class RequestChain
         results.map (result) => @settings.merge result
         @done @settings
 
-  done: () => console.log 'RequestChain FAIL'
+  done: (settings) => console.log 'RequestChain FAIL', settings
 
 module.exports = RequestChain
