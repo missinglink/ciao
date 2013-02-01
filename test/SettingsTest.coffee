@@ -13,7 +13,7 @@ describe 'Settings', ->
     it 'should set default params', ->
 
       settings = new Settings()
-      settings.config.should.eql = {}
+      settings.config.should.eql {}
       settings.defaults.should.eql
         protocol: 'http:'
         host: "www.example.com"
