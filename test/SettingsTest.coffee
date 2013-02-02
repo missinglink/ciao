@@ -28,6 +28,11 @@ describe 'Settings', ->
       settings = new Settings()
       (-> settings.loadFromFile null ).should.not.throw()
 
+    it 'should not error on file not found', ->
+
+      settings = new Settings( '/tmp/invalid_file_name.json' )
+      (-> settings.loadFromFile null ).should.not.throw()
+
     it 'should successfully load and merge config file', ->
 
       settings = new Settings()
@@ -58,3 +63,11 @@ describe 'Settings', ->
       ret.should.equal settings
       settings.config.should.eql { foo: 'bar' }
       settings.defaults.should.eql { bar: 'baz' }
+
+      ret = settings.merge
+        config: foo: 'moo'
+        defaults: bingo: 'bango'
+
+      ret.should.equal settings
+      settings.config.should.eql { foo: 'moo' }
+      settings.defaults.should.eql { bingo: 'bango', bar: 'baz' }
