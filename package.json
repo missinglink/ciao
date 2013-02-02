@@ -14,7 +14,8 @@
     "should": "~1.2.1",
     "commander": "*",
     "q": "*",
-    "async": "~0.1.22"
+    "async": "~0.1.22",
+    "winston": "~0.6.2"
   },
   "bin": {
     "ciao": "./bin/ciao"
