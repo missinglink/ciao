@@ -4,6 +4,7 @@ Process = require './Process'
 Runner = require './Runner'
 async = require 'async'
 path = require 'path'
+winston = require 'winston'
 
 class RequestChain
 
@@ -32,7 +33,7 @@ class RequestChain
         throw new Error 'Invalid request / before block' unless typeof result is 'object'
         return callback null, defaults: result, config: {}
       catch e
-        console.log '[PARSER ERROR] ' + e.message
+        winston.error 'Failed to eval request block ' + e.message
         return callback null, { defaults: {}, config: {} }
 
   mergeScriptProcess: (source) =>
@@ -71,7 +72,7 @@ class RequestChain
           throw e
           return callback null, { defaults: {}, config: {} }
 
-      child.on 'error', console.log
+      child.on 'error', winston.error
       child.emit 'write', script.join '\n'
 
   run: () =>
@@ -82,6 +83,6 @@ class RequestChain
         results.map (result) => @settings.merge result
         @done @settings
 
-  done: (settings) => console.log 'RequestChain FAIL', settings
+  done: (settings) => winston.warn 'Missing \'done\' callback for RequestChain'
 
 module.exports = RequestChain

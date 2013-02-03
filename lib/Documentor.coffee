@@ -1,6 +1,7 @@
 fs = require 'fs'
 mkdirp = require 'mkdirp'
 path = require 'path'
+winston = require 'winston'
 
 class Documentor
 
@@ -9,7 +10,7 @@ class Documentor
     @title = title
     mkdirp.sync path.dirname destination
     @destination = fs.createWriteStream destination
-    @destination.on 'error', (error) -> console.log error.message
+    @destination.on 'error', (error) -> winston.error error.message
 
   documentTransaction: (error,req,res,body) =>
 

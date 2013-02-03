@@ -1,6 +1,7 @@
 
 cp = require 'child_process'
 EventEmitter = require('events').EventEmitter
+winston = require 'winston'
 
 class Process extends EventEmitter
 
@@ -18,7 +19,7 @@ class Process extends EventEmitter
     @proc.stderr.setEncoding 'utf-8'
 
     @proc.stderr.on 'data', (data) =>
-      if /^execvp\(\)/.test data then console.log 'Failed to start child process'
+      if /^execvp\(\)/.test data then winston.error 'Failed to start child process'
 
     @proc.stdout.on 'data', (data) => @stdout += data
     @proc.stderr.on 'data', (data) => @stderr += data
