@@ -20,8 +20,8 @@ response.body.should.include 'Google'
 
 ```coffee-script
 #> Twitter home page
-protocol: 'https:'
 port: 443
+protocol: 'https:'
 host: 'twitter.com'
 
 #? Login form
