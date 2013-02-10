@@ -13,9 +13,9 @@ var Suite = require( '../lib/Suite' );
 var ScriptParser = require( '../lib/ScriptParser' );
 
 program
-  .version('0.1.6')
+  .version('0.1.7')
   .usage('[options] <file ...>')
-  .option('-g, --gist [id]', 'load script from github gist id')
+  .option('-g, --gist [url]', 'load script from github gist')
   .option('-c, --conf [dir]', 'an additional config file to load after ciao.json')
   .option('-s, --silent', 'disable reporters')
   .option('-v, --verbose', 'report full requests and responses on error')
@@ -61,6 +61,7 @@ var ciao = function( settings, parser, filename )
 
 // Run gist
 if( program.gist ){
+  program.gist = program.gist.replace( 'https://gist.github.com/', '');
   settings = new Settings();
   request = new Request();
   request.listener( function( e, req, res, data ){
@@ -76,7 +77,7 @@ if( program.gist ){
     "protocol": "https:",
     "port": 443,
     "host": "gist.github.com",
-    "path": "/raw/" + program.gist
+    "path": "/" + program.gist + "/raw/"
   });
 }
 

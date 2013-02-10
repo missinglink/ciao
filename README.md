@@ -114,11 +114,14 @@ $ ciao scripts/
 
 ### Running a gist as a script
 
-You can run remote scripts from github if you have the gist id.
+You can run remote scripts from github by providing the gist suffix or url.
 
 ```bash
-$ ciao --gist 4678610
+$ ciao --gist missinglink/4678610
+$ ciao --gist https://gist.github.com/missinglink/4678610
 ```
+
+Note: The way the gist flag behaves has changed since `0.1.7`, please upgrade if you have issues.
 
 ## API Documentation
 
