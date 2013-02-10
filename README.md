@@ -75,7 +75,7 @@ eg. `#> Contact page is available` defines a `#> request` block with the title `
 
 The title is used for reporting & documentation, so the better your titles, the easier life will be for you.
 
-## Installing Ciao
+# Installing Ciao
 
 To install the most stable `ciao` binary globally on your system via `npm` you can simply:
 
