@@ -6,7 +6,7 @@ Ciao is a simple command line utility for testing http(s) requests and generatin
 
 Ciao scripts are written in coffee-script, however it's important to note that they are interpreted, not executed.
 
-### Basic script:
+### Basic uptime script:
 
 ```coffee-script
 #> Check Google is still running
@@ -16,7 +16,21 @@ host: 'www.google.co.uk'
 response.body.should.include 'Google'
 ```
 
-### Advanced script:
+### HTML test script:
+
+```coffee-script
+#> Twitter home page
+protocol: 'https:'
+port: 443
+host: 'twitter.com'
+
+#? Login form
+$('div.front-signin input#signin-email').length.should.eql 1
+$('div.front-signin input#signin-password').length.should.eql 1
+$('div.front-signin button[type="submit"]').length.should.eql 1
+```
+
+### JSON webservice script:
 
 ```coffee-script
 #! Requried Headers
@@ -42,8 +56,6 @@ json.should.include
   html_url: 'https://github.com/joyent/node/blob/master/README.md'
   git_url: 'https://api.github.com/repos/joyent/node/git/blobs/' + json.sha
 ```
-
-[DOM testing](#testing-the-DOM) is also supported
 
 When you run a script, documentation is produced. eg:
 https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md
