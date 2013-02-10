@@ -332,6 +332,7 @@ The unit test suite is run using `mocha`
 ```bash
 $ npm test
 ```
+[![Build Status](https://travis-ci.org/missinglink/ciao.png?branch=master)](https://travis-ci.org/missinglink/ciao)
 
 ### Running Ciao test scripts
 
