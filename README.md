@@ -100,7 +100,7 @@ peter@edgy:/var/www/ciao$ ciao --help
   Options:
     -h, --help                 output usage information
     -V, --version              output the version number
-    -g, --gist [id]            load script from github gist id
+    -g, --gist [url]           load script from github gist
     -c, --conf [dir]           an additional config file to load after ciao.json
     -s, --silent               disable reporters
     -v, --verbose              report full requests and responses on error
