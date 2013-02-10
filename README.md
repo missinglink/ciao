@@ -58,7 +58,7 @@ json.should.include
 ```
 
 When you run a script, documentation is produced. eg:
-https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md
+[Github API Example - Documentation](https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md)
 
 ## Interpreter directives
 
@@ -150,7 +150,7 @@ $ ciao -d doc scripts
 ```
 
 An example generated documentation file can be found here:
-https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md
+[Github API Example - Documentation](https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md)
 
 ## Requests
 
