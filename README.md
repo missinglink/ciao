@@ -185,7 +185,7 @@ You can add assertions to your scripts by including `#? assertion` blocks.
 
 Currently `#? assertion` blocks only provide the functionality of the `should` js framework, but I am looking at adding more assertion libraries in the future.
 
-Each test case has access to three objects named `title`, `response` & `json`.
+Each test case has access to four objects named `title`, `response`, `json` & `$`.
 
 * `title` is simply the title specified in the interpreter directive (as discussed above)
 * `response` contains 3 properties returned by `http.request`
