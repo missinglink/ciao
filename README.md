@@ -193,6 +193,7 @@ Each test case has access to three objects named `title`, `response` & `json`.
   * `statusCode` contains the status code of the http(s) response.
   * `headers` contains an array of headers that were returned.
 * `json` the result of parsing the response.body with `JSON.parse` (empty for invalid json).
+* `$` the result of parsing the response.body with `cheerio` (a familiar jQuery-like API).
 
 ### Examples
 
