@@ -22,16 +22,19 @@ class Runner
       statusCode: response.statusCode
       headers: response.headers
 
-    try json = JSON.parse body
-    catch e then json = {}
-
     for test in @groups
 
       script = []
       script.push "should = require 'should'"
+      script.push "cheerio = require 'cheerio'"
       script.push "title = '" + test.title.split("'").join("\\'") + "'"
-      script.push "json = " + JSON.stringify json
       script.push "response = " + JSON.stringify res
+      script.push "try"
+      script.push "  $ = {}"
+      script.push "  json = JSON.parse(response.body)"
+      script.push "catch e"
+      script.push "  json = {}"
+      script.push "  $ = cheerio.load(response.body)"
       script.push "try"
       script.push Runner.indentSource( test.source, ' ', 2 )
       script.push "catch e"

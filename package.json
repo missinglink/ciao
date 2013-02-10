@@ -15,7 +15,9 @@
     "commander": "*",
     "q": "*",
     "async": "~0.1.22",
-    "winston": "~0.6.2"
+    "winston": "~0.6.2",
+    "ping": "~0.1.1",
+    "cheerio": "~0.10.6"
   },
   "bin": {
     "ciao": "./bin/ciao"
