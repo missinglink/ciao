@@ -316,7 +316,6 @@ If you would like a code review or to open a feature discussion, please fork and
 
 ### Mid term
 
-* Command line utility
 * Improved reporters
 * Improved documentors
 * Web interface
