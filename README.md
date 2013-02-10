@@ -2,9 +2,7 @@
 
 Ciao is a simple command line utility for testing http(s) requests and generating API documentation.
 
-## Scripts:
-
-Ciao scripts are written in coffee-script, however it's important to note that they are interpreted, not executed.
+Scripts are written in coffee-script, however it's important to note that they are interpreted, not executed.
 
 ### Basic uptime script:
 
@@ -60,7 +58,7 @@ json.should.include
 When you run a script, documentation is produced. eg:
 [Github API Example - Documentation](https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md)
 
-## Interpreter directives
+# Interpreter directives
 
 Ciao uses a special syntax to declare the start and end of code blocks.
 
@@ -90,7 +88,7 @@ $ ciao --help
 * Note: you will need `node` and `npm` installed first: http://nodejs.org/download/
 
 
-## Running Scripts
+# Running Scripts
 
 ```
 peter@edgy:/var/www/ciao$ ciao --help
@@ -138,21 +136,7 @@ $ ciao --gist https://gist.github.com/missinglink/4678610
 
 Note: The way the gist flag behaves has changed since `0.1.7`, please upgrade if you have issues.
 
-## API Documentation
-
-Ciao generates documentation for each `#> request`, the resulting `response` and all `#? assertion` blocks.
-
-The documentation is in `markdown` format and is available in the directory specified using the `-d` option when executing `ciao`
-
-eg. To generate documentation in `./doc` for all scripts in `./scripts`:
-```bash
-$ ciao -d doc scripts
-```
-
-An example generated documentation file can be found here:
-[Github API Example - Documentation](https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md)
-
-## Requests
+# Requests
 
 The ciao request format is the same as that of the `node.js` native http client `http.request`.
 
@@ -195,7 +179,7 @@ headers: 'Accept': 'application/json'
 json.preferGlobal.should.be.true
 ```
 
-## Assertions
+# Assertions
 
 You can add assertions to your scripts by including `#? assertion` blocks.
 
@@ -265,7 +249,7 @@ $('span.mw-headline').last().text().should.eql "Wikipedia languages"
 
 `cheerio` reference: https://github.com/MatthewMueller/cheerio
 
-## Configuration
+# Configuration
 
 Ciao looks for a global configuration file called `ciao.json` in your current working directory.
 
@@ -289,6 +273,20 @@ Example `ciao.json`
 The `defaults` section is merged in to every request that is made, it's useful for specifying global request properties such as `host` and `port`.
 
 The `config` section is useful for storing session tokens or any sort of data you would like available to `#! before` or `#> request` blocks.
+
+# Generate Documentation
+
+Ciao can generate documentation for each `#> request`, the resulting `response` and all `#? assertion` blocks.
+
+The documentation is in `markdown` format and is available in the directory specified using the `-d` option when executing `ciao`
+
+eg. To generate documentation in `./doc` for all scripts in `./scripts`:
+```bash
+$ ciao -d doc scripts
+```
+
+An example generated documentation file can be found here:
+[Github API Example - Documentation](https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md)
 
 ## How it works
 
