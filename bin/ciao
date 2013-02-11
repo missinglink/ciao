@@ -13,7 +13,7 @@ var Suite = require( '../lib/Suite' );
 var ScriptParser = require( '../lib/ScriptParser' );
 
 program
-  .version('0.1.7')
+  .version('0.1.8')
   .usage('[options] <file ...>')
   .option('-g, --gist [url]', 'load script from github gist')
   .option('-c, --conf [dir]', 'an additional config file to load after ciao.json')

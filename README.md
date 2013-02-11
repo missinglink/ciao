@@ -134,7 +134,7 @@ $ ciao --gist missinglink/4678610
 $ ciao --gist https://gist.github.com/missinglink/4678610
 ```
 
-Note: The way the gist flag behaves has changed since `0.1.7`, please upgrade if you have issues.
+Note: The way the gist flag behaves has changed since `0.1.8`, please upgrade if you have issues.
 
 # Requests
 
@@ -227,7 +227,7 @@ response.should.have.header 'location', 'http://www.example.com/'
 
 ### Testing the DOM
 
-Since version `0.1.7` you can test DOM elements in your source using a jQuery-like syntax.
+Since version `0.1.8` you can test DOM elements in your source using a jQuery-like syntax.
 
 ```coffee-script
 #> Wikipedia home page
