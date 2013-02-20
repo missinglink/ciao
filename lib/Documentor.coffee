@@ -29,15 +29,19 @@ class Documentor
     doc += JSON.stringify(res.headers,null,2) + "\n"
     doc += "```\n"
 
-    contentType = 'html'
+    try
+      body = JSON.stringify(JSON.parse(body),null,2)
+      contentType = 'javascript'
+    catch e
+      contentType = 'html'
 
-    if res.headers?['content-type']?
+    # if res.headers?['content-type']?
 
-      parseContentType = res.headers['content-type'].split ';'
-      if parseContentType[0] and parseContentType[0].match /^(text|application)\/(json|javascript)$/
+    #   parseContentType = res.headers['content-type'].split ';'
+    #   if parseContentType[0] and parseContentType[0].match /^(text|application)\/(json|javascript)$/
 
-        contentType = 'javascript'
-        body = JSON.stringify(JSON.parse(body),null,2)
+    #     contentType = 'javascript'
+    #     body = JSON.stringify(JSON.parse(body),null,2)
 
     doc += "```#{contentType}\n" + body + "\n```\n\n"
     doc += "## Tests" + "\n\n"
