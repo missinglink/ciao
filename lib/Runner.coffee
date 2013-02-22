@@ -1,13 +1,13 @@
 Process = require './Process'
 path = require 'path'
 coffee = path.resolve( __dirname + '/../node_modules/coffee-script/bin/coffee' )
+EventEmitter = require('events').EventEmitter
 
-class Runner
+class Runner extends EventEmitter
 
   constructor: (groups) ->
 
     @groups = groups
-    @listeners = []
 
     # Set environmental variables
     @env = process.env
@@ -46,11 +46,9 @@ class Runner
       child = new Process coffee, [ '-s' ], { env: @env }, { test: test, request: request, response: res }
 
       child.on 'exit', (code, stdout, stderr, data) =>
-        @listeners.map (listener) => listener code, stdout, stderr, data
+        @emit 'complete', code, stdout, stderr, data
 
       child.emit 'write', script.join '\n'
-
-  listener: (callback) => @listeners.push callback
 
   @indentSource: (source,char=' ',indentation=2) ->
 

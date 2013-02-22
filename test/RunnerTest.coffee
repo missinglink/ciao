@@ -1,4 +1,5 @@
 Runner = require 'lib/Runner'
+EventEmitter = require('events').EventEmitter
 should = require 'should'
 fs = require 'fs'
 
@@ -11,8 +12,8 @@ describe 'Runner', ->
     it 'should set default properties', ->
 
       runner = new Runner groups
+      runner.should.be.instanceof EventEmitter
       runner.groups.should.equal groups
-      runner.listeners.should.eql []
       runner.env['NODE_PATH'].should.equal process.cwd() + '/node_modules'
 
   describe 'complete', ->
@@ -44,9 +45,10 @@ describe 'Runner', ->
       ]
 
       request = { bingo: 'bango' }
+      runner = new Runner groupData
 
       counter = 0
-      listener = (code, stdout, stderr, data) ->
+      runner.on 'complete', (code, stdout, stderr, data) ->
         stdout.should.eql ''
         [ 0, 1 ].should.include code
         data.request.should.equal request
@@ -55,8 +57,6 @@ describe 'Runner', ->
         done() if counter is 1 
         counter++
 
-      runner = new Runner groupData
-      runner.listener listener
       runner.complete null, request, { statusCode: 200, headers: {} }, "Bingo Bango Bongo!"
 
   describe 'indentSource', ->

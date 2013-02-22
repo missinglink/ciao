@@ -5,12 +5,31 @@ winston = require 'winston'
 
 class Documentor
 
-  constructor: (title,destination) ->
+  constructor: (@runner,title,destination) ->
 
     @title = title
     mkdirp.sync path.dirname destination
     @destination = fs.createWriteStream destination
     @destination.on 'error', (error) -> winston.error error.message
+
+    @runner.on 'complete', (code,stdout,stderr,data) =>
+
+      trimSource = data.test.source.replace /^\s+|\s+$/g, ''
+
+      if code is 0
+
+        doc = '### ✓ ' + data.test.title + "\n"
+        doc += "```javascript\n#{trimSource}\n```" + "\n"
+
+      else
+
+        doc = '### ✘ ' + data.test.title + "\n"
+        doc += "```javascript\n#{trimSource}\n```" + "\n"
+        doc += stdout + "\n"
+
+      doc += "\n"
+
+      @destination.write doc
 
   documentTransaction: (error,req,res,body) =>
 
@@ -45,25 +64,6 @@ class Documentor
 
     doc += "```#{contentType}\n" + body + "\n```\n\n"
     doc += "## Tests" + "\n\n"
-
-    @destination.write doc
-
-  documentTest: (code,stdout,stderr,data) =>
-
-    trimSource = data.test.source.replace /^\s+|\s+$/g, ''
-
-    if code is 0
-
-      doc = '### ✓ ' + data.test.title + "\n"
-      doc += "```javascript\n#{trimSource}\n```" + "\n"
-
-    else
-
-      doc = '### ✘ ' + data.test.title + "\n"
-      doc += "```javascript\n#{trimSource}\n```" + "\n"
-      doc += stdout + "\n"
-
-    doc += "\n"
 
     @destination.write doc
 

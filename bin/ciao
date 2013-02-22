@@ -33,9 +33,11 @@ var ciao = function( settings, parser, filename )
     
     // Set Reporter
     if( !program.silent ){
-      runner.listener( Reporter.standard );
       if( program.verbose ){
-        runner.listener( Reporter.reqRes );
+        new Reporter.reqRes( runner );
+      }
+      else {
+        new Reporter.standard( runner );
       }
     }
 
@@ -49,8 +51,7 @@ var ciao = function( settings, parser, filename )
       filename = path.resolve( filename );
       var docTarget = filename.replace( process.cwd(), process.cwd() + '/' + program.documentation );
       var docFile = docTarget.replace( '.coffee', '.md' );
-      var documentation = new Documentor( parser.sections.request[0].title, docFile );
-      runner.listener( documentation.documentTest );
+      var documentation = new Documentor( runner, parser.sections.request[0].title, docFile );
       http.listener( documentation.documentTransaction );
     }
 
