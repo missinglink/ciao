@@ -5,6 +5,12 @@ fs = require 'fs'
 
 describe 'Documentor', ->
 
+  describe 'invalid constructor', ->
+
+    it 'should throw an error if invalid runner provided', ->
+
+      (-> documentor = new Documentor null ).should.throw 'Invalid runner'
+
   describe 'constructor', ->
 
     runner = new EventEmitter()

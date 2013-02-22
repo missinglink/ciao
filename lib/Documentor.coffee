@@ -2,10 +2,13 @@ fs = require 'fs'
 mkdirp = require 'mkdirp'
 path = require 'path'
 winston = require 'winston'
+EventEmitter = require('events').EventEmitter
 
 class Documentor
 
   constructor: (@runner,title,destination) ->
+
+    throw new Error( 'Invalid runner' ) unless @runner instanceof EventEmitter
 
     @title = title
     mkdirp.sync path.dirname destination
