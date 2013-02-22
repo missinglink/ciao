@@ -1,4 +1,5 @@
 Request = require 'lib/Request'
+EventEmitter = require('events').EventEmitter
 should = require 'should'
 fs = require 'fs'
 
@@ -10,12 +11,11 @@ describe 'Request', ->
 
     it 'should set default properties', ->
 
+      request.should.be.instanceof EventEmitter
       request.data.should.eql ''
-      request.listeners.should.eql []
 
       request.request.should.be.instanceof Function
       request.transfer.should.be.instanceof Function
-      request.listener.should.be.instanceof Function
 
   describe 'transfer', ->
 
@@ -31,16 +31,16 @@ describe 'Request', ->
       cb client.res
       return client
 
-    listener = ( error, req, res, data ) ->
-      should.not.exist error
-      req.should.eql { host: 'www.bingo.com', body: { bingo: 'bango' }, agent: false }
-      res.should.equal client.res
-      data.should.equal 'bingobango'
-
     it 'functional test', ->
 
       request = new Request()
-      request.listener listener
+
+      request.on 'complete', ( error, req, res, data ) ->
+        should.not.exist error
+        req.should.eql { host: 'www.bingo.com', body: { bingo: 'bango' }, agent: false }
+        res.should.equal client.res
+        data.should.equal 'bingobango'
+
       request.transfer { host: 'www.bingo.com', body: bingo: 'bango' }, client
 
       events['data']( 'bingo' )
@@ -53,13 +53,3 @@ describe 'Request', ->
 
       request = new Request()
       request.request.length.should.eql 2
-
-  describe 'listener', ->
-
-    it 'should add one listener', ->
-
-      callback = () -> return null
-      request = new Request()
-      request.listener callback
-      request.listeners.length.should.eql 1
-      request.listeners.should.eql [ callback ]

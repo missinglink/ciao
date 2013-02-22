@@ -43,7 +43,7 @@ var ciao = function( settings, parser, filename )
 
     // HTTP Request
     var http = new Request();
-    http.listener( runner.complete );
+    http.on( 'complete', runner.complete );
 
     // Documentation
     if( program.documentation )
@@ -52,7 +52,7 @@ var ciao = function( settings, parser, filename )
       var docTarget = filename.replace( process.cwd(), process.cwd() + '/' + program.documentation );
       var docFile = docTarget.replace( '.coffee', '.md' );
       var documentation = new Documentor( runner, parser.sections.request[0].title, docFile );
-      http.listener( documentation.documentTransaction );
+      http.on( 'complete', documentation.documentTransaction );
     }
 
     // Send the Request
@@ -64,8 +64,8 @@ var ciao = function( settings, parser, filename )
 if( program.gist ){
   program.gist = program.gist.replace( 'https://gist.github.com/', '');
   settings = new Settings();
-  request = new Request();
-  request.listener( function( e, req, res, data ){
+  http = new Request();
+  http.listener.on( 'complete', function( e, req, res, data ){
     parser = new ScriptParser( data, program.gist );
     if( !parser.sections.request[0] )
     {
@@ -74,7 +74,7 @@ if( program.gist ){
     }
     Script.mergeSettings( program.gist, settings, parser, ciao );
   });
-  request.transfer({
+  http.transfer({
     "protocol": "https:",
     "port": 443,
     "host": "gist.github.com",

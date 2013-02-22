@@ -1,13 +1,13 @@
 
 http = require 'http'
 https = require 'https'
+EventEmitter = require('events').EventEmitter
 
-class Request
+class Request extends EventEmitter
 
   constructor: () ->
 
     @data = ''
-    @listeners = []
 
   transfer: (req,client=http) =>
 
@@ -22,9 +22,9 @@ class Request
 
       res.setEncoding 'utf8'
       res.on 'data', (chunk) => @data += chunk
-      res.on 'end',  ()   => @listeners.map (listener) => listener null, req, res, @data
-      res.on 'error', (e) => @listeners.map (listener) -> listener e, req, res, @data
-      res.on 'close', (e) => @listeners.map (listener) -> listener e, req, res, @data
+      res.on 'end',  ()   => @emit 'complete', null, req, res, @data
+      res.on 'error', (e) => @emit 'complete', e, req, res, @data
+      res.on 'close', (e) => @emit 'complete', e, req, res, @data
 
     if req.body?
 
@@ -36,7 +36,5 @@ class Request
         request.write "#{json}\n"
 
     request.end()
-
-  listener: (callback) => @listeners.push callback
 
 module.exports = Request
