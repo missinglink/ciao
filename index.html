@@ -34,11 +34,9 @@
 
 <p>Ciao is a simple command line utility for testing http(s) requests and generating API documentation.</p>
 
-<h2>Scripts:</h2>
+<p>Scripts are written in coffee-script, however it's important to note that they are interpreted, not executed.</p>
 
-<p>Ciao scripts are written in coffee-script, however it's important to note that they are interpreted, not executed.</p>
-
-<h3>Basic script:</h3>
+<h3>Basic uptime script:</h3>
 
 <div class="highlight"><pre><span class="c1">#&gt; Check Google is still running</span>
 <span class="nv">host: </span><span class="s">'www.google.co.uk'</span>
@@ -47,7 +45,20 @@
 <span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">include</span> <span class="s">'Google'</span>
 </pre></div>
 
-<h3>Advanced script:</h3>
+<h3>HTML test script:</h3>
+
+<div class="highlight"><pre><span class="c1">#&gt; Twitter home page</span>
+<span class="nv">port: </span><span class="mi">443</span>
+<span class="nv">protocol: </span><span class="s">'https:'</span>
+<span class="nv">host: </span><span class="s">'twitter.com'</span>
+
+<span class="c1">#? Login form</span>
+<span class="nx">$</span><span class="p">(</span><span class="s">'div.front-signin input#signin-email'</span><span class="p">).</span><span class="nx">length</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="mi">1</span>
+<span class="nx">$</span><span class="p">(</span><span class="s">'div.front-signin input#signin-password'</span><span class="p">).</span><span class="nx">length</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="mi">1</span>
+<span class="nx">$</span><span class="p">(</span><span class="s">'div.front-signin button[type="submit"]'</span><span class="p">).</span><span class="nx">length</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="mi">1</span>
+</pre></div>
+
+<h3>JSON webservice script:</h3>
 
 <div class="highlight"><pre><span class="c1">#! Requried Headers</span>
 <span class="nv">headers: </span><span class="s">'User-Agent'</span><span class="o">:</span> <span class="s">'Ciao/Client 1.0'</span>
@@ -74,9 +85,9 @@
 </pre></div>
 
 <p>When you run a script, documentation is produced. eg:
-<a href="https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md">https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md</a></p>
+<a href="https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md">Github API Example - Documentation</a></p>
 
-<h2>Interpreter directives</h2>
+<h1>Interpreter directives</h1>
 
 <p>Ciao uses a special syntax to declare the start and end of code blocks.</p>
 
@@ -97,7 +108,7 @@
 
 <p>The title is used for reporting &amp; documentation, so the better your titles, the easier life will be for you.</p>
 
-<h2>Installing Ciao</h2>
+<h1>Installing Ciao</h1>
 
 <p>To install the most stable <code>ciao</code> binary globally on your system via <code>npm</code> you can simply:</p>
 
@@ -109,7 +120,7 @@
 <li>Note: documentation (such as this README) may cover features not yet available via <code>npm</code>.</li>
 <li>Note: you will need <code>node</code> and <code>npm</code> installed first: <a href="http://nodejs.org/download/">http://nodejs.org/download/</a>
 </li>
-</ul><h2>Running Scripts</h2>
+</ul><h1>Running Scripts</h1>
 
 <pre><code>peter@edgy:/var/www/ciao$ ciao --help
 
@@ -118,7 +129,7 @@
   Options:
     -h, --help                 output usage information
     -V, --version              output the version number
-    -g, --gist [id]            load script from github gist id
+    -g, --gist [url]           load script from github gist
     -c, --conf [dir]           an additional config file to load after ciao.json
     -s, --silent               disable reporters
     -v, --verbose              report full requests and responses on error
@@ -145,26 +156,15 @@
 
 <h3>Running a gist as a script</h3>
 
-<p>You can run remote scripts from github if you have the gist id.</p>
+<p>You can run remote scripts from github by providing the gist suffix or url.</p>
 
-<div class="highlight"><pre><span class="nv">$ </span>ciao --gist 4678610
+<div class="highlight"><pre><span class="nv">$ </span>ciao --gist missinglink/4678610
+<span class="nv">$ </span>ciao --gist https://gist.github.com/missinglink/4678610
 </pre></div>
 
-<h2>API Documentation</h2>
+<p>Note: The way the gist flag behaves has changed since <code>0.1.8</code>, please upgrade if you have issues.</p>
 
-<p>Ciao generates documentation for each <code>#&gt; request</code>, the resulting <code>response</code> and all <code>#? assertion</code> blocks.</p>
-
-<p>The documentation is in <code>markdown</code> format and is available in the directory specified using the <code>-d</code> option when executing <code>ciao</code></p>
-
-<p>eg. To generate documentation in <code>./doc</code> for all scripts in <code>./scripts</code>:</p>
-
-<div class="highlight"><pre><span class="nv">$ </span>ciao -d doc scripts
-</pre></div>
-
-<p>An example generated documentation file can be found here:
-<a href="https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md">https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md</a></p>
-
-<h2>Requests</h2>
+<h1>Requests</h1>
 
 <p>The ciao request format is the same as that of the <code>node.js</code> native http client <code>http.request</code>.</p>
 
@@ -213,13 +213,13 @@
 <span class="nx">json</span><span class="p">.</span><span class="nx">preferGlobal</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span>
 </pre></div>
 
-<h2>Assertions</h2>
+<h1>Assertions</h1>
 
 <p>You can add assertions to your scripts by including <code>#? assertion</code> blocks.</p>
 
 <p>Currently <code>#? assertion</code> blocks only provide the functionality of the <code>should</code> js framework, but I am looking at adding more assertion libraries in the future.</p>
 
-<p>Each test case has access to three objects named <code>title</code>, <code>response</code> &amp; <code>json</code>.</p>
+<p>Each test case has access to four objects named <code>title</code>, <code>response</code>, <code>json</code> &amp; <code>$</code>.</p>
 
 <ul>
 <li>
@@ -238,6 +238,8 @@
 </li>
 <li>
 <code>json</code> the result of parsing the response.body with <code>JSON.parse</code> (empty for invalid json).</li>
+<li>
+<code>$</code> the result of parsing the response.body with <code>cheerio</code> (a familiar jQuery-like API).</li>
 </ul><h3>Examples</h3>
 
 <div class="highlight"><pre><span class="c1">#? Test the response code</span>
@@ -267,7 +269,31 @@
 
 <p><code>should.js</code> reference: <a href="https://github.com/visionmedia/should.js/">https://github.com/visionmedia/should.js/</a></p>
 
-<h2>Configuration</h2>
+<h3>Testing the DOM</h3>
+
+<p>Since version <code>0.1.8</code> you can test DOM elements in your source using a jQuery-like syntax.</p>
+
+<div class="highlight"><pre><span class="c1">#&gt; Wikipedia home page</span>
+<span class="nv">host: </span><span class="s">'en.wikipedia.org'</span>
+<span class="nv">path: </span><span class="s">'/wiki/Main_Page'</span>
+
+<span class="c1">#? Count stylesheets</span>
+<span class="nx">$</span><span class="p">(</span><span class="s">'link[rel="stylesheet"]'</span><span class="p">).</span><span class="nx">length</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="mi">2</span>
+
+<span class="c1">#? Page structure</span>
+<span class="nx">$</span><span class="p">(</span><span class="s">'body.mediawiki &gt; div#mw-page-base'</span><span class="p">).</span><span class="nx">length</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="mi">1</span>
+
+<span class="c1">#? Check headers are correctly rendered</span>
+<span class="nx">$</span><span class="p">(</span><span class="s">'span.mw-headline'</span><span class="p">).</span><span class="nx">first</span><span class="p">().</span><span class="nx">text</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="s">"From today's featured article"</span>
+<span class="nx">$</span><span class="p">(</span><span class="s">'span.mw-headline'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="s">"Did you know..."</span>
+<span class="nx">$</span><span class="p">(</span><span class="s">'span.mw-headline'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="s">"In the news"</span>
+<span class="nx">$</span><span class="p">(</span><span class="s">'span.mw-headline'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="s">"On this day..."</span>
+<span class="nx">$</span><span class="p">(</span><span class="s">'span.mw-headline'</span><span class="p">).</span><span class="nx">last</span><span class="p">().</span><span class="nx">text</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="s">"Wikipedia languages"</span>
+</pre></div>
+
+<p><code>cheerio</code> reference: <a href="https://github.com/MatthewMueller/cheerio">https://github.com/MatthewMueller/cheerio</a></p>
+
+<h1>Configuration</h1>
 
 <p>Ciao looks for a global configuration file called <code>ciao.json</code> in your current working directory.</p>
 
@@ -290,6 +316,20 @@
 <p>The <code>defaults</code> section is merged in to every request that is made, it's useful for specifying global request properties such as <code>host</code> and <code>port</code>.</p>
 
 <p>The <code>config</code> section is useful for storing session tokens or any sort of data you would like available to <code>#! before</code> or <code>#&gt; request</code> blocks.</p>
+
+<h1>Generate Documentation</h1>
+
+<p>Ciao can generate documentation for each <code>#&gt; request</code>, the resulting <code>response</code> and all <code>#? assertion</code> blocks.</p>
+
+<p>The documentation is in <code>markdown</code> format and is available in the directory specified using the <code>-d</code> option when executing <code>ciao</code></p>
+
+<p>eg. To generate documentation in <code>./doc</code> for all scripts in <code>./scripts</code>:</p>
+
+<div class="highlight"><pre><span class="nv">$ </span>ciao -d doc scripts
+</pre></div>
+
+<p>An example generated documentation file can be found here:
+<a href="https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md">Github API Example - Documentation</a></p>
 
 <h2>How it works</h2>
 
@@ -333,6 +373,8 @@ This isolates the main thread from malicious code and ensures the fastest execut
 <div class="highlight"><pre><span class="nv">$ </span>npm <span class="nb">test</span>
 </pre></div>
 
+<p><a href="https://travis-ci.org/missinglink/ciao"><img src="https://travis-ci.org/missinglink/ciao.png?branch=master" alt="Build Status"></a></p>
+
 <h3>Running Ciao test scripts</h3>
 
 <p>This will execute all tests in the <code>./scripts</code> directory and write documentation in the <code>./doc</code> directory.</p>
@@ -355,7 +397,6 @@ This isolates the main thread from malicious code and ensures the fastest execut
 </ul><h3>Mid term</h3>
 
 <ul>
-<li>Command line utility</li>
 <li>Improved reporters</li>
 <li>Improved documentors</li>
 <li>Web interface</li>
