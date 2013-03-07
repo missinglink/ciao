@@ -36,7 +36,7 @@ class Request
 
         if req.headers?['Content-Type'] is 'application/x-www-form-urlencoded'
           body = querystring.stringify req.body
-          request.write "#{body}\n"
+          request.write "#{body}"
         else
           json = JSON.stringify req.body
           request.write "#{json}\n"
