@@ -14,7 +14,7 @@ class Request
     if req.port is 443 or req.protocol is 'https:' then client = https
     req.agent = false # Disable agent to avoid socket errors
 
-    @request client, req
+    @request client, reqz
 
   request: (client, req) ->
 
@@ -32,8 +32,14 @@ class Request
         request.write "#{req.body}\n"
 
       else if 'object' is typeof req.body
-        json = JSON.stringify req.body
-        request.write "#{json}\n"
+
+        if req.headers['Content-Type'] is 'application/json'
+          json = JSON.stringify req.body
+          request.write "#{json}\n"
+
+        else if req.headers['Content-Type'] is 'application/x-www-form-urlencoded'
+          body = querystring.stringify req.body
+          request.write "#{body}\n"
 
     request.end()
 
