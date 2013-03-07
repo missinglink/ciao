@@ -1,6 +1,7 @@
 
 http = require 'http'
 https = require 'https'
+querystring = require 'querystring'
 
 class Request
 
@@ -14,7 +15,7 @@ class Request
     if req.port is 443 or req.protocol is 'https:' then client = https
     req.agent = false # Disable agent to avoid socket errors
 
-    @request client, reqz
+    @request client, req
 
   request: (client, req) ->
 
@@ -33,13 +34,12 @@ class Request
 
       else if 'object' is typeof req.body
 
-        if req.headers['Content-Type'] is 'application/json'
-          json = JSON.stringify req.body
-          request.write "#{json}\n"
-
-        else if req.headers['Content-Type'] is 'application/x-www-form-urlencoded'
+        if req.headers?['Content-Type'] is 'application/x-www-form-urlencoded'
           body = querystring.stringify req.body
           request.write "#{body}\n"
+        else
+          json = JSON.stringify req.body
+          request.write "#{json}\n"
 
     request.end()
 
