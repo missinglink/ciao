@@ -87,14 +87,13 @@ class StandardReporter
 class ReqRes
   watch: ( @runner ) ->
     @runner.on 'complete', (code,stdout,stderr,data) =>
-      unless code is 0
-        logger.log '\n -- REQUEST -----------'
-        logger.log JSON.stringify( data.request, null, 2 )
-        logger.log '\n -- RESPONSE -----------'
-        logger.log data.response.statusCode
-        logger.log JSON.stringify( data.request.headers, null, 2 )
-        foo = JSON.parse( data.response.body )
-        logger.log JSON.stringify( foo, null, 2 )
+      logger.log '\n -- REQUEST -----------'
+      logger.log JSON.stringify( data.request, null, 2 )
+      logger.log '\n -- RESPONSE -----------'
+      logger.log data.response.statusCode
+      logger.log JSON.stringify( data.request.headers, null, 2 )
+      foo = JSON.parse( data.response.body )
+      logger.log JSON.stringify( foo, null, 2 )
 
 # Debug Reporter
 class Debug
