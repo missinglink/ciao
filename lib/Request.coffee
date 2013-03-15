@@ -1,6 +1,9 @@
 
 http = require 'http'
 https = require 'https'
+
+querystring = require 'querystring'
+
 EventEmitter = require('events').EventEmitter
 
 class Request extends EventEmitter
@@ -32,8 +35,13 @@ class Request extends EventEmitter
         request.write "#{req.body}\n"
 
       else if 'object' is typeof req.body
-        json = JSON.stringify req.body
-        request.write "#{json}\n"
+
+        if req.headers?['Content-Type'] is 'application/x-www-form-urlencoded'
+          body = querystring.stringify req.body
+          request.write "#{body}"
+        else
+          json = JSON.stringify req.body
+          request.write "#{json}\n"
 
     request.end()
 
