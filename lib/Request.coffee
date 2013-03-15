@@ -2,7 +2,6 @@
 http = require 'http'
 https = require 'https'
 qs = require 'qs'
-
 EventEmitter = require('events').EventEmitter
 
 class Request extends EventEmitter
@@ -34,7 +33,6 @@ class Request extends EventEmitter
         request.write "#{req.body}\n"
 
       else if 'object' is typeof req.body
-
         if req.headers?['Content-Type'] is 'application/x-www-form-urlencoded'
           body = qs.stringify req.body
           request.write "#{body}\n"
