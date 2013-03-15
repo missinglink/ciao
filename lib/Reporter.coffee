@@ -54,7 +54,9 @@ class StandardReporter
   watch: ( @runner ) ->
     @runner.on 'complete', @log
 
-  log: (code,stdout,stderr,data) =>
+  log: (code,stdout,stderr,data,mocklogger) =>
+
+    logger = mocklogger if mocklogger
 
     # Hack for adding first newline
     if firstrun is true
