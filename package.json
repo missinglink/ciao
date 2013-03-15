@@ -17,7 +17,8 @@
     "async": "~0.1.22",
     "winston": "~0.6.2",
     "ping": "~0.1.1",
-    "cheerio": "~0.10.6"
+    "cheerio": "~0.10.6",
+    "qs": "~0.5.3"
   },
   "bin": {
     "ciao": "./bin/ciao"
