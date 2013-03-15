@@ -1,6 +1,7 @@
 
 cp = require 'child_process'
 EventEmitter = require('events').EventEmitter
+winston = require 'winston'
 
 class Process extends EventEmitter
 
@@ -13,6 +14,13 @@ class Process extends EventEmitter
     @stdout = ''
     @stderr = ''
     @proc = cp.spawn @command, @args, @options
+    @proc.stdin.setEncoding 'utf-8'
+    @proc.stdout.setEncoding 'utf-8'
+    @proc.stderr.setEncoding 'utf-8'
+
+    @proc.stderr.on 'data', (data) =>
+      if /^execvp\(\)/.test data then winston.error 'Failed to start child process'
+
     @proc.stdout.on 'data', (data) => @stdout += data
     @proc.stderr.on 'data', (data) => @stderr += data
     
@@ -21,7 +29,6 @@ class Process extends EventEmitter
       setTimeout ( () => @emit 'exit', code, @stdout, @stderr, @data ), 10
 
     @on 'write', (data) =>
-      @proc.stdin.setEncoding 'utf-8'
       @proc.stdin.write data
       @proc.stdin.end()
 

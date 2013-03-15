@@ -1,13 +1,13 @@
 Process = require './Process'
 path = require 'path'
 coffee = path.resolve( __dirname + '/../node_modules/coffee-script/bin/coffee' )
+EventEmitter = require('events').EventEmitter
 
-class Runner
+class Runner extends EventEmitter
 
   constructor: (groups) ->
 
     @groups = groups
-    @listeners = []
 
     # Set environmental variables
     @env = process.env
@@ -22,16 +22,19 @@ class Runner
       statusCode: response.statusCode
       headers: response.headers
 
-    try json = JSON.parse body
-    catch e then json = {}
-
     for test in @groups
 
       script = []
       script.push "should = require 'should'"
+      script.push "cheerio = require 'cheerio'"
       script.push "title = '" + test.title.split("'").join("\\'") + "'"
-      script.push "json = " + JSON.stringify json
       script.push "response = " + JSON.stringify res
+      script.push "try"
+      script.push "  $ = {}"
+      script.push "  json = JSON.parse(response.body)"
+      script.push "catch e"
+      script.push "  json = {}"
+      script.push "  $ = cheerio.load(response.body)"
       script.push "try"
       script.push Runner.indentSource( test.source, ' ', 2 )
       script.push "catch e"
@@ -43,11 +46,9 @@ class Runner
       child = new Process coffee, [ '-s' ], { env: @env }, { test: test, request: request, response: res }
 
       child.on 'exit', (code, stdout, stderr, data) =>
-        @listeners.map (listener) => listener code, stdout, stderr, data
+        @emit 'complete', code, stdout, stderr, data
 
       child.emit 'write', script.join '\n'
-
-  listener: (callback) => @listeners.push callback
 
   @indentSource: (source,char=' ',indentation=2) ->
 

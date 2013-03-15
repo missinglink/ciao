@@ -2,11 +2,9 @@
 
 Ciao is a simple command line utility for testing http(s) requests and generating API documentation.
 
-## Scripts:
+Scripts are written in coffee-script, however it's important to note that they are interpreted, not executed.
 
-Ciao scripts are written in coffee-script, however it's important to note that they are interpreted, not executed.
-
-### Basic script:
+### Basic uptime script:
 
 ```coffee-script
 #> Check Google is still running
@@ -16,7 +14,21 @@ host: 'www.google.co.uk'
 response.body.should.include 'Google'
 ```
 
-### Advanced script:
+### HTML test script:
+
+```coffee-script
+#> Twitter home page
+port: 443
+protocol: 'https:'
+host: 'twitter.com'
+
+#? Login form
+$('div.front-signin input#signin-email').length.should.eql 1
+$('div.front-signin input#signin-password').length.should.eql 1
+$('div.front-signin button[type="submit"]').length.should.eql 1
+```
+
+### JSON webservice script:
 
 ```coffee-script
 #! Requried Headers
@@ -42,10 +54,11 @@ json.should.include
   html_url: 'https://github.com/joyent/node/blob/master/README.md'
   git_url: 'https://api.github.com/repos/joyent/node/git/blobs/' + json.sha
 ```
-When you run a script, documentation is produced. eg:
-https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md
 
-## Interpreter directives
+When you run a script, documentation is produced. eg:
+[Github API Example - Documentation](https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md)
+
+# Interpreter directives
 
 Ciao uses a special syntax to declare the start and end of code blocks.
 
@@ -62,7 +75,7 @@ eg. `#> Contact page is available` defines a `#> request` block with the title `
 
 The title is used for reporting & documentation, so the better your titles, the easier life will be for you.
 
-## Installing Ciao
+# Installing Ciao
 
 To install the most stable `ciao` binary globally on your system via `npm` you can simply:
 
@@ -75,7 +88,7 @@ $ ciao --help
 * Note: you will need `node` and `npm` installed first: http://nodejs.org/download/
 
 
-## Running Scripts
+# Running Scripts
 
 ```
 peter@edgy:/var/www/ciao$ ciao --help
@@ -85,7 +98,7 @@ peter@edgy:/var/www/ciao$ ciao --help
   Options:
     -h, --help                 output usage information
     -V, --version              output the version number
-    -g, --gist [id]            load script from github gist id
+    -g, --gist [url]           load script from github gist
     -c, --conf [dir]           an additional config file to load after ciao.json
     -s, --silent               disable reporters
     -v, --verbose              report full requests and responses on error
@@ -114,27 +127,16 @@ $ ciao scripts/
 
 ### Running a gist as a script
 
-You can run remote scripts from github if you have the gist id.
+You can run remote scripts from github by providing the gist suffix or url.
 
 ```bash
-$ ciao --gist 4678610
+$ ciao --gist missinglink/4678610
+$ ciao --gist https://gist.github.com/missinglink/4678610
 ```
 
-## API Documentation
+Note: The way the gist flag behaves has changed since `0.1.8`, please upgrade if you have issues.
 
-Ciao generates documentation for each `#> request`, the resulting `response` and all `#? assertion` blocks.
-
-The documentation is in `markdown` format and is available in the directory specified using the `-d` option when executing `ciao`
-
-eg. To generate documentation in `./doc` for all scripts in `./scripts`:
-```bash
-$ ciao -d doc scripts
-```
-
-An example generated documentation file can be found here:
-https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md
-
-## Requests
+# Requests
 
 The ciao request format is the same as that of the `node.js` native http client `http.request`.
 
@@ -177,13 +179,13 @@ headers: 'Accept': 'application/json'
 json.preferGlobal.should.be.true
 ```
 
-## Assertions
+# Assertions
 
 You can add assertions to your scripts by including `#? assertion` blocks.
 
 Currently `#? assertion` blocks only provide the functionality of the `should` js framework, but I am looking at adding more assertion libraries in the future.
 
-Each test case has access to three objects named `title`, `response` & `json`.
+Each test case has access to four objects named `title`, `response`, `json` & `$`.
 
 * `title` is simply the title specified in the interpreter directive (as discussed above)
 * `response` contains 3 properties returned by `http.request`
@@ -191,6 +193,7 @@ Each test case has access to three objects named `title`, `response` & `json`.
   * `statusCode` contains the status code of the http(s) response.
   * `headers` contains an array of headers that were returned.
 * `json` the result of parsing the response.body with `JSON.parse` (empty for invalid json).
+* `$` the result of parsing the response.body with `cheerio` (a familiar jQuery-like API).
 
 ### Examples
 
@@ -222,7 +225,32 @@ response.should.have.header 'location', 'http://www.example.com/'
 
 `should.js` reference: https://github.com/visionmedia/should.js/
 
-## Configuration
+### Testing the DOM
+
+Since version `0.1.8` you can test DOM elements in your source using a jQuery-like syntax.
+
+```coffee-script
+#> Wikipedia home page
+host: 'en.wikipedia.org'
+path: '/wiki/Main_Page'
+
+#? Count stylesheets
+$('link[rel="stylesheet"]').length.should.eql 2
+
+#? Page structure
+$('body.mediawiki > div#mw-page-base').length.should.eql 1
+
+#? Check headers are correctly rendered
+$('span.mw-headline').first().text().should.eql "From today's featured article"
+$('span.mw-headline').eq(1).text().should.eql "Did you know..."
+$('span.mw-headline').eq(2).text().should.eql "In the news"
+$('span.mw-headline').eq(3).text().should.eql "On this day..."
+$('span.mw-headline').last().text().should.eql "Wikipedia languages"
+```
+
+`cheerio` reference: https://github.com/MatthewMueller/cheerio
+
+# Configuration
 
 Ciao looks for a global configuration file called `ciao.json` in your current working directory.
 
@@ -246,6 +274,20 @@ Example `ciao.json`
 The `defaults` section is merged in to every request that is made, it's useful for specifying global request properties such as `host` and `port`.
 
 The `config` section is useful for storing session tokens or any sort of data you would like available to `#! before` or `#> request` blocks.
+
+# Generate Documentation
+
+Ciao can generate documentation for each `#> request`, the resulting `response` and all `#? assertion` blocks.
+
+The documentation is in `markdown` format and is available in the directory specified using the `-d` option when executing `ciao`
+
+eg. To generate documentation in `./doc` for all scripts in `./scripts`:
+```bash
+$ ciao -d doc scripts
+```
+
+An example generated documentation file can be found here:
+[Github API Example - Documentation](https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md)
 
 ## How it works
 
@@ -290,6 +332,7 @@ The unit test suite is run using `mocha`
 ```bash
 $ npm test
 ```
+[![Build Status](https://travis-ci.org/missinglink/ciao.png?branch=master)](https://travis-ci.org/missinglink/ciao)
 
 ### Running Ciao test scripts
 
@@ -313,7 +356,6 @@ If you would like a code review or to open a feature discussion, please fork and
 
 ### Mid term
 
-* Command line utility
 * Improved reporters
 * Improved documentors
 * Web interface
