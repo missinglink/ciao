@@ -26,20 +26,22 @@ basesettings = new Settings();
 basesettings.loadFromFile( 'ciao.json', true );
 if( program.conf ){ basesettings.loadFromFile( program.conf ); }
 
+// Set Reporter
+if( !program.silent ){
+  if( program.verbose ){
+    var reporter = new Reporter.reqRes();
+  }
+  else {
+    var reporter = new Reporter.suite();
+  }
+}
+
 var ciao = function( settings, parser, filename )
 {
   if( parser.sections.request[0] ){
     var runner = new Runner( parser.sections.assert );
-    
-    // Set Reporter
-    if( !program.silent ){
-      if( program.verbose ){
-        new Reporter.reqRes( runner );
-      }
-      else {
-        new Reporter.standard( runner );
-      }
-    }
+    reporter.watch( runner );
+    parser.sections.assert.map( function () { runner.emit('start'); } );
 
     // HTTP Request
     var http = new Request();

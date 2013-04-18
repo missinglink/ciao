@@ -5,9 +5,7 @@ EventEmitter = require('events').EventEmitter
 
 class Runner extends EventEmitter
 
-  constructor: (groups) ->
-
-    @groups = groups
+  constructor: (@groups) ->
 
     # Set environmental variables
     @env = process.env
