@@ -7,7 +7,7 @@
   "contributors": [],
   "dependencies": {
     "walk": "~2.2.1",
-    "coffee-script": "~1.6.1",
+    "coffee-script": "~1.6.2",
     "mkdirp": "0.3.x",
     "underscore": "~1.4.3",
     "deepmerge": "~0.2.5",
