@@ -2,7 +2,7 @@
   "name": "ciao",
   "preferGlobal": true,
   "private": false,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Ciao is a simple command line utility for testing http(s) requests and generating API documentation",
   "contributors": [],
   "dependencies": {
