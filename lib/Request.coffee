@@ -27,8 +27,10 @@ class Request extends EventEmitter
       res.on 'error', (e) => @emit 'complete', e, req, res, @data
       res.on 'close', (e) => @emit 'complete', e, req, res, @data
 
-    if req.body?
+    if not req.body? and req.headers?['Content-Type'] is 'application/json'
+      req.body = {}
 
+    if req.body?
       if 'string' is typeof req.body 
         request.write "#{req.body}\n"
 
