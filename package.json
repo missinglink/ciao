@@ -17,7 +17,8 @@
     "async": "~0.1.22",
     "winston": "~0.6.2",
     "ping": "~0.1.1",
-    "cheerio": "~0.10.6"
+    "cheerio": "~0.10.6",
+    "qs": "~0.5.3"
   },
   "bin": {
     "ciao": "./bin/ciao"
@@ -31,7 +32,7 @@
   },
   "readme": "# Ciao\n\nCiao is a simple command line utility for testing http(s) requests and generating API documentation.\n\nFull documentation: http://missinglink.github.com/ciao/",
   "engines": {
-    "node": "0.8.x",
+    "node": "0.6",
     "npm": "1.1.x"
   },
   "repository": {
