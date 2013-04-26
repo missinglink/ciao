@@ -64,7 +64,7 @@ class StandardReporter
       firstrun = false
 
     r = data.request
-    logger.log " \x1b[1m#{r.method} \x1b[1;0m#{r.protocol}//#{r.host}#{r.path}\x1b[0m" + " \x1b[2m#{data.test.id} \x1b[0m"
+    logger.log " \x1b[1m#{r.method.toUpperCase()} \x1b[1;0m#{r.protocol}//#{r.host}#{r.path}\x1b[0m" + " \x1b[2m#{data.test.id} \x1b[0m"
 
     if code is 0
       logger.log " \x1b[1;32m✓\x1b[0;32m #{data.test.title}\x1b[0m"
