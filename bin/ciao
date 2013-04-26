@@ -11,9 +11,10 @@ var Request = require( '../lib/Request' );
 var Settings = require( '../lib/Settings' );
 var Suite = require( '../lib/Suite' );
 var ScriptParser = require( '../lib/ScriptParser' );
+var version = require('../package').version;
 
 program
-  .version('0.1.10')
+  .version(version)
   .usage('[options] <file ...>')
   .option('-g, --gist [url]', 'load script from github gist')
   .option('-c, --conf [dir]', 'an additional config file to load after ciao.json')
