@@ -210,7 +210,7 @@
 <span class="nv">headers: </span><span class="s">'Accept'</span><span class="o">:</span> <span class="s">'application/json'</span>
 
 <span class="c1">#? Should have preferGlobal set to true</span>
-<span class="nx">json</span><span class="p">.</span><span class="nx">preferGlobal</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span>
+<span class="nx">json</span><span class="p">.</span><span class="nx">preferGlobal</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">true</span>
 </pre></div>
 
 <h1>Assertions</h1>
@@ -286,8 +286,9 @@
 <span class="c1">#? Check headers are correctly rendered</span>
 <span class="nx">$</span><span class="p">(</span><span class="s">'span.mw-headline'</span><span class="p">).</span><span class="nx">first</span><span class="p">().</span><span class="nx">text</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="s">"From today's featured article"</span>
 <span class="nx">$</span><span class="p">(</span><span class="s">'span.mw-headline'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="s">"Did you know..."</span>
-<span class="nx">$</span><span class="p">(</span><span class="s">'span.mw-headline'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="s">"In the news"</span>
-<span class="nx">$</span><span class="p">(</span><span class="s">'span.mw-headline'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="s">"On this day..."</span>
+<span class="nx">$</span><span class="p">(</span><span class="s">'span.mw-headline'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="s">"Today's articles for improvement"</span>
+<span class="nx">$</span><span class="p">(</span><span class="s">'span.mw-headline'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="s">"In the news"</span>
+<span class="nx">$</span><span class="p">(</span><span class="s">'span.mw-headline'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">4</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="s">"On this day..."</span>
 <span class="nx">$</span><span class="p">(</span><span class="s">'span.mw-headline'</span><span class="p">).</span><span class="nx">last</span><span class="p">().</span><span class="nx">text</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span> <span class="s">"Wikipedia languages"</span>
 </pre></div>
 
@@ -412,6 +413,16 @@ This isolates the main thread from malicious code and ensures the fastest execut
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
+		          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-40580978-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
