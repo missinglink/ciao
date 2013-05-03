@@ -306,11 +306,23 @@ https://github.com/missinglink/ciao/issues
 
 Please report everything as it comes up, no matter how small.
 
+### NPM module
+
+The `ciao` npm module can be found here:
+[https://npmjs.org/package/ciao](https://npmjs.org/package/ciao)
+
+### Github pages
+
+A prettier version of this readme is available here:
+[http://missinglink.github.com/ciao/](http://missinglink.github.com/ciao/)
+
 ## Contributing
 
-Ciao is still in beta, if you are lucky enough to have git access, you're best to use `bleeding edge`:
+Please fork and pull request against upstream master on a feature branch.
 
-### Quick start
+Pretty please; provide unit tests and script fixtures in the `test` and `fixtures` directories.
+
+### Getting Set Up
 
 ```bash
 $ git clone git@github.com:missinglink/ciao.git ciao
@@ -320,12 +332,6 @@ $ npm test
 $ ./bin/ciao scripts/examples
 ```
 
-### I have push access, what can I push?
-
-Since we're in beta, you can push anything as long as you successfully run the commands below before pushing.
-
-Pretty please; provide unit tests and script fixtures in the `test` and `fixtures` directories.
-
 ### Running Unit Tests
 
 The unit test suite is run using `mocha`
@@ -333,6 +339,11 @@ The unit test suite is run using `mocha`
 ```bash
 $ npm test
 ```
+
+### Continuous Integration
+
+Travis tests every release against node versions `0.6` `0.8` & `0.10`
+
 [![Build Status](https://travis-ci.org/missinglink/ciao.png?branch=master)](https://travis-ci.org/missinglink/ciao)
 
 ### Running Ciao test scripts
