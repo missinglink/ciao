@@ -60,7 +60,7 @@ When you run a script, documentation is produced. eg:
 
 ---
 
-# Interpreter directives
+# Writing Scripts
 
 Ciao uses a special syntax to declare the start and end of code blocks.
 
