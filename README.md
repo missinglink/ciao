@@ -280,9 +280,9 @@ Example `ciao.json`
 
 If you require your settings to be generated before the test suite runs then you may use a file called `ciao.js` or `ciao.coffee` instead of `ciao.json`.
 
-This is particularly useful for running `fixtures` or any other local or remote code before your tests start.
+This is particularly useful for running `fixtures` or any other `local` or `remote` code before your tests start.
 
-Dynamic configurations must exports their settings with `module.exports =` or an error will be thrown.
+Dynamic configurations must export their settings with `module.exports =` or an error will be thrown.
 
 # Generate Documentation
 
