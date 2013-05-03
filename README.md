@@ -58,6 +58,8 @@ json.should.include
 When you run a script, documentation is produced. eg:
 [Github API Example - Documentation](https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md)
 
+--
+
 # Interpreter directives
 
 Ciao uses a special syntax to declare the start and end of code blocks.
@@ -75,6 +77,8 @@ eg. `#> Contact page is available` defines a `#> request` block with the title `
 
 The title is used for reporting & documentation, so the better your titles, the easier life will be for you.
 
+--
+
 # Installing Ciao
 
 To install the most stable `ciao` binary globally on your system via `npm` you can simply:
@@ -87,6 +91,7 @@ $ ciao --help
 * Note: documentation (such as this README) may cover features not yet available via `npm`.
 * Note: you will need `node` and `npm` installed first: http://nodejs.org/download/
 
+--
 
 # Running Scripts
 
@@ -136,6 +141,8 @@ $ ciao --gist https://gist.github.com/missinglink/4678610
 
 Note: The way the gist flag behaves has changed since `0.1.8`, please upgrade if you have issues.
 
+--
+
 # Requests
 
 The ciao request format is the same as that of the `node.js` native http client `http.request`.
@@ -178,6 +185,8 @@ headers: 'Accept': 'application/json'
 #? Should have preferGlobal set to true
 json.preferGlobal.should.be.true
 ```
+
+--
 
 # Assertions
 
@@ -251,6 +260,8 @@ $('span.mw-headline').last().text().should.eql "Wikipedia languages"
 
 `cheerio` reference: https://github.com/MatthewMueller/cheerio
 
+--
+
 # Project Settings
 
 Ciao looks for a project-wide configuration file called `ciao.json` in your current working directory.
@@ -284,6 +295,8 @@ This is particularly useful for running `fixtures` or any other `local` or `remo
 
 Dynamic configurations must export their settings with `module.exports =` or an error will be thrown.
 
+--
+
 # Generate Documentation
 
 Ciao can generate documentation for each `#> request`, the resulting `response` and all `#? assertion` blocks.
@@ -297,6 +310,8 @@ $ ciao -d doc scripts
 
 An example generated documentation file can be found here:
 [Github API Example - Documentation](https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md)
+
+--
 
 ## How it works
 
