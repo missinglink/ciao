@@ -14,6 +14,10 @@ class Process extends EventEmitter
     @stdout = ''
     @stderr = ''
     @proc = cp.spawn @command, @args, @options
+
+    # Provides backwards compatibility between 0.10 and 0.8
+    @proc.on 'error', (error) -> @emit 'exit', 127, @stdout, error, @data
+
     @proc.stdin.setEncoding 'utf-8'
     @proc.stdout.setEncoding 'utf-8'
     @proc.stderr.setEncoding 'utf-8'
