@@ -301,7 +301,7 @@ Dynamic configurations must export their settings with `module.exports =` or an 
 
 Ciao can generate documentation for each `#> request`, the resulting `response` and all `#? assertion` blocks.
 
-The documentation is in `markdown` format and is available in the directory specified using the `-d` option when executing `ciao`
+The documentation is in `markdown` format and is available in the directory specified using the `-d` flag.
 
 eg. To generate documentation in `./doc` for all scripts in `./scripts`:
 ```bash
