@@ -89,7 +89,7 @@ $ ciao --help
 ```
 
 * Note: documentation (such as this README) may cover features not yet available via `npm`.
-* Note: you will need `node` and `npm` installed first: http://nodejs.org/download/
+* Note: you will need `node` and `npm` installed first, the easiest way to do this with [nave.sh](https://github.com/isaacs/nave) by executing `./nave.sh usemain 0.10`
 
 ---
 
