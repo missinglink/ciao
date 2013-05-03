@@ -32,7 +32,7 @@
   },
   "readme": "# Ciao\n\nCiao is a simple command line utility for testing http(s) requests and generating API documentation.\n\nFull documentation: http://missinglink.github.com/ciao/",
   "engines": {
-    "node": "0.6",
+    "node": ">0.6.0",
     "npm": "1.1.x"
   },
   "repository": {
