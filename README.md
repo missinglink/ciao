@@ -299,19 +299,12 @@ All the requests are launched asyncronously using `http.request`.
 
 After a `response` comes back from the target server; all `#? assertion` blocks are fired asyncronously in a seperate child process.
 
-## Known bugs
-
-It's early stages yet; there are a bunch of issues reported here:
-https://github.com/missinglink/ciao/issues
-
-Please report everything as it comes up, no matter how small.
-
-### NPM module
+## NPM Module
 
 The `ciao` npm module can be found here:
 [https://npmjs.org/package/ciao](https://npmjs.org/package/ciao)
 
-### Github pages
+## Github Pages
 
 A prettier version of this readme is available here:
 [http://missinglink.github.com/ciao/](http://missinglink.github.com/ciao/)
@@ -353,6 +346,13 @@ This will execute all tests in the `./scripts` directory and write documentation
 ```bash
 $ npm run ciao
 ```
+
+### Known bugs
+
+It's early stages yet; there are a bunch of issues reported here:
+https://github.com/missinglink/ciao/issues
+
+Please report everything as it comes up, no matter how small.
 
 ### Code review
 
