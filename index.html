@@ -324,13 +324,15 @@
 
 <p>This is particularly useful for running <code>fixtures</code> or any other <code>local</code> or <code>remote</code> code before your tests start.</p>
 
-<p>Dynamic configurations must export their settings with <code>module.exports =</code> or an error will be thrown.</p>
+<p>Dynamic configurations must export their settings with <code>module.exports</code> or an error will be thrown.</p>
+
+<p>Note: This feature was introduced in <code>0.3.1</code>, please upgrade if you have issues.</p>
 
 <hr><h1>Generate Documentation</h1>
 
 <p>Ciao can generate documentation for each <code>#&gt; request</code>, the resulting <code>response</code> and all <code>#? assertion</code> blocks.</p>
 
-<p>The documentation is in <code>markdown</code> format and is available in the directory specified using the <code>-d</code> option when executing <code>ciao</code></p>
+<p>The documentation is in <code>markdown</code> format and is available in the directory specified using the <code>-d</code> flag.</p>
 
 <p>eg. To generate documentation in <code>./doc</code> for all scripts in <code>./scripts</code>:</p>
 
