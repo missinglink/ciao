@@ -30,6 +30,9 @@ class Request extends EventEmitter
     if not req.body? and req.headers?['Content-Type'] is 'application/json'
       req.body = {}
 
+    # This is required or http.request throws a socket hangup error
+    if req.method is 'GET' then req.body = undefined
+
     if req.body?
       if 'string' is typeof req.body 
         request.write "#{req.body}\n"
