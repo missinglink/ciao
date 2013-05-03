@@ -88,7 +88,9 @@ $ [sudo] npm install -g ciao
 $ ciao --help
 ```
 
-Note: you will need `node` and `npm` installed first, the easiest way to do this with [nave.sh](https://github.com/isaacs/nave) by executing `[sudo] ./nave.sh usemain 0.10`
+Note: you will need `node` and `npm` installed first.
+
+The easiest way to install `node.js` is with [nave.sh](https://github.com/isaacs/nave) by executing `[sudo] ./nave.sh usemain 0.10`
 
 ---
 
