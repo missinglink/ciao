@@ -58,7 +58,7 @@ json.should.include
 When you run a script, documentation is produced. eg:
 [Github API Example - Documentation](https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md)
 
---
+---
 
 # Interpreter directives
 
@@ -77,7 +77,7 @@ eg. `#> Contact page is available` defines a `#> request` block with the title `
 
 The title is used for reporting & documentation, so the better your titles, the easier life will be for you.
 
---
+---
 
 # Installing Ciao
 
@@ -91,7 +91,7 @@ $ ciao --help
 * Note: documentation (such as this README) may cover features not yet available via `npm`.
 * Note: you will need `node` and `npm` installed first: http://nodejs.org/download/
 
---
+---
 
 # Running Scripts
 
@@ -141,7 +141,7 @@ $ ciao --gist https://gist.github.com/missinglink/4678610
 
 Note: The way the gist flag behaves has changed since `0.1.8`, please upgrade if you have issues.
 
---
+---
 
 # Requests
 
@@ -186,7 +186,7 @@ headers: 'Accept': 'application/json'
 json.preferGlobal.should.be.true
 ```
 
---
+---
 
 # Assertions
 
@@ -260,7 +260,7 @@ $('span.mw-headline').last().text().should.eql "Wikipedia languages"
 
 `cheerio` reference: https://github.com/MatthewMueller/cheerio
 
---
+---
 
 # Project Settings
 
@@ -295,7 +295,7 @@ This is particularly useful for running `fixtures` or any other `local` or `remo
 
 Dynamic configurations must export their settings with `module.exports =` or an error will be thrown.
 
---
+---
 
 # Generate Documentation
 
@@ -311,7 +311,7 @@ $ ciao -d doc scripts
 An example generated documentation file can be found here:
 [Github API Example - Documentation](https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md)
 
---
+---
 
 ## How it works
 
