@@ -26,6 +26,17 @@ class Settings
 
     return @
 
+  requireFile: (filename,silent=false) =>
+
+    try
+      json = require filename
+      return @merge json
+    catch e
+      unless silent
+        console.log "\n \x1b[1;33m⚠\x1b[1;33m  WARNING: Failed to load #{filename}\x1b[0m"
+
+    return @
+
   merge: (settings) =>
 
     if settings?.defaults then @defaults = deepmerge @defaults, settings.defaults

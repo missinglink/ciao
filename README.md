@@ -251,9 +251,13 @@ $('span.mw-headline').last().text().should.eql "Wikipedia languages"
 
 `cheerio` reference: https://github.com/MatthewMueller/cheerio
 
-# Configuration
+# Project Settings
 
-Ciao looks for a global configuration file called `ciao.json` in your current working directory.
+Ciao looks for a project-wide configuration file called `ciao.json` in your current working directory.
+
+The `defaults` section is merged in to every request that is made, it's useful for specifying global request properties such as `host` and `port`.
+
+The `config` section is useful for storing session tokens or any sort of data you would like available to `#! before` or `#> request` blocks.
 
 Example `ciao.json`
 
@@ -272,9 +276,11 @@ Example `ciao.json`
 }
 ```
 
-The `defaults` section is merged in to every request that is made, it's useful for specifying global request properties such as `host` and `port`.
+## Dynamic Config Files
 
-The `config` section is useful for storing session tokens or any sort of data you would like available to `#! before` or `#> request` blocks.
+If you require a dynamic configuration then you may use a file called `ciao.js` or `ciao.coffee` instead of `ciao.json`
+
+Dynamic configurations must exports their settings with `module.exports =` or an error will be thrown.
 
 # Generate Documentation
 

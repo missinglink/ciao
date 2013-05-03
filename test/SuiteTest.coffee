@@ -6,15 +6,6 @@ describe 'Suite', ->
 
   describe 'functional tests', ->
 
-    it 'should load ciao.json', (done) ->
-
-      suite = new Suite (path,sweet) ->
-        sweet.should.equal suite
-        path.should.eql 'ciao.json'
-        sweet.files.should.eql [ 'ciao.json' ]
-        done()
-      suite.walk 'ciao.json'
-
     it 'should scan the img directory', (done) ->
 
       counter = 0

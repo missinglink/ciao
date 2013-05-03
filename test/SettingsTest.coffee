@@ -38,7 +38,7 @@ describe 'Settings', ->
       settings = new Settings()
       settings.defaults = {}
 
-      ret = settings.loadFromFile 'ciao.json'
+      ret = settings.requireFile 'ciao'
       ret.should.equal settings
 
       settings.config.should.eql { hello: 'world' }
