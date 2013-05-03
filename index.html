@@ -1,36 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Ciao by missinglink</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <title>Ciao by missinglink</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">Ciao</h1>
-        <p class="header">Ciao is a simple command line utility for testing http(s) requests and generating API documentation</p>
-
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/missinglink/ciao/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/missinglink/ciao/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/missinglink/ciao">View On GitHub</a></li>
-        </ul>
-
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/missinglink">missinglink</a></p>
-
-
-      </header>
-      <section>
+    <header>
+      <div class="inner">
         <h1>Ciao</h1>
+        <h2>Ciao is a simple command line utility for testing http(s) requests and generating API documentation</h2>
+        <a href="https://github.com/missinglink/ciao" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>Ciao</h1>
 
 <p>Ciao is a simple command line utility for testing http(s) requests and generating API documentation.</p>
 
@@ -87,7 +85,7 @@
 <p>When you run a script, documentation is produced. eg:
 <a href="https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md">Github API Example - Documentation</a></p>
 
-<h1>Interpreter directives</h1>
+<hr><h1>Interpreter directives</h1>
 
 <p>Ciao uses a special syntax to declare the start and end of code blocks.</p>
 
@@ -108,7 +106,7 @@
 
 <p>The title is used for reporting &amp; documentation, so the better your titles, the easier life will be for you.</p>
 
-<h1>Installing Ciao</h1>
+<hr><h1>Installing Ciao</h1>
 
 <p>To install the most stable <code>ciao</code> binary globally on your system via <code>npm</code> you can simply:</p>
 
@@ -120,7 +118,7 @@
 <li>Note: documentation (such as this README) may cover features not yet available via <code>npm</code>.</li>
 <li>Note: you will need <code>node</code> and <code>npm</code> installed first: <a href="http://nodejs.org/download/">http://nodejs.org/download/</a>
 </li>
-</ul><h1>Running Scripts</h1>
+</ul><hr><h1>Running Scripts</h1>
 
 <pre><code>peter@edgy:/var/www/ciao$ ciao --help
 
@@ -164,7 +162,7 @@
 
 <p>Note: The way the gist flag behaves has changed since <code>0.1.8</code>, please upgrade if you have issues.</p>
 
-<h1>Requests</h1>
+<hr><h1>Requests</h1>
 
 <p>The ciao request format is the same as that of the <code>node.js</code> native http client <code>http.request</code>.</p>
 
@@ -213,7 +211,7 @@
 <span class="nx">json</span><span class="p">.</span><span class="nx">preferGlobal</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">true</span>
 </pre></div>
 
-<h1>Assertions</h1>
+<hr><h1>Assertions</h1>
 
 <p>You can add assertions to your scripts by including <code>#? assertion</code> blocks.</p>
 
@@ -294,9 +292,13 @@
 
 <p><code>cheerio</code> reference: <a href="https://github.com/MatthewMueller/cheerio">https://github.com/MatthewMueller/cheerio</a></p>
 
-<h1>Configuration</h1>
+<hr><h1>Project Settings</h1>
 
-<p>Ciao looks for a global configuration file called <code>ciao.json</code> in your current working directory.</p>
+<p>Ciao looks for a project-wide configuration file called <code>ciao.json</code> in your current working directory.</p>
+
+<p>The <code>defaults</code> section is merged in to every request that is made, it's useful for specifying global request properties such as <code>host</code> and <code>port</code>.</p>
+
+<p>The <code>config</code> section is useful for storing session tokens or any sort of data you would like available to <code>#! before</code> or <code>#&gt; request</code> blocks.</p>
 
 <p>Example <code>ciao.json</code></p>
 
@@ -314,11 +316,15 @@
 <span class="p">}</span>
 </pre></div>
 
-<p>The <code>defaults</code> section is merged in to every request that is made, it's useful for specifying global request properties such as <code>host</code> and <code>port</code>.</p>
+<h2>Dynamic Project Settings</h2>
 
-<p>The <code>config</code> section is useful for storing session tokens or any sort of data you would like available to <code>#! before</code> or <code>#&gt; request</code> blocks.</p>
+<p>If you require your settings to be generated before the test suite runs then you may use a file called <code>ciao.js</code> or <code>ciao.coffee</code> instead of <code>ciao.json</code>.</p>
 
-<h1>Generate Documentation</h1>
+<p>This is particularly useful for running <code>fixtures</code> or any other <code>local</code> or <code>remote</code> code before your tests start.</p>
+
+<p>Dynamic configurations must export their settings with <code>module.exports =</code> or an error will be thrown.</p>
+
+<hr><h1>Generate Documentation</h1>
 
 <p>Ciao can generate documentation for each <code>#&gt; request</code>, the resulting <code>response</code> and all <code>#? assertion</code> blocks.</p>
 
@@ -332,7 +338,7 @@
 <p>An example generated documentation file can be found here:
 <a href="https://github.com/missinglink/ciao/blob/master/doc/scripts/examples/github-api.md">Github API Example - Documentation</a></p>
 
-<h2>How it works</h2>
+<hr><h2>How it works</h2>
 
 <p>When parsing <code>script</code> &amp; <code>config</code> files ciao launches child processes to excute the coffee-script source.
 This isolates the main thread from malicious code and ensures the fastest execution of tests.</p>
@@ -417,13 +423,26 @@ This isolates the main thread from malicious code and ensures the fastest execut
 <li>Scheduled builds</li>
 <li>Hosted CI solution</li>
 </ul>
-      </section>
-      <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-      </footer>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/missinglink/ciao/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/missinglink/ciao/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/missinglink/ciao"></a> is maintained by <a href="https://github.com/missinglink">missinglink</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		          <script type="text/javascript">
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
