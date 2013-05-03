@@ -341,18 +341,23 @@ This isolates the main thread from malicious code and ensures the fastest execut
 
 <p>After a <code>response</code> comes back from the target server; all <code>#? assertion</code> blocks are fired asyncronously in a seperate child process.</p>
 
-<h2>Known bugs</h2>
+<h2>NPM Module</h2>
 
-<p>It's early stages yet; there are a bunch of issues reported here:
-<a href="https://github.com/missinglink/ciao/issues">https://github.com/missinglink/ciao/issues</a></p>
+<p>The <code>ciao</code> npm module can be found here:
+<a href="https://npmjs.org/package/ciao">https://npmjs.org/package/ciao</a></p>
 
-<p>Please report everything as it comes up, no matter how small.</p>
+<h2>Github Pages</h2>
+
+<p>A prettier version of this readme is available here:
+<a href="http://missinglink.github.com/ciao/">http://missinglink.github.com/ciao/</a></p>
 
 <h2>Contributing</h2>
 
-<p>Ciao is still in beta, if you are lucky enough to have git access, you're best to use <code>bleeding edge</code>:</p>
+<p>Please fork and pull request against upstream master on a feature branch.</p>
 
-<h3>Quick start</h3>
+<p>Pretty please; provide unit tests and script fixtures in the <code>test</code> and <code>fixtures</code> directories.</p>
+
+<h3>Getting Set Up</h3>
 
 <div class="highlight"><pre><span class="nv">$ </span>git clone git@github.com:missinglink/ciao.git ciao
 <span class="nv">$ </span><span class="nb">cd </span>ciao
@@ -361,18 +366,16 @@ This isolates the main thread from malicious code and ensures the fastest execut
 <span class="nv">$ </span>./bin/ciao scripts/examples
 </pre></div>
 
-<h3>I have push access, what can I push?</h3>
-
-<p>Since we're in beta, you can push anything as long as you successfully run the commands below before pushing.</p>
-
-<p>Pretty please; provide unit tests and script fixtures in the <code>test</code> and <code>fixtures</code> directories.</p>
-
 <h3>Running Unit Tests</h3>
 
 <p>The unit test suite is run using <code>mocha</code></p>
 
 <div class="highlight"><pre><span class="nv">$ </span>npm <span class="nb">test</span>
 </pre></div>
+
+<h3>Continuous Integration</h3>
+
+<p>Travis tests every release against node versions <code>0.6</code> <code>0.8</code> &amp; <code>0.10</code></p>
 
 <p><a href="https://travis-ci.org/missinglink/ciao"><img src="https://travis-ci.org/missinglink/ciao.png?branch=master" alt="Build Status"></a></p>
 
@@ -382,6 +385,13 @@ This isolates the main thread from malicious code and ensures the fastest execut
 
 <div class="highlight"><pre><span class="nv">$ </span>npm run ciao
 </pre></div>
+
+<h3>Known bugs</h3>
+
+<p>It's early stages yet; there are a bunch of issues reported here:
+<a href="https://github.com/missinglink/ciao/issues">https://github.com/missinglink/ciao/issues</a></p>
+
+<p>Please report everything as it comes up, no matter how small.</p>
 
 <h3>Code review</h3>
 
