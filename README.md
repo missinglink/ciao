@@ -293,7 +293,9 @@ If you require your settings to be generated before the test suite runs then you
 
 This is particularly useful for running `fixtures` or any other `local` or `remote` code before your tests start.
 
-Dynamic configurations must export their settings with `module.exports =` or an error will be thrown.
+Dynamic configurations must export their settings with `module.exports` or an error will be thrown.
+
+Note: This feature was introduced in `0.3.1`, please upgrade if you have issues.
 
 ---
 
