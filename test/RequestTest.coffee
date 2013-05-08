@@ -1,7 +1,8 @@
-Request = require 'lib/Request'
+Request      = require 'lib/Request'
 EventEmitter = require('events').EventEmitter
+
 should = require 'should'
-fs = require 'fs'
+fs     = require 'fs'
 
 describe 'Request', ->
 
@@ -12,12 +13,12 @@ describe 'Request', ->
     it 'should set default properties', ->
 
       request.should.be.instanceof EventEmitter
-      request.data.should.eql ''
+      request.data.should.equal ''
 
       request.request.should.be.instanceof Function
       request.transfer.should.be.instanceof Function
 
-  # This test is shit, scrub it and start again
+  # TODO This test is shit, scrub it and start again
   describe 'transfer json', ->
 
     events = {}
@@ -26,7 +27,7 @@ describe 'Request', ->
       setEncoding: ( enc ) -> enc.should.equal 'utf8'
       on: ( key, cb ) -> events[key] = cb
 
-    client.write = ( body ) -> body.should.eql '{\"bingo\":{\"bango\":\"bongo"}}\n'
+    client.write = ( body ) -> body.should.eql '{\"bingo\":{\"bango\":\"bongo"}}'
     client.end = () -> null
     client.request = ( req, cb ) ->
       cb client.res
@@ -57,7 +58,7 @@ describe 'Request', ->
       setEncoding: ( enc ) -> enc.should.equal 'utf8'
       on: ( key, cb ) -> events[key] = cb
 
-    client.write = ( body ) -> body.should.eql 'bingo[bango]=bongo&ping=pong\n'
+    client.write = ( body ) -> body.should.eql 'bingo[bango]=bongo&ping=pong'
     client.end = () -> null
     client.request = ( req, cb ) ->
       cb client.res

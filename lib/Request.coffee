@@ -43,7 +43,7 @@ class Request extends EventEmitter
           request.write "#{body}"
         else
           json = JSON.stringify req.body
-          request.write "#{json}\n"
+          request.write "#{json}"
 
     request.end()
 

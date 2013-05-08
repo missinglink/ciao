@@ -1,6 +1,7 @@
 Settings = require 'lib/Settings'
+
 should = require 'should'
-fs = require 'fs'
+fs     = require 'fs'
 
 describe 'Settings', ->
 
