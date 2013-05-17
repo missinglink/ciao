@@ -65,10 +65,10 @@ var ciao = function( settings, parser, filename )
 
 // Run gist
 if( program.gist ){
-  program.gist = program.gist.replace( 'https://gist.github.com/', '');
+  program.gist = program.gist.replace( 'https://gist.github.com/', '' );
   settings = new Settings();
   http = new Request();
-  http.listener.on( 'complete', function( e, req, res, data ){
+  http.on( 'complete', function( e, req, res, data ){
     parser = new ScriptParser( data, program.gist );
     if( !parser.sections.request[0] )
     {
