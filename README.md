@@ -88,7 +88,7 @@ $ [sudo] npm install -g ciao
 $ ciao --help
 ```
 
-[![NPM](https://nodei.co/npm/ciao.png)](https://nodei.co/npm/ciao/)
+[![NPM](https://nodei.co/npm/ciao.png?downloads=true&stars=true)](https://nodei.co/npm/ciao)
 
 Note: you will need `node` and `npm` installed first.
 
