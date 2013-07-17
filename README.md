@@ -88,6 +88,8 @@ $ [sudo] npm install -g ciao
 $ ciao --help
 ```
 
+[![NPM](https://nodei.co/npm/ciao.png)](https://nodei.co/npm/ciao/)
+
 Note: you will need `node` and `npm` installed first.
 
 The easiest way to install `node.js` is with [nave.sh](https://github.com/isaacs/nave) by executing `[sudo] ./nave.sh usemain 0.10`
