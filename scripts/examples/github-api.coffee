@@ -18,6 +18,6 @@ json.sha.should.match /^[a-z0-9]{40}/
 json.should.include
   type: 'file'
   path: 'README.md'
-  url: 'https://api.github.com/repos/joyent/node/contents/README.md'
+  url: 'https://api.github.com/repos/joyent/node/contents/README.md?ref=master'
   html_url: 'https://github.com/joyent/node/blob/master/README.md'
   git_url: 'https://api.github.com/repos/joyent/node/git/blobs/' + json.sha
