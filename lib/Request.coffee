@@ -35,15 +35,15 @@ class Request extends EventEmitter
 
     if req.body?
       if 'string' is typeof req.body 
-        request.write "#{req.body}\n"
+        request.write "#{req.body}"
 
       else if 'object' is typeof req.body
         if req.headers?['Content-Type'] is 'application/x-www-form-urlencoded'
           body = qs.stringify req.body
-          request.write "#{body}\n"
+          request.write "#{body}"
         else
           json = JSON.stringify req.body
-          request.write "#{json}\n"
+          request.write "#{json}"
 
     request.end()
 
