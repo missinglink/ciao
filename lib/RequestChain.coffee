@@ -1,14 +1,18 @@
 
+path = require 'path'
+async = require 'async'
+winston = require 'winston'
+
 CoffeeScript = require 'coffee-script'
 Process = require './Process'
 Runner = require './Runner'
-async = require 'async'
-path = require 'path'
-winston = require 'winston'
+Settings = require './Settings'
 
 class RequestChain
 
-  constructor: (@settings={}) ->
+  constructor: (@settings=new Settings) ->
+
+    throw new Error 'Invalid Settings' unless @settings instanceof Settings
     @chain = []
 
     # Set environmental variables
@@ -48,7 +52,7 @@ class RequestChain
       script.push "  ))"
       script.push "  process.exit 0"
       script.push "catch e"
-      script.push "  console.error e.message"
+      script.push "  console.error 'Invalid request / before block'"
       script.push "  process.exit 1"
       script.push ''
 
@@ -69,8 +73,8 @@ class RequestChain
           # console.log 'ERR', stderr
           # console.log stdout
           # console.log script.join '\n'
-          throw e
-          return callback null, { defaults: {}, config: {} }
+          # throw e
+          return callback 'Invalid request / before block', { defaults: {}, config: {} }
 
       child.on 'error', winston.error
       child.emit 'write', script.join '\n'
@@ -79,9 +83,9 @@ class RequestChain
 
     async.parallel @chain.map( (link) => return (callback) => link @settings, callback ),
       (err, results) =>
-        throw new Error err if err
+        return @done err if err
         results.map (result) => @settings.merge result
-        @done @settings
+        return @done null, @settings
 
   done: (settings) => winston.warn 'Missing \'done\' callback for RequestChain'
 

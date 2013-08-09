@@ -9,7 +9,9 @@ module.exports.mergeSettings = mergeSettings = ( filename, settings, parser, cal
   parser.sections.auth.map ( section ) -> chain.mergeScriptProcess section.source
   chain.mergeScriptProcess parser.sections.request[0].source
 
-  chain.done = ( settings ) =>
+  chain.done = ( err, settings ) =>
+
+    throw new Error err if err
 
     unless settings.defaults?.host
       throw new Error 'FATAL: Invalid request section, you must specify a host'
