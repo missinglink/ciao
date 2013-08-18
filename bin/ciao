@@ -37,8 +37,9 @@ if( !program.silent ){
   }
 }
 
-var ciao = function( settings, parser, filename )
+var ciao = function( err, settings, parser, filename )
 {
+  if( err ) throw new Error( err );
   if( parser.sections.request[0] ){
     var runner = new Runner( parser.sections.assert );
     reporter.watch( runner );

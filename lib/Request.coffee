@@ -12,7 +12,9 @@ class Request extends EventEmitter
 
   transfer: (req,client=http) =>
 
-    if req.port is 443 or req.protocol is 'https:' then client = https
+    if req.protocol and req.protocol.slice( -1 ) isnt ':'
+      req.protocol = req.protocol + ':'
+    if req.port is 443 or 'https:' is req.protocol then client = https
     req.agent = false # Disable agent to avoid socket errors
 
     @request client, req
@@ -45,6 +47,7 @@ class Request extends EventEmitter
           json = JSON.stringify req.body
           request.write "#{json}"
 
+    request.on 'error', (error) => @emit 'complete', error, req, {}, @data
     request.end()
 
 module.exports = Request

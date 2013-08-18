@@ -1,6 +1,9 @@
 Request      = require 'lib/Request'
 EventEmitter = require('events').EventEmitter
 
+http = require 'http'
+https = require 'https'
+
 should = require 'should'
 fs     = require 'fs'
 
@@ -23,6 +26,7 @@ describe 'Request', ->
 
     events = {}
     client = {}
+    client.on = ( key, cb ) -> null
     client.res =
       setEncoding: ( enc ) -> enc.should.equal 'utf8'
       on: ( key, cb ) -> events[key] = cb
@@ -54,6 +58,7 @@ describe 'Request', ->
 
     events = {}
     client = {}
+    client.on = ( key, cb ) -> null
     client.res =
       setEncoding: ( enc ) -> enc.should.equal 'utf8'
       on: ( key, cb ) -> events[key] = cb
@@ -90,6 +95,97 @@ describe 'Request', ->
       events['end']()
 
   describe 'request', ->
+
+    describe 'constructor', ->
+
+      it 'should set request data', ->
+
+        request = new Request()
+        request.data = {}
+
+        request = new Request( 'foo' )
+        request.data = 'foo'
+
+    describe 'transfer', ->
+
+      it 'should default to the http client', (done) ->
+
+        request = new Request()
+        request.request = (client, req) ->
+          client.should.eql http
+          req.model.should.equal 'req'
+          done()
+
+        request.transfer { model: 'req' }
+
+      it 'should auto detect the https client from port', (done) ->
+
+        request = new Request()
+        request.request = (client, req) ->
+          client.should.eql https
+          req.model.should.equal 'req'
+          done()
+
+        request.transfer { model: 'req', port: 443 }
+
+      it 'should auto detect the https client from protocol', (done) ->
+
+        request = new Request()
+        request.request = (client, req) ->
+          client.should.eql https
+          req.model.should.equal 'req'
+          done()
+
+        request.transfer { model: 'req', protocol: 'https:' }
+
+      it 'should auto detect the https client from protocol without colon', (done) ->
+
+        request = new Request()
+        request.request = (client, req) ->
+          client.should.eql https
+          req.model.should.equal 'req'
+          done()
+
+        request.transfer { model: 'req', protocol: 'https' }
+
+      it 'should auto add colon to protocol if missing', (done) ->
+
+        request = new Request()
+        request.request = (client, req) ->
+          client.should.eql https
+          req.model.should.equal 'req'
+          done()
+
+        request.transfer { model: 'req', protocol: 'https' }
+
+      it 'should force agent to false', (done) ->
+
+        request = new Request()
+        request.request = (client, req) ->
+          req.agent.should.equal false
+          req.model.should.equal 'req'
+          done()
+
+        request.transfer { model: 'req' }
+
+      it 'should allow injecting a custom agent', (done) ->
+
+        request = new Request()
+        request.request = (client, req) ->
+          req.agent.should.equal false
+          req.model.should.equal 'req'
+          client.model.should.equal 'agent'
+          done()
+
+        request.transfer { model: 'req' }, { model: 'agent' }
+
+      it 'should disable agent', ->
+
+        request = new Request()
+        request.data = {}
+
+        request = new Request( 'foo' )
+        request.data = 'foo'
 
     it 'should have a better test for this', ->
 

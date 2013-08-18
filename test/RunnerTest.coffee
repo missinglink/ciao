@@ -18,16 +18,38 @@ describe 'Runner', ->
 
   describe 'complete', ->
 
-    it 'should throw if given an error message', ->
+    it 'should error if given an error message', (done) ->
 
       runner = new Runner groups
-      (-> runner.complete 'Bingo Bango', null, null, null ).should.throw '[REQUEST ERROR] Bingo Bango'
+      
+      runner.on 'complete', (error, stdout, stderr, body) ->
+        error.should.eql 99
+        stderr.should.eql 'Bingo Bango'
+        done()
 
-    it 'should throw if given an error object', ->
+      runner.complete 'Bingo Bango', null, null, null
+
+    it 'should error if no groups empty', (done) ->
 
       runner = new Runner groups
-      (-> runner.complete new Error 'Bingo Bango', null, null, null ).should.throw '[REQUEST ERROR] Bingo Bango'
-    
+      
+      runner.on 'complete', (error, stdout, stderr, body) ->
+        error.should.eql 99
+        stderr.should.eql 'no groups'
+        done()
+
+      runner.complete null, null, null, null
+
+    it 'should error on invalid response object', (done) ->
+
+      runner = new Runner [ 'a' ]
+      
+      runner.on 'complete', (error, stdout, stderr, body) ->
+        error.should.eql 99
+        stderr.should.eql 'invalid response object'
+        done()
+
+      runner.complete null, null, null, null
 
   describe 'functional tests', ->
 

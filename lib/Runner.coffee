@@ -13,7 +13,11 @@ class Runner extends EventEmitter
 
   complete: (error, request, response, body) =>
 
-    if error then throw new Error "[REQUEST ERROR] " + ( error.message or error )
+    if error then return @emit 'complete', 99, null, error
+    if @groups.length == 0 then return @emit 'complete', 99, null, 'no groups'
+
+    if !body || !response || !response.statusCode || !response.headers
+      return @emit 'complete', 99, null, 'invalid response object'
 
     res =
       body: body

@@ -9,15 +9,17 @@ describe 'Script', ->
 
     settings = new Settings();
 
-    it 'should throw unless settings are provided', ->
+    it 'should error unless settings are provided', (done) ->
 
-      construct = -> Script.load ''
-      construct.should.throw "Invalid settings"
+      Script.load '', null, ( err ) ->
+        err.should.eql "Invalid settings"
+        done()
 
-    it 'should throw on invalid file', ->
+    it 'should error on invalid file', (done) ->
 
-      construct = -> Script.load 'not/existing', settings
-      construct.should.throw "ENOENT, no such file or directory 'not/existing'"
+      Script.load 'not/existing', settings, ( err ) ->
+        err.should.eql "ENOENT, no such file or directory 'not/existing'"
+        done()
 
     it 'should not throw if the script does not contain a request block', (done) ->
 
