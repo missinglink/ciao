@@ -48,11 +48,21 @@ describe 'RequestChain', ->
         done()
       chain.run()
 
-    it 'should error on invalid json', (done) ->
+    it 'should error on non object json', (done) ->
+
+      chain = new RequestChain()
+      chain.mergeScriptProcess "[{ \"host\": \"www.example.com\" }]"
+      chain.done = (err,settings) ->
+        console.log 'err', err
+        err.should.equal 'Non-object request / before block'
+        done()
+      chain.run()
+
+    it 'should error if invalid json', (done) ->
 
       chain = new RequestChain()
       chain.mergeScriptProcess "console.log 'test'"
       chain.done = (err,settings) ->
-        err.should.eql 'Invalid request / before block'
+        err.should.eql 'Unexpected token e'
         done()
       chain.run()

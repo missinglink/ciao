@@ -61,20 +61,15 @@ class RequestChain
 
       child.on 'exit', (code, stdout, stderr) =>
 
-        if stderr
-          # console.error stderr
-          return callback stderr
+        if stderr then return callback stderr
 
         try
           result = JSON.parse stdout
-          throw new Error 'Invalid request / before block' unless typeof result is 'object'
+          unless '[object Object]' is Object.prototype.toString.call result
+            throw new Error( 'Non-object request / before block' )
           return callback null, defaults: result, config: {}
         catch e
-          # console.log 'ERR', stderr
-          # console.log stdout
-          # console.log script.join '\n'
-          # throw e
-          return callback 'Invalid request / before block', { defaults: {}, config: {} }
+          return callback e.message, { defaults: {}, config: {} }
 
       child.on 'error', winston.error
       child.emit 'write', script.join '\n'
@@ -83,9 +78,9 @@ class RequestChain
 
     async.parallel @chain.map( (link) => return (callback) => link @settings, callback ),
       (err, results) =>
-        return @done err if err
+        return @done( err ) if err
         results.map (result) => @settings.merge result
-        return @done null, @settings
+        return @done( null, @settings )
 
   done: (settings) => winston.warn 'Missing \'done\' callback for RequestChain'
 
