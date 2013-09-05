@@ -404,3 +404,6 @@ If you would like a code review or to open a feature discussion, please fork and
 
 * Scheduled builds
 * Hosted CI solution
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/missinglink/ciao/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
