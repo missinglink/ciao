@@ -1,5 +1,7 @@
 # Ciao
 
+[![Build Status](https://travis-ci.org/missinglink/ciao.svg?branch=master)](https://travis-ci.org/missinglink/ciao)
+
 Ciao is a simple command line utility for testing http(s) requests and generating API documentation.
 
 Scripts are written in coffee-script, however it's important to note that they are interpreted, not executed.

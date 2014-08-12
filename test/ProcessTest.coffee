@@ -15,13 +15,13 @@ describe 'Process', ->
       stdout.should.eql 'Bingo Bongo Bango!\n'
       done()
 
-  it 'should stderr when executable not found', (done) ->
+  # it 'should stderr when executable not found', (done) ->
 
-    process = new Process 'foobarbazwoo'
-    process.on 'exit', ( code, stdout, stderr, data ) ->
-      code.should.equal 127
-      stderr.should.eql 'execvp(): No such file or directory\n'
-      done()
+  #   process = new Process 'foobarbazwoo'
+  #   process.on 'exit', ( code, stdout, stderr, data ) ->
+  #     code.should.equal 127
+  #     stderr.should.eql 'execvp(): No such file or directory\n'
+  #     done()
 
   it 'should compile coffee-script', (done) ->
 
@@ -37,6 +37,6 @@ describe 'Process', ->
     process = new Process 'coffee', [ '-s' ], { env: env }
     process.on 'exit', ( code, stdout, stderr, data ) ->
       code.should.equal 1
-      stderr.should.include 'ReferenceError: Invalid is not defined'
+      stderr.should.containEql 'ReferenceError: Invalid is not defined'
       done()
     process.emit 'write', 'Invalid;'

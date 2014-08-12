@@ -10,8 +10,8 @@ describe 'Suite', ->
 
       counter = 0
       suite = new Suite (path,sweet) ->
-        [ 'img/cans.jpg', 'img/ciao.png' ].should.include path
-        sweet.files.should.include path
+        [ 'img/cans.jpg', 'img/ciao.png' ].should.containEql path
+        sweet.files.should.containEql path
         counter++
         sweet.files.length.should.eql counter
         done() if counter > 1
@@ -30,7 +30,7 @@ describe 'Suite', ->
       counter = 0
       suite = new Suite (path,sweet) ->
         should.exist path
-        sweet.files.should.include path
+        sweet.files.should.containEql path
         counter++
         sweet.files.length.should.eql counter
         done() if counter > 9

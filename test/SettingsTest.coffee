@@ -43,7 +43,7 @@ describe 'Settings', ->
       ret.should.equal settings
 
       settings.config.should.eql { hello: 'world' }
-      settings.defaults.should.include { port: 80 }
+      settings.defaults.should.containEql { port: 80 }
 
   describe 'merge', ->
 

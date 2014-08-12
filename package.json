@@ -2,7 +2,7 @@
   "name": "ciao",
   "preferGlobal": true,
   "private": false,
-  "version": "0.3.4",
+  "version": "0.4.0",
   "description": "Ciao is a simple command line utility for testing http(s) requests and generating API documentation",
   "contributors": [],
   "dependencies": {
@@ -10,7 +10,7 @@
     "coffee-script": "~1.6.2",
     "mkdirp": "0.3.x",
     "deepmerge": "~0.2.5",
-    "should": "~1.2.1",
+    "should": "~4.0.0",
     "commander": "*",
     "async": "~0.1.22",
     "winston": "~0.6.2",
