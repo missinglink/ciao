@@ -4,7 +4,8 @@
   "private": false,
   "version": "0.3.4",
   "description": "Ciao is a simple command line utility for testing http(s) requests and generating API documentation",
-  "contributors": [],
+  "contributors": [
+  ],
   "dependencies": {
     "walk": "~2.2.1",
     "coffee-script": "~1.6.2",
@@ -17,6 +18,16 @@
     "cheerio": "~0.10.6",
     "qs": "~0.5.3"
   },
+  "contributors": [
+    {
+      "name": "Peter Johnson",
+      "email": "insomnia@rcpt.at"
+    },
+    {
+      "name": "Fabrizio Moscon",
+      "email": "mosconfabrizio@gmail.com"
+    }
+  ],
   "bin": {
     "ciao": "./bin/ciao"
   },
