@@ -1,11 +1,11 @@
-
 cp = require 'child_process'
 EventEmitter = require('events').EventEmitter
 winston = require 'winston'
 
+
 class Process extends EventEmitter
 
-  constructor: (@command,@args=null,@options=null,@data=null) ->
+  constructor: (@command, @args = null, @options = null, @data = null) ->
 
     @setup()
 
