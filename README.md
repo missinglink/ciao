@@ -1,5 +1,9 @@
 # Ciao
 
+__Bizzby applied hacks__
+
+- no longer global install prefered (use npm 'run x' instead)
+
 Ciao is a simple command line utility for testing http(s) requests and generating API documentation.
 
 Scripts are written in coffee-script, however it's important to note that they are interpreted, not executed.
