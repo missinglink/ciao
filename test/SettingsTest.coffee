@@ -1,4 +1,4 @@
-Settings = require 'lib/Settings'
+Settings = require '../lib/Settings'
 
 should = require 'should'
 fs     = require 'fs'
@@ -39,7 +39,7 @@ describe 'Settings', ->
       settings = new Settings()
       settings.defaults = {}
 
-      ret = settings.requireFile 'ciao'
+      ret = settings.requireFile '../ciao'
       ret.should.equal settings
 
       settings.config.should.eql { hello: 'world' }

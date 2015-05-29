@@ -1,4 +1,4 @@
-Process = require 'lib/Process'
+Process = require '../lib/Process'
 should = require 'should'
 fs = require 'fs'
 
@@ -20,7 +20,7 @@ describe 'Process', ->
     myProcess = new Process 'foobarbazwoo'
     myProcess.on 'exit', ( code, stdout, stderr, data ) ->
       code.should.equal 127
-      stderr.should.equal process.ENOENT
+      stderr.errno.should.equal 'ENOENT'
       done()
 
   it 'should compile coffee-script', (done) ->

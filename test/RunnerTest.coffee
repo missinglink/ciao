@@ -1,4 +1,4 @@
-Runner = require 'lib/Runner'
+Runner = require '../lib/Runner'
 EventEmitter = require('events').EventEmitter
 should = require 'should'
 fs = require 'fs'

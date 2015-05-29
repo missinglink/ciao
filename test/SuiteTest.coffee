@@ -1,4 +1,4 @@
-Suite = require 'lib/Suite'
+Suite = require '../lib/Suite'
 should = require 'should'
 fs = require 'fs'
 

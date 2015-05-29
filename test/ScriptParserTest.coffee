@@ -1,4 +1,4 @@
-ScriptParser = require 'lib/ScriptParser'
+ScriptParser = require '../lib/ScriptParser'
 should = require 'should'
 fs = require 'fs'
 

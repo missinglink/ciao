@@ -1,5 +1,6 @@
 
 CoffeeScript = require('coffee-script');
+CoffeeScript.register();
 module.exports = {
   "Script": require('./lib/Script'),
   "Documentor": require('./lib/Documentor'),
