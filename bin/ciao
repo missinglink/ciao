@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var path = require( 'path' );
-var coffee = require( 'coffee-script' );
+var coffee = require( 'coffee-script/register' );
 var program = require('commander');
 var Script = require( '../lib/Script' );
 var Runner = require( '../lib/Runner' );
