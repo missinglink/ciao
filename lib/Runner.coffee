@@ -1,6 +1,6 @@
 Process = require './Process'
 path = require 'path'
-coffee = path.resolve( __dirname + '/../node_modules/coffee-script/bin/coffee' )
+csPath = require('./misc').csPath
 EventEmitter = require('events').EventEmitter
 
 class Runner extends EventEmitter
@@ -45,12 +45,13 @@ class Runner extends EventEmitter
       script.push "process.exit 0"
 
       # Spawn child process
-      child = new Process coffee, [ '-s' ], { env: @env }, { test: test, request: request, response: res }
+      csPath (err, pathToCoffee)=>
+        child = new Process pathToCoffee, [ '-s' ], { env: @env }, { test: test, request: request, response: res }
 
-      child.on 'exit', (code, stdout, stderr, data) =>
-        @emit 'complete', code, stdout, stderr, data
+        child.on 'exit', (code, stdout, stderr, data) =>
+          @emit 'complete', code, stdout, stderr, data
 
-      child.emit 'write', script.join '\n'
+        child.emit 'write', script.join '\n'
 
   @indentSource: (source,char=' ',indentation=2) ->
 
