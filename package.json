@@ -2,7 +2,7 @@
   "name": "bizzby-ciao",
   "preferGlobal": false,
   "private": false,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Ciao is a simple command line utility for testing http(s) requests and generating API documentation",
   "contributors": [],
   "dependencies": {
