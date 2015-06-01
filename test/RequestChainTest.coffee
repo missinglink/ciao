@@ -1,5 +1,5 @@
-RequestChain = require 'lib/RequestChain'
-Settings = require 'lib/Settings'
+RequestChain = require '../lib/RequestChain'
+Settings = require '../lib/Settings'
 should = require 'should'
 fs = require 'fs'
 

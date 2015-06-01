@@ -1,4 +1,4 @@
-Runner = require 'lib/Runner'
+Runner = require '../lib/Runner'
 EventEmitter = require('events').EventEmitter
 should = require 'should'
 fs = require 'fs'
@@ -72,10 +72,10 @@ describe 'Runner', ->
       counter = 0
       runner.on 'complete', (code, stdout, stderr, data) ->
         stdout.should.eql ''
-        [ 0, 1 ].should.include code
+        [ 0, 1 ].should.containEqlcode
         data.request.should.equal request
-        [ 'bingo', 'bango' ].should.include data.test.title
-        [ "expected 'Bingo Bango Bongo!' to equal 'Bango-Bongo-Bingo!'\n", '' ].should.include stderr
+        [ 'bingo', 'bango' ].should.containEql data.test.title
+        [ "expected 'Bingo Bango Bongo!' to equal 'Bango-Bongo-Bingo!'\n", '' ].should.containEql stderr
         done() if counter is 1 
         counter++
 

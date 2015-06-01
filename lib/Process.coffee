@@ -1,11 +1,11 @@
-
 cp = require 'child_process'
 EventEmitter = require('events').EventEmitter
 winston = require 'winston'
 
+
 class Process extends EventEmitter
 
-  constructor: (@command,@args=null,@options=null,@data=null) ->
+  constructor: (@command, @args = [], @options = {}, @data = null) ->
 
     @setup()
 
@@ -16,8 +16,9 @@ class Process extends EventEmitter
     @proc = cp.spawn @command, @args, @options
 
     # Provides backwards compatibility between 0.10 and 0.8
-    @proc.on 'error', (error) -> @emit 'exit', 127, @stdout, error, @data
-
+    
+    @proc.on 'error', (error) => @emit 'exit', 127, @stdout, error, @data
+    
     @proc.stdin.setEncoding 'utf-8'
     @proc.stdout.setEncoding 'utf-8'
     @proc.stderr.setEncoding 'utf-8'
@@ -30,7 +31,7 @@ class Process extends EventEmitter
     
     @proc.on 'exit', (code) =>
       # Put a 10ms delay on to give the std buffers time to write all their data out
-      setTimeout ( () => @emit 'exit', code, @stdout, @stderr, @data ), 10
+      setTimeout ( () => @emit 'exit', code, @stdout, @stderr, @data ), 100
 
     @on 'write', (data) =>
       @proc.stdin.write data

@@ -1,4 +1,4 @@
-Process = require 'lib/Process'
+Process = require '../lib/Process'
 should = require 'should'
 fs = require 'fs'
 
@@ -9,34 +9,34 @@ describe 'Process', ->
 
   it 'should stdout an echo statement', (done) ->
 
-    process = new Process 'echo', [ "Bingo Bongo Bango!" ]
-    process.on 'exit', ( code, stdout, stderr, data ) ->
+    myProcess = new Process 'echo', [ "Bingo Bongo Bango!" ]
+    myProcess.on 'exit', ( code, stdout, stderr, data ) ->
       code.should.equal 0
       stdout.should.eql 'Bingo Bongo Bango!\n'
       done()
 
   it 'should stderr when executable not found', (done) ->
 
-    process = new Process 'foobarbazwoo'
-    process.on 'exit', ( code, stdout, stderr, data ) ->
+    myProcess = new Process 'foobarbazwoo'
+    myProcess.on 'exit', ( code, stdout, stderr, data ) ->
       code.should.equal 127
-      stderr.should.eql 'execvp(): No such file or directory\n'
+      stderr.errno.should.equal 'ENOENT'
       done()
 
   it 'should compile coffee-script', (done) ->
 
-    process = new Process 'coffee', [ '-s' ], { env: env }
-    process.on 'exit', ( code, stdout, stderr, data ) ->
+    myProcess = new Process 'coffee', [ '-s' ], { env: env }
+    myProcess.on 'exit', ( code, stdout, stderr, data ) ->
       code.should.equal 0
       stdout.should.eql '{"bingo":"bango"}\n'
       done()
-    process.emit 'write', 'console.log JSON.stringify bingo: \'bango\''
+    myProcess.emit 'write', 'console.log JSON.stringify bingo: \'bango\''
 
   it 'should stderr on badly formatted coffee-script', (done) ->
 
-    process = new Process 'coffee', [ '-s' ], { env: env }
-    process.on 'exit', ( code, stdout, stderr, data ) ->
+    myProcess = new Process 'coffee', [ '-s' ], { env: env }
+    myProcess.on 'exit', ( code, stdout, stderr, data ) ->
       code.should.equal 1
-      stderr.should.include 'ReferenceError: Invalid is not defined'
+      stderr.should.containEql 'ReferenceError: Invalid is not defined'
       done()
-    process.emit 'write', 'Invalid;'
+    myProcess.emit 'write', 'Invalid;'

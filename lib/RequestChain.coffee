@@ -4,6 +4,7 @@ async = require 'async'
 winston = require 'winston'
 
 CoffeeScript = require 'coffee-script'
+csPath = require('./misc').csPath
 Process = require './Process'
 Runner = require './Runner'
 Settings = require './Settings'
@@ -56,23 +57,24 @@ class RequestChain
       script.push "  process.exit 1"
       script.push ''
 
-      # Spawn child process
-      child = new Process path.resolve( __dirname + '/../node_modules/coffee-script/bin/coffee' ), [ '-s' ], { env: @env }
+      csPath (err, pathToCoffee)->
+        # Spawn child process
+        child = new Process pathToCoffee, [ '-s' ], { env: @env }
 
-      child.on 'exit', (code, stdout, stderr) =>
+        child.on 'exit', (code, stdout, stderr) =>
 
-        if stderr then return callback stderr
+          if stderr then return callback stderr
 
-        try
-          result = JSON.parse stdout
-          unless '[object Object]' is Object.prototype.toString.call result
-            throw new Error( 'Non-object request / before block' )
-          return callback null, defaults: result, config: {}
-        catch e
-          return callback e.message, { defaults: {}, config: {} }
+          try
+            result = JSON.parse stdout
+            unless '[object Object]' is Object.prototype.toString.call result
+              throw new Error( 'Non-object request / before block' )
+            return callback null, defaults: result, config: {}
+          catch e
+            return callback e.message, { defaults: {}, config: {} }
 
-      child.on 'error', winston.error
-      child.emit 'write', script.join '\n'
+        child.on 'error', winston.error
+        child.emit 'write', script.join '\n'
 
   run: () =>
 

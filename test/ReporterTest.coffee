@@ -1,4 +1,4 @@
-Reporter = require 'lib/Reporter'
+Reporter = require '../lib/Reporter'
 EventEmitter = require('events').EventEmitter
 should = require 'should'
 fs = require 'fs'

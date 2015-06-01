@@ -1,5 +1,9 @@
 # Ciao
 
+__Bizzby applied hacks__
+
+- no longer global install prefered (use npm 'run x' instead)
+
 Ciao is a simple command line utility for testing http(s) requests and generating API documentation.
 
 Scripts are written in coffee-script, however it's important to note that they are interpreted, not executed.
@@ -11,7 +15,7 @@ Scripts are written in coffee-script, however it's important to note that they a
 host: 'www.google.co.uk'
 
 #? Should have company name
-response.body.should.include 'Google'
+response.body.should.containEql 'Google'
 ```
 
 ### HTML test script:
@@ -47,7 +51,7 @@ response.should.have.header 'server', 'GitHub.com'
 
 #? Should be what we are looking for...
 json.sha.should.match /^[a-z0-9]{40}/
-json.should.include
+json.should.containEql
   type: 'file'
   path: 'README.md'
   url: 'https://api.github.com/repos/joyent/node/contents/README.md'
@@ -220,13 +224,13 @@ response.should.have.header 'server'
 response.should.have.header 'server', 'apache'
 
 #? Test body contains string
-response.body.should.include 'Bingo Bango Bongo!'
+response.body.should.containEql 'Bingo Bango Bongo!'
 
 #? Test body contains regex
 response.body.should.match /^[a-z0-9]{40}/
 
 #? Test json object contains properties
-json.should.include {
+json.should.containEql {
   id: "10000000000000000000",
   name: "Bingo Bango Bongo!"
 }
