@@ -16,7 +16,7 @@ class Runner extends EventEmitter
     if error then return @emit 'complete', 99, null, error
     if @groups.length == 0 then return @emit 'complete', 99, null, 'no groups'
 
-    if !body || !response || !response.statusCode || !response.headers
+    if !response || !response.statusCode || !response.headers
       return @emit 'complete', 99, null, 'invalid response object'
 
     res =
