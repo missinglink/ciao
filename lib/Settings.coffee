@@ -1,5 +1,4 @@
-
-deepmerge = require 'deepmerge'
+deepmerge = require 'deep-extend'
 fs = require 'fs'
 
 class Settings
