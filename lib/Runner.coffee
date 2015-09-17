@@ -28,6 +28,7 @@ class Runner extends EventEmitter
 
       script = []
       script.push "should = require 'should'"
+      script.push "require 'should-http'"
       script.push "cheerio = require 'cheerio'"
       script.push "title = '" + test.title.split("'").join("\\'") + "'"
       script.push "response = " + JSON.stringify res
