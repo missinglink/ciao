@@ -26,7 +26,7 @@ describe 'Reporter', ->
       reporter = new Reporter.standard
       reporter.watch runner
       runner.emit 'complete', 0, 'stdout', 'stderr', data, logger
-      report.should.eql ' \u001b[1mGET \u001b[1;0mftp//www.google.com:21/\u001b[0m \u001b[2mBongo \u001b[0m \u001b[1;32m✓\u001b[0;32m Bingo\u001b[0m \u001b[0mstdout\u001b[0m \u001b[1;33mstderr\u001b[0m'
+      report.should.eql ' \u001b[1mGET \u001b[1;0mftp//www.google.com:21/\u001b[0m \u001b[2mBongo \u001b[0m \u001b[1;32m✓\u001b[0;32m Bingo\u001b[0m \u001b[0mstdout\u001b[0m \u001b[1;33mstderr\u001b[0m\n\u001b[1m  #? \u001b[0m'
 
     it 'should report on failed jobs', ->
 
@@ -36,7 +36,7 @@ describe 'Reporter', ->
       reporter = new Reporter.standard
       reporter.watch runner
       runner.emit 'complete', 1, 'stdout', 'stderr', data, logger
-      report.should.eql ' \u001b[1mGET \u001b[1;0mftp//www.google.com:21/\u001b[0m \u001b[2mBongo \u001b[0m \u001b[1;31m✘\u001b[1;31m Bingo\u001b[0m \u001b[0mstdout\u001b[0m \u001b[1;33mstderr\u001b[0m'
+      report.should.eql ' \u001b[1mGET \u001b[1;0mftp//www.google.com:21/\u001b[0m \u001b[2mBongo \u001b[0m \u001b[1;31m✘\u001b[1;31m Bingo\u001b[0m \u001b[0mstdout\u001b[0m \u001b[1;33mstderr\u001b[0m\n\u001b[1m  #? \u001b[0m'
 
   describe 'reqRes', ->
 

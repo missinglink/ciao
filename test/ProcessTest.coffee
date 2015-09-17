@@ -19,7 +19,7 @@ describe 'Process', ->
 
     process = new Process 'foobarbazwoo'
     process.on 'exit', ( code, stdout, stderr, data ) ->
-      code.should.equal 127
+      code.should.equal -2
       done()
 
   it 'should compile coffee-script', (done) ->
