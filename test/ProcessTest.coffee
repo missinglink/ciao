@@ -36,6 +36,6 @@ describe 'Process', ->
     process = new Process 'coffee', [ '-s' ], { env: env }
     process.on 'exit', ( code, stdout, stderr, data ) ->
       code.should.equal 1
-      stderr.should.include 'ReferenceError: Invalid is not defined'
+      stderr.should.containEql 'ReferenceError: Invalid is not defined'
       done()
     process.emit 'write', 'Invalid;'

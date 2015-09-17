@@ -57,6 +57,6 @@ function l(){if(google.timers.load.t){google.timers.load.t.ol=(new Date).getTime
 
 ### ✓ Should have company name
 ```javascript
-response.body.should.include 'Google'
+response.body.should.containEql 'Google'
 ```
 
