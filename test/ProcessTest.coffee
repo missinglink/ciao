@@ -20,7 +20,6 @@ describe 'Process', ->
     process = new Process 'foobarbazwoo'
     process.on 'exit', ( code, stdout, stderr, data ) ->
       code.should.equal 127
-      stderr.should.eql 'execvp(): No such file or directory\n'
       done()
 
   it 'should compile coffee-script', (done) ->

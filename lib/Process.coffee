@@ -13,7 +13,7 @@ class Process extends EventEmitter
 
     @stdout = ''
     @stderr = ''
-    @proc = cp.spawn @command, @args, @options
+    @proc = cp.spawn @command, @args || [], @options || {}
 
     # Provides backwards compatibility between 0.10 and 0.8
     @proc.on 'error', (error) -> @emit 'exit', 127, @stdout, error, @data
