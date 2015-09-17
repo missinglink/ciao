@@ -15,7 +15,7 @@ response.should.have.header 'server', 'GitHub.com'
 
 #? Should be what we are looking for...
 json.sha.should.match /^[a-z0-9]{40}/
-json.should.include
+json.should.containEql
   type: 'file'
   path: 'README.md'
   url: 'https://api.github.com/repos/joyent/node/contents/README.md?ref=master'

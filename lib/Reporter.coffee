@@ -79,9 +79,8 @@ class StandardReporter
     if stderr
       stderr = stderr.replace /^\s+|\s+$/g, ''
       logger.log " \x1b[1;33m#{stderr}\x1b[0m"
-
-      # debug = Runner.indentSource data.test.source, '\x1b[1m  #? \x1b[0m', 1
-      # logger.log '\n' + debug
+      debug = Runner.indentSource data.test.source, '\x1b[1m  #? \x1b[0m', 1
+      logger.log '\n' + debug
 
     logger.log ''
 

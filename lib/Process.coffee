@@ -13,7 +13,7 @@ class Process extends EventEmitter
 
     @stdout = ''
     @stderr = ''
-    @proc = cp.spawn @command, @args, @options
+    @proc = cp.spawn @command, @args || [], @options || {}
 
     # Provides backwards compatibility between 0.10 and 0.8
     @proc.on 'error', (error) -> @emit 'exit', 127, @stdout, error, @data
@@ -28,9 +28,8 @@ class Process extends EventEmitter
     @proc.stdout.on 'data', (data) => @stdout += data
     @proc.stderr.on 'data', (data) => @stderr += data
     
-    @proc.on 'exit', (code) =>
-      # Put a 10ms delay on to give the std buffers time to write all their data out
-      setTimeout ( () => @emit 'exit', code, @stdout, @stderr, @data ), 10
+    @proc.on 'close', (code) =>
+      @emit 'exit', code, @stdout, @stderr, @data
 
     @on 'write', (data) =>
       @proc.stdin.write data

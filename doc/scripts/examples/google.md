@@ -59,7 +59,7 @@ response.should.have.header 'content-type', 'text/html; charset=UTF-8'
 
 ### ✓ Response.body should contain '!!1'
 ```javascript
-response.body.should.include '!!1'
+response.body.should.containEql '!!1'
 ```
 
 ### ✓ Status: 405 Method Not Allowed

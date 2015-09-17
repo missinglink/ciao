@@ -63,7 +63,7 @@ describe 'Request', ->
       setEncoding: ( enc ) -> enc.should.equal 'utf8'
       on: ( key, cb ) -> events[key] = cb
 
-    client.write = ( body ) -> body.should.eql 'bingo[bango]=bongo&ping=pong'
+    client.write = ( body ) -> body.should.eql 'bingo%5Bbango%5D=bongo&ping=pong'
     client.end = () -> null
     client.request = ( req, cb ) ->
       cb client.res

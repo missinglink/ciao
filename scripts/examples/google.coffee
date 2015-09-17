@@ -20,7 +20,7 @@ body:
 response.statusCode.should.equal 405
 
 #? Response.body should contain '!!1'
-response.body.should.include '!!1'
+response.body.should.containEql '!!1'
 
 #? Should return a content-type header
 response.should.have.header 'content-type', 'text/html; charset=UTF-8'

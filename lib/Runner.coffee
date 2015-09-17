@@ -52,7 +52,7 @@ class Runner extends EventEmitter
 
       child.emit 'write', script.join '\n'
 
-  @indentSource: (source,char=' ',indentation=2) ->
+  @indentSource: (source='',char=' ',indentation=2) ->
 
     indent = Array(indentation+1).join(char)
     return indent + source.split("\n").join("\n#{indent}")

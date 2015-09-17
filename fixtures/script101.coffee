@@ -31,7 +31,7 @@ response.statusCode.should.equal 302
 response.headers.should.have.property 'content-type', 'text/html; charset=ISO-8859-1'
 
 #? Response body should contain specific js
-response.body.should.include 'window.attachEvent'
+response.body.should.containEql 'window.attachEvent'
 
 #? Should set a cookie
 response.headers.should.have.property 'set-cookie'
