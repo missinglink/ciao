@@ -37,7 +37,7 @@ if( !program.silent ){
   }
 }
 
-var ciao = function( err, settings, parser, filename )
+var ciao = function( err, settings, parser, filename, cb )
 {
   if( err ) throw new Error( err );
   if( parser.sections.request[0] ){
@@ -48,6 +48,7 @@ var ciao = function( err, settings, parser, filename )
     // HTTP Request
     var http = new Request();
     http.on( 'complete', runner.complete );
+    runner.on( 'complete', function(){ if( 'function' === typeof cb ){ cb(); } });
 
     // Documentation
     if( program.documentation )
@@ -89,12 +90,28 @@ if( program.gist ){
 // Run script(s)
 else if( program.args[0] )
 {
-  var suite = new Suite( function( filename, suite )
-  {
-    settings = new Settings();
-    settings.merge( basesettings );
-    Script.load( filename, settings, ciao );
+  var files = [];
+
+  var suite = new Suite( function( filename ){
+    files.push( filename );
+    if( !suite.init ){
+      suite.init = true;
+      next();
+    }
   });
+
+  function next(){
+    var filename = files.pop();
+    if( filename ){    
+      settings = new Settings();
+      settings.merge( basesettings );
+      Script.load( filename, settings, function( err, settings, parser, filename ){
+        ciao( err, settings, parser, filename, function(){
+          setTimeout( next, 1 );
+        });
+      });
+    }
+  }
 
   suite.walk( program.args[0] );
 }
