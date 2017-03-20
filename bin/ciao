@@ -23,7 +23,7 @@ program
   .option('-d, --documentation [dir]', 'generate documentation in output dir')
   .parse(process.argv);
 
-basesettings = new Settings();
+var basesettings = new Settings();
 basesettings.loadFromFile( 'ciao.json', true );
 if( program.conf ){ basesettings.loadFromFile( program.conf ); }
 
@@ -39,7 +39,7 @@ if( !program.silent ){
 
 var ciao = function( err, settings, parser, filename, cb )
 {
-  if( err ) throw new Error( err );
+  if( err ){ throw new Error( err ); }
   if( parser.sections.request[0] ){
     var runner = new Runner( parser.sections.assert );
     reporter.watch( runner );
@@ -48,7 +48,16 @@ var ciao = function( err, settings, parser, filename, cb )
     // HTTP Request
     var http = new Request();
     http.on( 'complete', runner.complete );
-    runner.on( 'complete', function(){ if( 'function' === typeof cb ){ cb(); } });
+
+    var completedGroups = 0;
+    runner.on( 'complete', function(){
+      completedGroups++;
+      if( completedGroups === parser.sections.assert.length ){
+        if( 'function' === typeof cb ){
+          cb();
+        }
+      }
+    });
 
     // Documentation
     if( program.documentation )
@@ -68,10 +77,10 @@ var ciao = function( err, settings, parser, filename, cb )
 // Run gist
 if( program.gist ){
   program.gist = program.gist.replace( 'https://gist.github.com/', '' );
-  settings = new Settings();
-  http = new Request();
+  var settings = new Settings();
+  var http = new Request();
   http.on( 'complete', function( e, req, res, data ){
-    parser = new ScriptParser( data, program.gist );
+    var parser = new ScriptParser( data, program.gist );
     if( !parser.sections.request[0] )
     {
       console.error( 'Gist does not contain any request blocks' );
@@ -102,12 +111,13 @@ else if( program.args[0] )
 
   function next(){
     var filename = files.pop();
-    if( filename ){    
-      settings = new Settings();
+    if( filename ){
+      var settings = new Settings();
       settings.merge( basesettings );
+      console.log( filename );
       Script.load( filename, settings, function( err, settings, parser, filename ){
         ciao( err, settings, parser, filename, function(){
-          setTimeout( next, 1 );
+          setTimeout( next, 50 );
         });
       });
     }
@@ -119,3 +129,4 @@ else if( program.args[0] )
 else {
   program.help();
 }
+
