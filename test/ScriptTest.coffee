@@ -18,7 +18,8 @@ describe 'Script', ->
     it 'should error on invalid file', (done) ->
 
       Script.load 'not/existing', settings, ( err ) ->
-        err.should.eql "ENOENT, no such file or directory 'not/existing'"
+        err.substr(0,6).should.eql "ENOENT"
+        err.substr(8,25).should.eql "no such file or directory"
         done()
 
     it 'should not throw if the script does not contain a request block', (done) ->
