@@ -6,8 +6,8 @@ RequestChain = require './RequestChain'
 module.exports.mergeSettings = ( filename, settings, parser, callback ) ->
 
   chain = new RequestChain( settings )
-  parser.sections.auth.map ( section ) -> chain.mergeScriptProcess section.source
-  chain.mergeScriptProcess parser.sections.request[0].source
+  parser.sections.auth.map ( section ) -> chain.mergeScriptEval section.source
+  chain.mergeScriptEval parser.sections.request[0].source
 
   chain.done = ( err, settings ) =>
 

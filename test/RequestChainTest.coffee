@@ -63,6 +63,6 @@ describe 'RequestChain', ->
       chain = new RequestChain()
       chain.mergeScriptProcess "console.log 'test'"
       chain.done = (err,settings) ->
-        err.should.eql 'Unexpected token e'
+        err.substr(0,18).should.eql 'Unexpected token e'
         done()
       chain.run()
