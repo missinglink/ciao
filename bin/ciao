@@ -50,7 +50,8 @@ var ciao = function( err, settings, parser, filename, cb )
     http.on( 'complete', runner.complete );
 
     var completedGroups = 0;
-    runner.on( 'complete', function(){
+    runner.on( 'complete', function( code, stdout, stderr, data ){
+      if( stderr ){ console.log( stderr ); }
       completedGroups++;
       if( completedGroups === parser.sections.assert.length ){
         if( 'function' === typeof cb ){

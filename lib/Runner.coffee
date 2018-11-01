@@ -1,7 +1,14 @@
 Process = require './Process'
+fs = require 'fs'
 path = require 'path'
-coffee = path.resolve( __dirname + '/../node_modules/coffee-script/bin/coffee' )
 EventEmitter = require('events').EventEmitter
+
+# Hunt for the Coffee binary
+coffee = path.resolve( __dirname + '/../node_modules/coffee-script/bin/coffee' )
+if !fs.existsSync coffee
+  coffee = coffee.replace('node_modules/ciao/', '')
+if !fs.existsSync coffee 
+  console.error 'Unable to find coffee-script binary'
 
 class Runner extends EventEmitter
 
